@@ -1,0 +1,12 @@
+.idea/
+# IDA working files (never commit the ROM-bearing database)
+*.i64
+*.idb
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+# python
+__pycache__/
+*.pyc

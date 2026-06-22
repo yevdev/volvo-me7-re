@@ -1,0 +1,21 @@
+addr,name,comment
+0x31E484,rlsol_w,relative-load setpoint (load request fed to LDR boost)
+0x0F410,nmot_w,engine speed (0.25 rpm/ct)
+0x302E62,ldr_setpoint,boost-control setpoint (load domain)
+0x302E58,ldr_actual_ratio,boost actual ratio
+0x302E60,ldr_demand,final LDR wastegate demand
+0x302E7C,ldtvm_scaled,scaled wastegate duty (pre-clamp)
+0x302E68,lditv_w,KFLDIMX-limited boost I-state (32-bit)
+0x0F3FA,wkr_global,global knock retard (subtracted from advance)
+0x30B24C,dwkrz,per-cylinder knock retard accumulator (5 entries)
+0x30132E,zwbas,base ignition advance (0.75 deg/ct)
+0x309317,zwout,emitted per-cylinder spark advance
+0x3029A4,lamfa_w,driver-requested lambda (LAMFA result)
+0x30297C,fuel_mult,commanded fuel multiplier
+0x3029A0,fr_w,lambda control / fuel-trim I-state
+0x30069C,ti_w,injector pulse-width accumulator (32-bit)
+0x31DAEC,miopt_w,optimum indicated torque (KFMIOP output)
+0x02BF4A,KFLDIMX_threshold,LDR enable/authority threshold
+0x02BF4E,WG_duty_min,wastegate duty minimum clamp
+0x02BF50,WG_duty_max,wastegate duty maximum clamp
+0x02BF48,overboost_rpm_trip,over-boost RPM cut threshold (~6000)

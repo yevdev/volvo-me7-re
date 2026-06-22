@@ -1,0 +1,80 @@
+
+===== sub_4E5EC  (0x4E5EC-0x4E6F6) =====
+CALLERS: 
+  0x4E5EC  mov     r12, #2736h
+  0x4E5F0  mov     r13, #7
+  0x4E5F4  mov     r14, word_F410
+  0x4E5F8  calls   4, sub_41A68   ; CALL sub_41A68
+  0x4E5FC  cmp     r4, 0A44Eh ; 31E44Eh
+  0x4E600  jmpr    cc_NC, loc_4E60A
+  0x4E602  movb    rl1, #1
+  0x4E604  orb     92F0h, rl1 ; 31D2F0h
+  0x4E608  jmpr    cc_UC, loc_4E612
+  0x4E60A  movb    rl1, #0FEh
+  0x4E60E  andb    92F0h, rl1 ; 31D2F0h
+  0x4E612  jnb     word_FD38.3, loc_4E630
+  0x4E616  mov     r12, #1FFh
+  0x4E61A  mov     r13, #6
+  0x4E61E  mov     r14, 9992h ; 31D992h
+  0x4E622  calls   4, sub_42082   ; CALL sub_42082
+  0x4E626  movbs   r12, rl4
+  0x4E628  shl     r12, #7
+  0x4E62A  mov     0A448h, r12 ; 31E448h
+  0x4E62E  jmpr    cc_UC, loc_4E648
+  0x4E630  mov     r12, #1F9h
+  0x4E634  mov     r13, #6
+  0x4E638  mov     r14, 9992h ; 31D992h
+  0x4E63C  calls   4, sub_42082   ; CALL sub_42082
+  0x4E640  movbs   r12, rl4
+  0x4E642  shl     r12, #7
+  0x4E644  mov     0A448h, r12 ; 31E448h
+  0x4E648  mov     r12, 9992h ; 31D992h
+  0x4E64C  mov     [-r0], r12
+  0x4E64E  mov     r13, 9974h ; 31D974h
+  0x4E652  mov     [-r0], r13
+  0x4E654  mov     r12, #2616h
+  0x4E658  mov     r13, #7
+  0x4E65C  mov     r14, #0F5Eh
+  0x4E660  mov     r15, #5
+  0x4E664  calls   4, sub_421F4   ; CALL sub_421F4
+  0x4E668  add     r0, #4
+  0x4E66A  mov     0A452h, r4 ; 31E452h
+  0x4E66E  mov     r12, 9992h ; 31D992h
+  0x4E672  mov     [-r0], r12
+  0x4E674  mov     r13, 9974h ; 31D974h
+  0x4E678  mov     [-r0], r13
+  0x4E67A  mov     r12, #2676h
+  0x4E67E  mov     r13, #7
+  0x4E682  mov     r14, #0F5Eh
+  0x4E686  mov     r15, #5
+  0x4E68A  calls   4, sub_421F4   ; CALL sub_421F4
+  0x4E68E  add     r0, #4
+  0x4E690  mov     0A454h, r4 ; 31E454h
+  0x4E694  mov     r12, 9992h ; 31D992h
+  0x4E698  mov     [-r0], r12
+  0x4E69A  mov     r13, 9974h ; 31D974h
+  0x4E69E  mov     [-r0], r13
+  0x4E6A0  mov     r12, #25B6h
+  0x4E6A4  mov     r13, #7
+  0x4E6A8  mov     r14, #0F5Eh
+  0x4E6AC  mov     r15, #5
+  0x4E6B0  calls   4, sub_421F4   ; CALL sub_421F4
+  0x4E6B4  add     r0, #4
+  0x4E6B6  mov     0A420h, r4 ; 31E420h
+  0x4E6BA  mov     r12, 9992h ; 31D992h
+  0x4E6BE  mov     [-r0], r12
+  0x4E6C0  mov     r13, 9974h ; 31D974h
+  0x4E6C4  mov     [-r0], r13
+  0x4E6C6  mov     r12, #26D6h
+  0x4E6CA  mov     r13, #7
+  0x4E6CE  mov     r14, #0F5Eh
+  0x4E6D2  mov     r15, #5
+  0x4E6D6  calls   4, sub_421F4   ; CALL sub_421F4
+  0x4E6DA  add     r0, #4
+  0x4E6DC  mov     0A458h, r4 ; 31E458h
+  0x4E6E0  mov     r12, #25A4h
+  0x4E6E4  mov     r13, #7
+  0x4E6E8  mov     r14, word_F410
+  0x4E6EC  calls   4, sub_41A68   ; CALL sub_41A68
+  0x4E6F0  mov     0A42Ch, r4 ; 31E42Ch
+  0x4E6F4  rets

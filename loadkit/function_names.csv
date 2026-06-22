@@ -1,0 +1,28 @@
+addr,name,comment
+0x41A68,me7_lookup_1d_word,1-D word table interp (offset r12,page r13,input r14 -> r4)
+0x41B5A,me7_lookup_1d_word_signed,1-D word table interp, signed axis
+0x419F4,me7_lookup_1d_byte,1-D byte table interp (r13=page)
+0x41CC0,me7_lookup_2d_word_bilinear,2-D bilinear word map
+0x411F4,me7_lookup_2d_sbyte_bilinear,2-D bilinear sbyte map (KFZW path)
+0x43430,me7_lookup_2d_word_torque,2-D bilinear word map (torque/KFMIOP)
+0x43904,me7_pt1_integrator,PT1/integrator: state += gain*(target-state)
+0x42F16,me7_integrator_minmax,integrator with min/max clamp
+0x42DF4,me7_integrator_sat,integrator with +-0x7FFF saturation
+0xB81C,main_control_scheduler,top-level control scheduler chain
+0xDBB04,ldr_boost_pi_math,LDR boost PI + feed-forward math
+0xDBF44,ldr_boost_enable_limit,LDR enable/limit state machine (KFLDIMX threshold)
+0xDC31A,ldr_solenoid_output,LDR wastegate solenoid output + overboost RPM trip
+0xD5E80,ldr_compressor_ratio,compressor pressure-ratio calc (KFLDHBN guard)
+0x518B8,ign_base_advance,base ignition advance (KFZW1-4 cam-blend)
+0x5086A,ign_apply_knock_retard,subtract global + per-cyl knock retard
+0x50984,ign_final_spark_out,final per-cylinder spark output (zwout)
+0x50BC6,ign_scheduler,ignition scheduler
+0x7BA8C,knock_build_retard,build global knock retard
+0x7BD04,knock_event_handler,per-cylinder knock-event retard accumulator
+0x894C0,fuel_lamfa_request,driver-requested lambda (LAMFA)
+0x8981C,fuel_lambda_multiplier,lambda closed-loop -> fuel multiplier
+0x775C8,fuel_injection_qty,injection quantity accumulator (ti)
+0x86318,fuel_component_protect,component-protection enrichment (KFLBTS)
+0x4F4BC,torque_kfmiop_optimum,optimum indicated torque model (KFMIOP, 5-cyl avg)
+0x4F97A,torque_kfmirl_to_load,torque -> load setpoint (KFMIRL -> rlsol)
+0x4E6F6,pedal_channel_select,pedal channel select/plausibility (KFPED region)

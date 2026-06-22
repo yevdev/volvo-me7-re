@@ -1,0 +1,179 @@
+
+===== sub_41A68  (0x41A68-0x41AE2) =====
+CALLERS: sub_3FBA8, sub_44114, sub_48786, sub_4B12E, sub_4E5EC, sub_50CC0, sub_51B06, sub_5533C, sub_553C6, sub_66052, sub_664A6, sub_690A0, sub_6978E, sub_6A4AC, sub_6C6DA, sub_7040C, sub_70CFA, sub_75F0C, sub_76CD0, sub_76EE6, sub_7CADE, sub_7D58E, sub_7E56E, sub_7FF10, sub_877EC, sub_88540, sub_894C0, sub_8D190, sub_8DE10, sub_8FCCC, sub_933BE, sub_93F2C, sub_945C2, sub_99414, sub_9A034, sub_9AB86, sub_
+  0x41A68  mov     r10, r14
+  0x41A6A  extp    r13, #1
+  0x41A6C  mov     r14, [r12+]
+  0x41A6E  mov     r4, #0
+  0x41A70  mov     r5, #0
+  0x41A72  mov     r15, #0
+  0x41A74  mov     r1, r14
+  0x41A76  and     r1, #0FFh
+  0x41A7A  shl     r1, #1
+  0x41A7C  mov     r2, r12
+  0x41A7E  extp    r13, #1
+  0x41A80  cmp     r10, [r2]
+  0x41A82  jmpr    cc_ULE, loc_41AAA
+  0x41A84  add     r2, r1
+  0x41A86  sub     r2, #2
+  0x41A88  extp    r13, #1
+  0x41A8A  cmp     r10, [r2]
+  0x41A8C  jmpr    cc_NC, loc_41AA4
+  0x41A8E  add     r2, #2
+  0x41A90  sub     r2, #2
+  0x41A92  extp    r13, #1
+  0x41A94  cmp     r10, [r2]
+  0x41A96  jmpr    cc_C, loc_41A90
+  0x41A98  mov     r4, r10
+  0x41A9A  extp    r13, #3
+  0x41A9C  sub     r4, [r2]
+  0x41A9E  mov     r5, [r2+#2]
+  0x41AA2  sub     r5, [r2]
+  0x41AA4  sub     r2, r12
+  0x41AA6  shr     r2, #1
+  0x41AA8  mov     r15, r2
+  0x41AAA  shl     r14, #1
+  0x41AAC  shl     r15, #1
+  0x41AAE  add     r12, r14
+  0x41AB0  add     r12, r15
+  0x41AB2  mov     r2, r4
+  0x41AB4  extp    r13, #1
+  0x41AB6  mov     r4, [r12+]
+  0x41AB8  cmp     r2, #0
+  0x41ABA  jmpr    cc_Z, locret_41AE0
+  0x41ABC  extp    r13, #1
+  0x41ABE  mov     r3, [r12]
+  0x41AC0  cmp     r4, r3
+  0x41AC2  jmpr    cc_UGT, loc_41AD2
+  0x41AC4  sub     r3, r4
+  0x41AC6  mulu    r3, r2
+  0x41AC8  divlu   r5
+  0x41ACA  mov     r3, MDL
+  0x41ACE  add     r4, r3
+  0x41AD0  jmpr    cc_UC, locret_41AE0
+  0x41AD2  mov     r1, r4
+  0x41AD4  sub     r1, r3
+  0x41AD6  mulu    r1, r2
+  0x41AD8  divlu   r5
+  0x41ADA  mov     r3, MDL
+  0x41ADE  sub     r4, r3
+  0x41AE0  rets
+
+===== sub_42CF4  (0x42CF4-0x42D2C) =====
+CALLERS: sub_52368, sub_52A16, sub_52D16, sub_55634, sub_55D44, sub_717F0, sub_72C02, sub_76EE6, sub_7CD50, sub_7D58E, sub_7E274, sub_7E2F8, sub_849CE, sub_85202, sub_894C0, sub_89B9C, sub_8AA70, sub_90820, sub_922B8, sub_945C2, sub_99414, sub_9A034, sub_9B534, sub_9D894, sub_A34AA, sub_C5F2C, sub_C7234, sub_C983A, sub_D222A, sub_D9AAC, sub_DCF50
+  0x42CF4  shl     r13, #8
+  0x42CF6  cmp     r13, r14
+  0x42CF8  jmpr    cc_C, loc_42D16
+  0x42CFA  jmpr    cc_NZ, loc_42D00
+  0x42CFC  mov     r4, r14
+  0x42CFE  rets
+  0x42D00  sub     r13, r14
+  0x42D02  mulu    r12, r13
+  0x42D04  mov     r4, MDH
+  0x42D08  jmpr    cc_NZ, loc_42D0C
+  0x42D0A  mov     r4, #1
+  0x42D0C  add     r4, r14
+  0x42D0E  jmpr    cc_NC, locret_42D2A
+  0x42D10  mov     r4, ONES
+  0x42D14  rets
+  0x42D16  mov     r4, r14
+  0x42D18  sub     r14, r13
+  0x42D1A  mulu    r12, r14
+  0x42D1C  mov     r1, MDH
+  0x42D20  jmpr    cc_NZ, loc_42D24
+  0x42D22  mov     r1, #1
+  0x42D24  sub     r4, r1
+  0x42D26  jmpr    cc_NC, locret_42D2A
+  0x42D28  mov     r4, #0
+  0x42D2A  rets
+
+===== sub_419F4  (0x419F4-0x41A68) =====
+CALLERS: sub_3B08A, sub_3FBA8, sub_4496E, sub_481E6, sub_48786, sub_4AB56, sub_4B12E, sub_4E6F6, sub_4E964, sub_4EAA8, sub_4FF90, sub_52A16, sub_52D16, sub_5369C, sub_555E2, sub_55634, sub_55D44, sub_67E94, sub_7040C, sub_70CFA, sub_7157A, sub_724E2, sub_72C02, sub_746F4, sub_76EE6, sub_793DE, sub_7CADE, sub_7CE76, sub_7D58E, sub_7E56E, sub_7FF76, sub_84832, sub_85202, sub_85E10, sub_85F14, sub_86318, sub_
+  0x419F4  mov     r3, r14
+  0x419F6  extp    r13, #1
+  0x419F8  movb    rl1, [r12+]
+  0x419FA  mov     r2, r12
+  0x419FC  movbz   r1, rl1
+  0x419FE  mov     r4, #0
+  0x41A00  mov     r5, #0
+  0x41A02  mov     r15, #0
+  0x41A04  extp    r13, #1
+  0x41A06  cmpb    rl3, [r2]
+  0x41A08  jmpr    cc_ULE, loc_41A30
+  0x41A0A  add     r2, r1
+  0x41A0C  sub     r2, #1
+  0x41A0E  extp    r13, #1
+  0x41A10  cmpb    rl3, [r2]
+  0x41A12  jmpr    cc_NC, loc_41A2C
+  0x41A14  add     r2, #1
+  0x41A16  sub     r2, #1
+  0x41A18  extp    r13, #1
+  0x41A1A  cmpb    rl3, [r2]
+  0x41A1C  jmpr    cc_C, loc_41A16
+  0x41A1E  extp    r13, #4
+  0x41A20  subb    rl3, [r2]
+  0x41A22  movbz   r4, rl3
+  0x41A24  movb    rl3, [r2+#1]
+  0x41A28  subb    rl3, [r2]
+  0x41A2A  movbz   r5, rl3
+  0x41A2C  sub     r2, r12
+  0x41A2E  mov     r15, r2
+  0x41A30  add     r12, r1
+  0x41A32  add     r12, r15
+  0x41A34  mov     r2, r4
+  0x41A36  extp    r13, #1
+  0x41A38  movb    rl4, [r12+]
+  0x41A3A  movbz   r4, rl4
+  0x41A3C  cmp     r2, #0
+  0x41A3E  jmpr    cc_Z, locret_41A66
+  0x41A40  extp    r13, #1
+  0x41A42  movb    rl3, [r12]
+  0x41A44  movbz   r3, rl3
+  0x41A46  cmp     r4, r3
+  0x41A48  jmpr    cc_UGT, loc_41A58
+  0x41A4A  sub     r3, r4
+  0x41A4C  mulu    r3, r2
+  0x41A4E  divu    r5
+  0x41A50  mov     r3, MDL
+  0x41A54  add     r4, r3
+  0x41A56  rets
+  0x41A58  mov     r1, r4
+  0x41A5A  sub     r1, r3
+  0x41A5C  mulu    r1, r2
+  0x41A5E  divu    r5
+  0x41A60  mov     r1, MDL
+  0x41A64  sub     r4, r1
+  0x41A66  rets
+
+===== sub_42C1C  (0x42C1C-0x42C2E) =====
+CALLERS: sub_40272, sub_50BC6, sub_67D98, sub_69F5E, sub_7D58E, sub_8981C, sub_8C636, sub_8D766, sub_8DE10, sub_8FCCC, sub_909A4, sub_90DD6, sub_9D894, sub_9FD92, sub_ACCAA, sub_ACF4A, sub_ADFC, sub_AF080, sub_D34DC, sub_D81FA, sub_D835E
+  0x42C1C  mulu    r12, r13
+  0x42C1E  divlu   r14
+  0x42C20  jmpr    cc_V, loc_42C28
+  0x42C22  mov     r4, MDL
+  0x42C26  rets
+  0x42C28  mov     r4, #0FFFFh
+  0x42C2C  rets
+
+===== sub_43904  (0x43904-0x43934) =====
+CALLERS: sub_39FCA, sub_4D86C, sub_53DEC, sub_64C80, sub_66052, sub_6914E, sub_6989E, sub_69F5E, sub_6AA66, sub_6F876, sub_70716, sub_72C02, sub_75F0C, sub_7CE76, sub_7E36C, sub_855CC, sub_86318, sub_877EC, sub_88540, sub_8981C, sub_8A834, sub_8D190, sub_8DE10, sub_9124E, sub_933BE, sub_99414, sub_9AB86, sub_9D894, sub_9FEF8, sub_AA3C4, sub_AA9DC, sub_AAC4E, sub_AB10, sub_AC5DE, sub_ACF4A, sub_AD3D0, sub_A
+  0x43904  mov     r5, r13
+  0x43906  sub     r5, r14
+  0x43908  jmpr    cc_UGT, loc_43924
+  0x4390A  jmpr    cc_NZ, loc_43912
+  0x4390C  mov     r5, r14
+  0x4390E  mov     r4, #0
+  0x43910  rets
+  0x43912  mov     r4, r15
+  0x43914  neg     r5
+  0x43916  mulu    r12, r5
+  0x43918  mov     r5, r14
+  0x4391A  sub     r4, MDL
+  0x4391E  subc    r5, MDH
+  0x43922  rets
+  0x43924  mulu    r12, r5
+  0x43926  mov     r5, MDH
+  0x4392A  mov     r4, MDL
+  0x4392E  add     r4, r15
+  0x43930  addc    r5, r14
+  0x43932  rets

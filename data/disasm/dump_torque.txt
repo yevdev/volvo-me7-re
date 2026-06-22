@@ -1,0 +1,778 @@
+
+===== sub_4E6F6  (0x4E6F6-0x4E774) =====
+CALLERS: 
+  0x4E6F6  sub     r0, #2
+  0x4E6F8  movb    rl1, 94DDh ; 31D4DDh
+  0x4E6FC  cmpb    rl1, #7
+  0x4E6FE  jmpr    cc_NZ, loc_4E712
+  0x4E700  extp    #7, #1
+  0x4E704  mov     r12, word_1E774   ; CAL->0x1e774
+  0x4E708  extp    #0C1h, #1
+  0x4E70C  mov     word_304F2A, r12
+  0x4E710  jmpr    cc_UC, loc_4E722
+  0x4E712  extp    #7, #1
+  0x4E716  mov     r12, word_1E772   ; CAL->0x1e772
+  0x4E71A  extp    #0C1h, #1
+  0x4E71E  mov     word_304F2A, r12
+  0x4E722  mov     r12, #1D1h
+  0x4E726  mov     r13, #6
+  0x4E72A  movbz   r14, 963Ah ; 31D63Ah
+  0x4E72E  calls   4, sub_419F4   ; CALL sub_419F4
+  0x4E732  movb    92EFh, rl4 ; 31D2EFh
+  0x4E736  extp    #6, #1
+  0x4E73A  movb    rl1, byte_181C8   ; CAL->0x181c8
+  0x4E73E  movb    [r0], rl1
+  0x4E740  mov     r12, [r0]
+  0x4E742  bmov    word_FD1A.6, r12.0
+  0x4E746  mov     r13, [r0]
+  0x4E748  bmov    word_FD1A.7, r13.1
+  0x4E74C  mov     r14, [r0]
+  0x4E74E  bmov    word_FD1A.8, r14.2
+  0x4E752  mov     r15, [r0]
+  0x4E754  bmov    word_FD1A.9, r15.3
+  0x4E758  mov     r2, [r0]
+  0x4E75A  bmov    word_FD1A.10, r2.4
+  0x4E75E  mov     r3, [r0]
+  0x4E760  bmov    word_FD1A.11, r3.5
+  0x4E764  mov     r5, [r0]
+  0x4E766  bmov    word_FD1A.12, r5.6
+  0x4E76A  mov     r10, [r0]
+  0x4E76C  bmov    word_FD1A.13, r10.7
+  0x4E770  add     r0, #2
+  0x4E772  rets
+
+===== sub_4F4BC  (0x4F4BC-0x4F844) =====
+CALLERS: 
+  0x4F4BC  mov     [-r0], r9
+  0x4F4BE  mov     [-r0], r8
+  0x4F4C0  mov     [-r0], r7
+  0x4F4C2  mov     [-r0], r6
+  0x4F4C4  sub     r0, #6
+  0x4F4C6  mov     r12, #582Ch
+  0x4F4CA  mov     r13, loc_F47A
+  0x4F4CE  calls   4, sub_40EB0   ; CALL sub_40EB0
+  0x4F4D2  mov     9AE8h, r4 ; 31DAE8h
+  0x4F4D6  mov     r12, #56CCh
+  0x4F4DA  mov     r13, #582Ch
+  0x4F4DE  mov     r14, 99B4h ; 31D9B4h
+  0x4F4E2  mov     r15, r4
+  0x4F4E4  calls   4, sub_43430   ; CALL sub_43430
+  0x4F4E8  mov     9AECh, r4 ; 31DAECh
+  0x4F4EC  mov     r12, #2AA2h
+  0x4F4F0  mov     r13, #582Ch
+  0x4F4F4  mov     r14, 99B4h ; 31D9B4h
+  0x4F4F8  mov     r15, 9AE8h ; 31DAE8h
+  0x4F4FC  calls   4, sub_411F4   ; CALL sub_411F4
+  0x4F500  movbs   r4, rl4
+  0x4F502  mov     [r0], r4
+  0x4F504  mov     r12, #2B52h
+  0x4F508  mov     r13, #582Ch
+  0x4F50C  mov     r14, 99B4h ; 31D9B4h
+  0x4F510  mov     r15, 9AE8h ; 31DAE8h
+  0x4F514  calls   4, sub_411F4   ; CALL sub_411F4
+  0x4F518  movbs   r7, rl4
+  0x4F51A  movbz   r4, 929Ch ; 31D29Ch
+  0x4F51E  mov     r5, #0FFh
+  0x4F522  sub     r5, r4
+  0x4F524  mov     r4, [r0]
+  0x4F526  cmp     r5, #0
+  0x4F528  jmpr    cc_N, loc_4F536
+  0x4F52A  mul     r4, r5
+  0x4F52C  mov     r11, MDH
+  0x4F530  mov     r10, MDL
+  0x4F534  jmpr    cc_UC, loc_4F550
+  0x4F536  and     r5, #7FFFh
+  0x4F53A  mul     r4, r5
+  0x4F53C  mov     r11, MDH
+  0x4F540  mov     r10, MDL
+  0x4F544  mov     r5, #0
+  0x4F546  bmov    r5.15, r4.0
+  0x4F54A  ashr    r4, #1
+  0x4F54C  add     r10, r5
+  0x4F54E  addc    r11, r4
+  0x4F550  movbz   r4, 929Ch ; 31D29Ch
+  0x4F554  mov     r5, r7
+  0x4F556  cmp     r4, #0
+  0x4F558  jmpr    cc_N, loc_4F566
+  0x4F55A  mul     r5, r4
+  0x4F55C  mov     r3, MDH
+  0x4F560  mov     r2, MDL
+  0x4F564  jmpr    cc_UC, loc_4F580
+  0x4F566  and     r4, #7FFFh
+  0x4F56A  mul     r5, r4
+  0x4F56C  mov     r3, MDH
+  0x4F570  mov     r2, MDL
+  0x4F574  mov     r4, #0
+  0x4F576  bmov    r4.15, r5.0
+  0x4F57A  ashr    r5, #1
+  0x4F57C  add     r2, r4
+  0x4F57E  addc    r3, r5
+  0x4F580  add     r2, r10
+  0x4F582  jmpr    cc_NV, loc_4F58A
+  0x4F584  mov     r2, #7FFFh
+  0x4F588  addc    r2, #0
+  0x4F58A  mov     9AF0h, r2 ; 31DAF0h
+  0x4F58E  mov     r12, #2C02h
+  0x4F592  mov     r13, #582Ch
+  0x4F596  mov     r14, 99B4h ; 31D9B4h
+  0x4F59A  mov     r15, 9AE8h ; 31DAE8h
+  0x4F59E  calls   4, sub_411F4   ; CALL sub_411F4
+  0x4F5A2  movbs   r4, rl4
+  0x4F5A4  mov     [r0], r4
+  0x4F5A6  mov     r12, #2CB2h
+  0x4F5AA  mov     r13, #582Ch
+  0x4F5AE  mov     r14, 99B4h ; 31D9B4h
+  0x4F5B2  mov     r15, 9AE8h ; 31DAE8h
+  0x4F5B6  calls   4, sub_411F4   ; CALL sub_411F4
+  0x4F5BA  movbs   r7, rl4
+  0x4F5BC  movbz   r4, 929Ch ; 31D29Ch
+  0x4F5C0  mov     r5, #0FFh
+  0x4F5C4  sub     r5, r4
+  0x4F5C6  mov     r4, [r0]
+  0x4F5C8  cmp     r5, #0
+  0x4F5CA  jmpr    cc_N, loc_4F5D8
+  0x4F5CC  mul     r4, r5
+  0x4F5CE  mov     r11, MDH
+  0x4F5D2  mov     r10, MDL
+  0x4F5D6  jmpr    cc_UC, loc_4F5F2
+  0x4F5D8  and     r5, #7FFFh
+  0x4F5DC  mul     r4, r5
+  0x4F5DE  mov     r11, MDH
+  0x4F5E2  mov     r10, MDL
+  0x4F5E6  mov     r5, #0
+  0x4F5E8  bmov    r5.15, r4.0
+  0x4F5EC  ashr    r4, #1
+  0x4F5EE  add     r10, r5
+  0x4F5F0  addc    r11, r4
+  0x4F5F2  movbz   r4, 929Ch ; 31D29Ch
+  0x4F5F6  mov     r5, r7
+  0x4F5F8  cmp     r4, #0
+  0x4F5FA  jmpr    cc_N, loc_4F608
+  0x4F5FC  mul     r5, r4
+  0x4F5FE  mov     r3, MDH
+  0x4F602  mov     r2, MDL
+  0x4F606  jmpr    cc_UC, loc_4F622
+  0x4F608  and     r4, #7FFFh
+  0x4F60C  mul     r5, r4
+  0x4F60E  mov     r3, MDH
+  0x4F612  mov     r2, MDL
+  0x4F616  mov     r4, #0
+  0x4F618  bmov    r4.15, r5.0
+  0x4F61C  ashr    r5, #1
+  0x4F61E  add     r2, r4
+  0x4F620  addc    r3, r5
+  0x4F622  add     r2, r10
+  0x4F624  jmpr    cc_NV, loc_4F62C
+  0x4F626  mov     r2, #7FFFh
+  0x4F62A  addc    r2, #0
+  0x4F62C  mov     9AF2h, r2 ; 31DAF2h
+  0x4F630  movbz   r4, 929Bh ; 31D29Bh
+  0x4F634  mov     r5, #0FFh
+  0x4F638  sub     r5, r4
+  0x4F63A  mov     r4, 9AF0h ; 31DAF0h
+  0x4F63E  cmp     r5, #0
+  0x4F640  jmpr    cc_N, loc_4F64E
+  0x4F642  mul     r4, r5
+  0x4F644  mov     r11, MDH
+  0x4F648  mov     r10, MDL
+  0x4F64C  jmpr    cc_UC, loc_4F668
+  0x4F64E  and     r5, #7FFFh
+  0x4F652  mul     r4, r5
+  0x4F654  mov     r11, MDH
+  0x4F658  mov     r10, MDL
+  0x4F65C  mov     r5, #0
+  0x4F65E  bmov    r5.15, r4.0
+  0x4F662  ashr    r4, #1
+  0x4F664  add     r10, r5
+  0x4F666  addc    r11, r4
+  0x4F668  mov     r4, r11
+  0x4F66A  shr     r10, #8
+  0x4F66C  ashr    r11, #8
+  0x4F66E  shl     r4, #8
+  0x4F670  or      r10, r4
+  0x4F672  movbz   r4, 929Bh ; 31D29Bh
+  0x4F676  mov     r5, 9AF2h ; 31DAF2h
+  0x4F67A  cmp     r4, #0
+  0x4F67C  jmpr    cc_N, loc_4F68A
+  0x4F67E  mul     r5, r4
+  0x4F680  mov     r3, MDH
+  0x4F684  mov     r2, MDL
+  0x4F688  jmpr    cc_UC, loc_4F6A4
+  0x4F68A  and     r4, #7FFFh
+  0x4F68E  mul     r5, r4
+  0x4F690  mov     r3, MDH
+  0x4F694  mov     r2, MDL
+  0x4F698  mov     r4, #0
+  0x4F69A  bmov    r4.15, r5.0
+  0x4F69E  ashr    r5, #1
+  0x4F6A0  add     r2, r4
+  0x4F6A2  addc    r3, r5
+  0x4F6A4  movb    rl2, rh2
+  0x4F6A6  movb    rh2, rl3
+  0x4F6A8  ashr    r3, #8
+  0x4F6AA  add     r2, r10
+  0x4F6AC  jmpr    cc_NV, loc_4F6B4
+  0x4F6AE  mov     r2, #7FFFh
+  0x4F6B2  addc    r2, #0
+  0x4F6B4  mov     9AF4h, r2 ; 31DAF4h
+  0x4F6B8  cmp     r2, #0
+  0x4F6BA  jmpr    cc_SGE, loc_4F6CE
+  0x4F6BC  cmp     r2, #8000h
+  0x4F6C0  jmpr    cc_Z, loc_4F6C8
+  0x4F6C2  mov     r8, r2
+  0x4F6C4  neg     r8
+  0x4F6C6  jmpr    cc_UC, loc_4F6D2
+  0x4F6C8  mov     r8, #7FFFh
+  0x4F6CC  jmpr    cc_UC, loc_4F6D2
+  0x4F6CE  mov     r8, 9AF4h ; 31DAF4h
+  0x4F6D2  mov     r4, r8
+  0x4F6D4  ashr    r4, #8
+  0x4F6D6  mov     [r0], r4
+  0x4F6D8  mov     r5, #80h
+  0x4F6DC  and     r5, r8
+  0x4F6DE  jmpr    cc_Z, loc_4F6F6
+  0x4F6E0  mov     r7, r4
+  0x4F6E2  cmpi1   r7, #7Eh ; '~'
+  0x4F6E6  jmpr    cc_SGE, loc_4F6F2
+  0x4F6E8  cmp     r7, #0FF80h
+  0x4F6EC  jmpr    cc_SLE, loc_4F6F2
+  0x4F6EE  mov     r6, r7
+  0x4F6F0  jmpr    cc_UC, loc_4F6F8
+  0x4F6F2  movb    rl6, [r0]
+  0x4F6F4  jmpr    cc_UC, loc_4F6F8
+  0x4F6F6  movb    rl6, [r0]
+  0x4F6F8  mov     r4, 9AF4h ; 31DAF4h
+  0x4F6FC  cmp     r4, #0
+  0x4F6FE  jmpr    cc_SGE, loc_4F70A
+  0x4F700  movb    rl4, rl6
+  0x4F702  negb    rl4
+  0x4F704  movb    9304h, rl4 ; 31D304h
+  0x4F708  jmpr    cc_UC, loc_4F70E
+  0x4F70A  movb    9304h, rl6 ; 31D304h
+  0x4F70E  mov     r12, #2A8Dh
+  0x4F712  movbz   r13, 95B9h ; 31D5B9h
+  0x4F716  calls   4, sub_40B3E   ; CALL sub_40B3E
+  0x4F71A  movb    92FFh, rl4 ; 31D2FFh
+  0x4F71E  movbz   r12, byte_156B6   ; CAL->0x156b6
+  0x4F722  mov     r13, #56B7h
+  0x4F726  mov     r14, #56C1h
+  0x4F72A  movbz   r15, 95B9h ; 31D5B9h
+  0x4F72E  calls   4, sub_41434   ; CALL sub_41434
+  0x4F732  movb    92FEh, rl4 ; 31D2FEh
+  0x4F736  movb    92FDh, ZEROS ; 31D2FDh
+  0x4F73A  mov     r4, 9AECh ; 31DAECh
+  0x4F73E  movbz   r5, 92FFh ; 31D2FFh
+  0x4F742  mov     r2, #0A4h
+  0x4F746  mulu    r5, r2
+  0x4F748  mov     r5, MDL
+  0x4F74C  mulu    r5, r4
+  0x4F74E  mov     r2, MDL
+  0x4F752  add     r2, r2
+  0x4F754  mov     r2, MDH
+  0x4F758  addc    r2, r2
+  0x4F75A  jmpr    cc_NC, loc_4F760
+  0x4F75C  mov     r2, #0FFFFh
+  0x4F760  mov     9AEEh, r2 ; 31DAEEh
+  0x4F764  movbz   r4, 9302h ; 31D302h
+  0x4F768  mov     r5, #0A4h
+  0x4F76C  mulu    r4, r5
+  0x4F76E  mov     r4, MDL
+  0x4F772  mulu    r4, r2
+  0x4F774  mov     r5, MDL
+  0x4F778  add     r5, r5
+  0x4F77A  mov     r5, MDH
+  0x4F77E  addc    r5, r5
+  0x4F780  jmpr    cc_NC, loc_4F786
+  0x4F782  mov     r5, #0FFFFh
+  0x4F786  mov     9AEAh, r5 ; 31DAEAh
+  0x4F78A  movb    rl4, 932Bh ; 31D32Bh
+  0x4F78E  movb    rl5, 9304h ; 31D304h
+  0x4F792  subb    rl5, rl4
+  0x4F794  jmpr    cc_NV, loc_4F79C
+  0x4F796  movb    rl5, #80h
+  0x4F79A  subcb   rl5, #0
+  0x4F79C  movbs   r4, rl5
+  0x4F79E  extp    #0C1h, #1
+  0x4F7A2  movbs   r5, byte_304049
+  0x4F7A6  add     r4, r5
+  0x4F7A8  movbs   r5, 92FDh ; 31D2FDh
+  0x4F7AC  add     r4, r5
+  0x4F7AE  movbs   r5, 92FEh ; 31D2FEh
+  0x4F7B2  add     r4, r5
+  0x4F7B4  mov     [r0+#4], r4
+  0x4F7B8  cmp     r4, #7Fh
+  0x4F7BC  jmpr    cc_SLE, loc_4F7C8
+  0x4F7BE  movb    rl4, #7Fh
+  0x4F7C2  movb    9303h, rl4 ; 31D303h
+  0x4F7C6  jmpr    cc_UC, loc_4F7E4
+  0x4F7C8  mov     r4, [r0+#4]
+  0x4F7CC  cmp     r4, #0FF80h
+  0x4F7D0  jmpr    cc_SGE, loc_4F7DC
+  0x4F7D2  movb    rl4, #80h
+  0x4F7D6  movb    9303h, rl4 ; 31D303h
+  0x4F7DA  jmpr    cc_UC, loc_4F7E4
+  0x4F7DC  movb    rl4, [r0+#4]
+  0x4F7E0  movb    9303h, rl4 ; 31D303h
+  0x4F7E4  movb    rl4, 9306h ; 31D306h
+  0x4F7E8  movb    9300h, rl4 ; 31D300h
+  0x4F7EC  movbz   r4, rl4
+  0x4F7EE  mov     9AF6h, r4 ; 31DAF6h
+  0x4F7F2  movb    rl4, #1
+  0x4F7F4  movb    [r0+#2], rl4
+  0x4F7F8  movb    rl4, [r0+#2]
+  0x4F7FC  movbz   r4, rl4
+  0x4F7FE  movb    rl5, [r4+#9306h]
+  0x4F802  movbz   r9, rl5
+  0x4F804  mov     r4, r9
+  0x4F806  cmpb    rl4, 9300h ; 31D300h
+  0x4F80A  jmpr    cc_NC, loc_4F812
+  0x4F80C  mov     r4, r9
+  0x4F80E  movb    9300h, rl4 ; 31D300h
+  0x4F812  add     9AF6h, r9 ; 31DAF6h
+  0x4F816  movb    rl4, [r0+#2]
+  0x4F81A  addb    rl4, #1
+  0x4F81C  movb    [r0+#2], rl4
+  0x4F820  cmpb    rl4, #5
+  0x4F822  jmpr    cc_C, loc_4F7F8
+  0x4F824  mov     r4, 9AF6h ; 31DAF6h
+  0x4F828  mov     r5, #5
+  0x4F82A  mov     MDL, r4
+  0x4F82E  divu    r5
+  0x4F830  mov     r4, MDL
+  0x4F834  movb    9302h, rl4 ; 31D302h
+  0x4F838  add     r0, #6
+  0x4F83A  mov     r6, [r0+]
+  0x4F83C  mov     r7, [r0+]
+  0x4F83E  mov     r8, [r0+]
+  0x4F840  mov     r9, [r0+]
+  0x4F842  rets
+
+===== sub_4F95E  (0x4F95E-0x4F97A) =====
+CALLERS: 
+  0x4F95E  movbz   r4, byte_12D63   ; CAL->0x12d63
+  0x4F962  shl     r4, #8
+  0x4F964  mov     0A484h, r4 ; 31E484h
+  0x4F968  mov     r5, word_1584E   ; CAL->0x1584e
+  0x4F96C  mov     0A486h, r5 ; 31E486h
+  0x4F970  extp    #0C1h, #1
+  0x4F974  mov     word_304F32, r5
+  0x4F978  rets
+
+===== sub_4F97A  (0x4F97A-0x4FE7E) =====
+CALLERS: 
+  0x4F97A  mov     [-r0], r9
+  0x4F97C  mov     [-r0], r8
+  0x4F97E  mov     [-r0], r7
+  0x4F980  mov     [-r0], r6
+  0x4F982  sub     r0, #4
+  0x4F984  mov     r4, word_F410
+  0x4F988  cmp     r4, word_1584E   ; CAL->0x1584e
+  0x4F98C  jmpr    cc_ULE, loc_4F998
+  0x4F98E  movb    rl4, #80h
+  0x4F992  orb     81F4h, rl4 ; 31C1F4h
+  0x4F996  jmpr    cc_UC, loc_4F9A0
+  0x4F998  movb    rl4, #7Fh
+  0x4F99C  andb    81F4h, rl4 ; 31C1F4h
+  0x4F9A0  movbz   r1, 81F4h ; 31C1F4h
+  0x4F9A4  and     r1, #80h
+  0x4F9A8  jmpr    cc_NZ, loc_4F9D2
+  0x4F9AA  movbz   r4, 81F4h ; 31C1F4h
+  0x4F9AE  and     r4, #2
+  0x4F9B0  jmpr    cc_Z, loc_4F9BE
+  0x4F9B2  mov     r4, word_1584C   ; CAL->0x1584c
+  0x4F9B6  mov     81FAh, r4 ; 31C1FAh
+  0x4F9BA  bset    word_FD22.0
+  0x4F9BC  jmpr    cc_UC, loc_4F9D2
+  0x4F9BE  mov     r4, 81FAh ; 31C1FAh
+  0x4F9C2  cmp     r4, #0
+  0x4F9C4  jmpr    cc_ULE, loc_4F9D0
+  0x4F9C6  sub     r4, #1
+  0x4F9C8  mov     81FAh, r4 ; 31C1FAh
+  0x4F9CC  bset    word_FD22.0
+  0x4F9CE  jmpr    cc_UC, loc_4F9D2
+  0x4F9D0  bclr    word_FD22.0
+  0x4F9D2  cmp     r1, #0
+  0x4F9D4  jmpr    cc_Z, loc_4F9DE
+  0x4F9D6  movb    rl4, #2
+  0x4F9D8  orb     81F4h, rl4 ; 31C1F4h
+  0x4F9DC  jmpr    cc_UC, loc_4F9E6
+  0x4F9DE  movb    rl4, #0FDh
+  0x4F9E2  andb    81F4h, rl4 ; 31C1F4h
+  0x4F9E6  movbz   r4, 81F4h ; 31C1F4h
+  0x4F9EA  and     r4, #80h
+  0x4F9EE  jmpr    cc_Z, loc_4F9FC
+  0x4F9F0  jb      word_FD22.0, loc_4F9FC
+  0x4F9F4  movb    rl4, #8
+  0x4F9F6  orb     81F4h, rl4 ; 31C1F4h
+  0x4F9FA  jmpr    cc_UC, loc_4FA04
+  0x4F9FC  movb    rl4, #0F7h
+  0x4FA00  andb    81F4h, rl4 ; 31C1F4h
+  0x4FA04  movbz   r4, 81F4h ; 31C1F4h
+  0x4FA08  and     r4, #80h
+  0x4FA0C  jmpr    cc_Z, loc_4FA42
+  0x4FA0E  movbz   r4, 81F4h ; 31C1F4h
+  0x4FA12  and     r4, #8
+  0x4FA16  jmpr    cc_Z, loc_4FA2E
+  0x4FA18  movbz   r4, 81F4h ; 31C1F4h
+  0x4FA1C  and     r4, #10h
+  0x4FA20  jmpr    cc_NZ, loc_4FA2E
+  0x4FA22  mov     r4, word_1585C   ; CAL->0x1585c
+  0x4FA26  mov     81F2h, r4 ; 31C1F2h
+  0x4FA2A  bset    word_FD22.4
+  0x4FA2C  jmpr    cc_UC, loc_4FA42
+  0x4FA2E  mov     r4, 81F2h ; 31C1F2h
+  0x4FA32  cmp     r4, #0
+  0x4FA34  jmpr    cc_ULE, loc_4FA40
+  0x4FA36  sub     r4, #1
+  0x4FA38  mov     81F2h, r4 ; 31C1F2h
+  0x4FA3C  bset    word_FD22.4
+  0x4FA3E  jmpr    cc_UC, loc_4FA42
+  0x4FA40  bclr    word_FD22.4
+  0x4FA42  movbz   r4, 81F4h ; 31C1F4h
+  0x4FA46  and     r4, #8
+  0x4FA4A  jmpr    cc_Z, loc_4FA56
+  0x4FA4C  movb    rl4, #10h
+  0x4FA50  orb     81F4h, rl4 ; 31C1F4h
+  0x4FA54  jmpr    cc_UC, loc_4FA5E
+  0x4FA56  movb    rl4, #0EFh
+  0x4FA5A  andb    81F4h, rl4 ; 31C1F4h
+  0x4FA5E  jb      word_FD22.0, loc_4FA76
+  0x4FA62  movbz   r4, 81F4h ; 31C1F4h
+  0x4FA66  and     r4, #80h
+  0x4FA6A  jmpr    cc_NZ, loc_4FA76
+  0x4FA6C  movb    rl4, #0DFh
+  0x4FA70  andb    81F4h, rl4 ; 31C1F4h
+  0x4FA74  jmpr    cc_UC, loc_4FA8A
+  0x4FA76  movbz   r4, 81F4h ; 31C1F4h
+  0x4FA7A  and     r4, #4
+  0x4FA7C  jmpr    cc_Z, loc_4FA8A
+  0x4FA7E  jb      word_FD22.4, loc_4FA8A
+  0x4FA82  movb    rl4, #20h ; ' '
+  0x4FA86  orb     81F4h, rl4 ; 31C1F4h
+  0x4FA8A  jnb     word_FD22.4, loc_4FA96
+  0x4FA8E  movb    rl4, #4
+  0x4FA90  orb     81F4h, rl4 ; 31C1F4h
+  0x4FA94  jmpr    cc_UC, loc_4FA9E
+  0x4FA96  movb    rl4, #0FBh
+  0x4FA9A  andb    81F4h, rl4 ; 31C1F4h
+  0x4FA9E  movbz   r4, 81F4h ; 31C1F4h
+  0x4FAA2  and     r4, #20h
+  0x4FAA6  jmpr    cc_NZ, loc_4FACE
+  0x4FAA8  movb    rl4, 95D8h ; 31D5D8h
+  0x4FAAC  cmpb    rl4, byte_12D71   ; CAL->0x12d71
+  0x4FAB0  jmpr    cc_ULE, loc_4FAC4
+  0x4FAB2  movbz   r4, 81F4h ; 31C1F4h
+  0x4FAB6  and     r4, #1
+  0x4FAB8  jmpr    cc_Z, loc_4FAC4
+  0x4FABA  mov     r4, word_15858   ; CAL->0x15858
+  0x4FABE  mov     0A486h, r4 ; 31E486h
+  0x4FAC2  jmpr    cc_UC, loc_4FAFE
+  0x4FAC4  mov     r4, word_1584E   ; CAL->0x1584e
+  0x4FAC8  mov     0A486h, r4 ; 31E486h
+  0x4FACC  jmpr    cc_UC, loc_4FAFE
+  0x4FACE  mov     r7, 0A486h ; 31E486h
+  0x4FAD2  sub     r7, word_15844   ; CAL->0x15844
+  0x4FAD6  jmpr    cc_NC, loc_4FADA
+  0x4FAD8  mov     r7, #0
+  0x4FADA  cmp     r7, word_15858   ; CAL->0x15858
+  0x4FADE  jmpr    cc_ULE, loc_4FAEA
+  0x4FAE0  mov     r4, word_15858   ; CAL->0x15858
+  0x4FAE4  mov     0A486h, r4 ; 31E486h
+  0x4FAE8  jmpr    cc_UC, loc_4FAFE
+  0x4FAEA  cmp     r7, word_1584E   ; CAL->0x1584e
+  0x4FAEE  jmpr    cc_NC, loc_4FAFA
+  0x4FAF0  mov     r4, word_1584E   ; CAL->0x1584e
+  0x4FAF4  mov     0A486h, r4 ; 31E486h
+  0x4FAF8  jmpr    cc_UC, loc_4FAFE
+  0x4FAFA  mov     0A486h, r7 ; 31E486h
+  0x4FAFE  mov     r4, 0BC1Eh ; 31FC1Eh
+  0x4FB02  jnb     r4.0, loc_4FB1A
+  0x4FB06  jnb     word_FD00.4, loc_4FB14
+  0x4FB0A  extp    #0C1h, #1
+  0x4FB0E  mov     r9, word_304F32
+  0x4FB12  jmpr    cc_UC, loc_4FB2C
+  0x4FB14  mov     r9, word_15850   ; CAL->0x15850
+  0x4FB18  jmpr    cc_UC, loc_4FB2C
+  0x4FB1A  movbz   r4, byte_12D62   ; CAL->0x12d62
+  0x4FB1E  and     r4, #1
+  0x4FB20  jmpr    cc_Z, loc_4FB28
+  0x4FB22  mov     r9, 0A486h ; 31E486h
+  0x4FB26  jmpr    cc_UC, loc_4FB2C
+  0x4FB28  mov     r9, 81FEh ; 31C1FEh
+  0x4FB2C  movbz   r4, 9271h ; 31D271h
+  0x4FB30  and     r4, #20h
+  0x4FB34  jmpr    cc_Z, loc_4FB40
+  0x4FB36  cmp     r9, 9966h ; 31D966h
+  0x4FB3A  jmpr    cc_C, loc_4FB40
+  0x4FB3C  mov     r9, 9966h ; 31D966h
+  0x4FB40  jnb     word_FD7A.4, loc_4FB84
+  0x4FB44  movbz   r4, 81F4h ; 31C1F4h
+  0x4FB48  and     r4, #40h
+  0x4FB4C  jmpr    cc_NZ, loc_4FB54
+  0x4FB4E  mov     8200h, r9 ; 31C200h
+  0x4FB52  jmpr    cc_UC, loc_4FB84
+  0x4FB54  mov     r7, 8200h ; 31C200h
+  0x4FB58  sub     r7, word_15846   ; CAL->0x15846
+  0x4FB5C  jmpr    cc_NC, loc_4FB60
+  0x4FB5E  mov     r7, #0
+  0x4FB60  cmp     r7, word_15858   ; CAL->0x15858
+  0x4FB64  jmpr    cc_ULE, loc_4FB70
+  0x4FB66  mov     r4, word_15858   ; CAL->0x15858
+  0x4FB6A  mov     8200h, r4 ; 31C200h
+  0x4FB6E  jmpr    cc_UC, loc_4FB84
+  0x4FB70  cmp     r7, word_15852   ; CAL->0x15852
+  0x4FB74  jmpr    cc_NC, loc_4FB80
+  0x4FB76  mov     r4, word_15852   ; CAL->0x15852
+  0x4FB7A  mov     8200h, r4 ; 31C200h
+  0x4FB7E  jmpr    cc_UC, loc_4FB84
+  0x4FB80  mov     8200h, r7 ; 31C200h
+  0x4FB84  jnb     word_FD7A.4, loc_4FB92
+  0x4FB88  movb    rl4, #40h ; '@'
+  0x4FB8C  orb     81F4h, rl4 ; 31C1F4h
+  0x4FB90  jmpr    cc_UC, loc_4FB9A
+  0x4FB92  movb    rl4, #0BFh
+  0x4FB96  andb    81F4h, rl4 ; 31C1F4h
+  0x4FB9A  jnb     loc_FD70.9, loc_4FBA6
+  0x4FB9E  mov     r8, word_1585A   ; CAL->0x1585a
+  0x4FBA2  jmpa    cc_UC, loc_4FC1E
+  0x4FBA6  jnb     word_FD5C.1, loc_4FBB4
+  0x4FBAA  cmp     r9, word_15856   ; CAL->0x15856
+  0x4FBAE  jmpr    cc_C, loc_4FBB4
+  0x4FBB0  mov     r9, word_15856   ; CAL->0x15856
+  0x4FBB4  jnb     word_FD7A.4, loc_4FBC2
+  0x4FBB8  cmp     r9, 8200h ; 31C200h
+  0x4FBBC  jmpr    cc_C, loc_4FBC2
+  0x4FBBE  mov     r9, 8200h ; 31C200h
+  0x4FBC2  jnb     word_FD22.3, loc_4FBDC
+  0x4FBC6  jb      word_FD42.14, loc_4FBD0
+  0x4FBCA  jb      word_FD22.1, loc_4FBD0
+  0x4FBCE  jmpr    cc_UC, loc_4FBD4
+  0x4FBD0  bset    USR0
+  0x4FBD2  jmpr    cc_UC, loc_4FBD6
+  0x4FBD4  bclr    USR0
+  0x4FBD6  bmov    word_FD22.3, USR0
+  0x4FBDA  jmpr    cc_UC, loc_4FBEC
+  0x4FBDC  jnb     word_FD42.14, loc_4FBEC
+  0x4FBE0  mov     r4, word_F410
+  0x4FBE4  cmp     r4, word_15854   ; CAL->0x15854
+  0x4FBE8  jmpr    cc_NC, loc_4FBEC
+  0x4FBEA  bset    word_FD22.3
+  0x4FBEC  jnb     word_FD22.3, loc_4FBFA
+  0x4FBF0  cmp     r9, word_15854   ; CAL->0x15854
+  0x4FBF4  jmpr    cc_ULE, loc_4FBFA
+  0x4FBF6  mov     r9, word_15854   ; CAL->0x15854
+  0x4FBFA  jnb     loc_FD70.5, loc_4FC1C
+  0x4FBFE  mov     r12, #2D64h
+  0x4FC02  movbz   r13, 9258h ; 31D258h
+  0x4FC06  calls   4, sub_40B3E   ; CALL sub_40B3E
+  0x4FC0A  movbz   r4, rl4
+  0x4FC0C  mov     r8, r4
+  0x4FC0E  shl     r8, #2
+  0x4FC10  add     r8, r4
+  0x4FC12  shl     r8, #5
+  0x4FC14  cmp     r8, r9
+  0x4FC16  jmpr    cc_ULE, loc_4FC1E
+  0x4FC18  mov     r8, r9
+  0x4FC1A  jmpr    cc_UC, loc_4FC1E
+  0x4FC1C  mov     r8, r9
+  0x4FC1E  mov     0A48Ah, r8 ; 31E48Ah
+  0x4FC22  mov     r4, word_15848   ; CAL->0x15848
+  0x4FC26  add     r4, 0A48Ah ; 31E48Ah
+  0x4FC2A  jmpr    cc_NC, loc_4FC30
+  0x4FC2C  mov     r4, #0FFFFh
+  0x4FC30  cmp     r4, word_F410
+  0x4FC34  jmpr    cc_NC, loc_4FC3A
+  0x4FC36  bset    word_FD22.2
+  0x4FC38  jmpr    cc_UC, loc_4FC3C
+  0x4FC3A  bclr    word_FD22.2
+  0x4FC3C  mov     r4, 0AB0Ah ; 31EB0Ah
+  0x4FC40  cmp     r4, #0
+  0x4FC42  jmpr    cc_SGT, loc_4FC4E
+  0x4FC44  mov     r5, word_F410
+  0x4FC48  mov     0A488h, r5 ; 31E488h
+  0x4FC4C  jmpr    cc_UC, loc_4FC78
+  0x4FC4E  mov     r4, 0AB0Ah ; 31EB0Ah
+  0x4FC52  ashr    r4, #5
+  0x4FC54  mov     r5, 81FCh ; 31C1FCh
+  0x4FC58  mulu    r5, r4
+  0x4FC5A  jmpr    cc_V, loc_4FC62
+  0x4FC5C  mov     r2, MDL
+  0x4FC60  jmpr    cc_UC, loc_4FC66
+  0x4FC62  mov     r2, #0FFFFh
+  0x4FC66  mov     r7, r2
+  0x4FC68  mov     r4, word_F410
+  0x4FC6C  add     r4, r7
+  0x4FC6E  jmpr    cc_NC, loc_4FC74
+  0x4FC70  mov     r4, #0FFFFh
+  0x4FC74  mov     0A488h, r4 ; 31E488h
+  0x4FC78  mov     r4, 0A48Ah ; 31E48Ah
+  0x4FC7C  sub     r4, 0A488h ; 31E488h
+  0x4FC80  jmpr    cc_C, loc_4FC8A
+  0x4FC82  jmpr    cc_NN, loc_4FC90
+  0x4FC84  mov     r4, #7FFFh
+  0x4FC88  jmpr    cc_UC, loc_4FC90
+  0x4FC8A  jmpr    cc_N, loc_4FC90
+  0x4FC8C  mov     r4, #8000h
+  0x4FC90  mov     0A480h, r4 ; 31E480h
+  0x4FC94  cmp     r4, word_1584A   ; CAL->0x1584a
+  0x4FC98  jmpr    cc_SGT, loc_4FCA8
+  0x4FC9A  cmp     r4, #0
+  0x4FC9C  jmpr    cc_SLE, loc_4FCAC
+  0x4FC9E  mov     r5, 0A484h ; 31E484h
+  0x4FCA2  cmp     r5, 9AC8h ; 31DAC8h
+  0x4FCA6  jmpr    cc_C, loc_4FCAC
+  0x4FCA8  bclr    word_FD22.1
+  0x4FCAA  jmpr    cc_UC, loc_4FCB6
+  0x4FCAC  mov     r4, 0A480h ; 31E480h
+  0x4FCB0  cmp     r4, #0
+  0x4FCB2  jmpr    cc_SGT, loc_4FCB6
+  0x4FCB4  bset    word_FD22.1
+  0x4FCB6  jb      word_FD22.1, loc_4FCD6
+  0x4FCBA  mov     r4, 9AC8h ; 31DAC8h
+  0x4FCBE  extp    #0C1h, #1
+  0x4FCC2  mov     word_304F30, r4
+  0x4FCC6  mov     0A47Ch, ZEROS ; 31E47Ch
+  0x4FCCA  mov     81F6h, ZEROS ; 31C1F6h
+  0x4FCCE  mov     81F8h, ZEROS ; 31C1F8h
+  0x4FCD2  jmpa    cc_UC, loc_4FD7C
+  0x4FCD6  mov     r4, 0A484h ; 31E484h
+  0x4FCDA  cmp     r4, #0
+  0x4FCDC  jmpa    cc_ULE, loc_4FD7C
+  0x4FCE0  extp    #0C1h, #1
+  0x4FCE4  movbz   r12, byte_30404A
+  0x4FCE8  shl     r12, #8
+  0x4FCEA  mov     r13, 0A480h ; 31E480h
+  0x4FCEE  mov     r14, 81F8h ; 31C1F8h
+  0x4FCF2  mov     r15, 81F6h ; 31C1F6h
+  0x4FCF6  calls   4, sub_42DF4   ; CALL sub_42DF4
+  0x4FCFA  mov     81F6h, r4 ; 31C1F6h
+  0x4FCFE  mov     81F8h, r5 ; 31C1F8h
+  0x4FD02  mov     r2, #863Ah
+  0x4FD06  mov     r3, 81F8h ; 31C1F8h
+  0x4FD0A  cmp     r2, #0
+  0x4FD0C  jmpr    cc_N, loc_4FD1A
+  0x4FD0E  mul     r3, r2
+  0x4FD10  mov     r5, MDH
+  0x4FD14  mov     r4, MDL
+  0x4FD18  jmpr    cc_UC, loc_4FD34
+  0x4FD1A  and     r2, #7FFFh
+  0x4FD1E  mul     r3, r2
+  0x4FD20  mov     r5, MDH
+  0x4FD24  mov     r4, MDL
+  0x4FD28  mov     r2, #0
+  0x4FD2A  bmov    r2.15, r3.0
+  0x4FD2E  ashr    r3, #1
+  0x4FD30  add     r4, r2
+  0x4FD32  addc    r5, r3
+  0x4FD34  mov     r2, r5
+  0x4FD36  shr     r4, #13
+  0x4FD38  ashr    r5, #0Dh
+  0x4FD3A  shl     r2, #3
+  0x4FD3C  or      r4, r2
+  0x4FD3E  mov     8202h, r4 ; 31C202h
+  0x4FD42  mov     8204h, r5 ; 31C204h
+  0x4FD46  sub     r4, #7FFFh
+  0x4FD4A  subc    r5, #0
+  0x4FD4C  jmpr    cc_SLE, loc_4FD58
+  0x4FD4E  mov     r4, #7FFFh
+  0x4FD52  mov     0A47Ch, r4 ; 31E47Ch
+  0x4FD56  jmpr    cc_UC, loc_4FD7C
+  0x4FD58  mov     r4, 8202h ; 31C202h
+  0x4FD5C  mov     r5, 8204h ; 31C204h
+  0x4FD60  sub     r4, #8000h
+  0x4FD64  subc    r5, #0FFFFh
+  0x4FD68  jmpr    cc_SGE, loc_4FD74
+  0x4FD6A  mov     r4, #8000h
+  0x4FD6E  mov     0A47Ch, r4 ; 31E47Ch
+  0x4FD72  jmpr    cc_UC, loc_4FD7C
+  0x4FD74  mov     r4, 8202h ; 31C202h
+  0x4FD78  mov     0A47Ch, r4 ; 31E47Ch
+  0x4FD7C  extp    #0C1h, #1
+  0x4FD80  movbz   r4, byte_30404B
+  0x4FD84  mov     r5, #29h ; ')'
+  0x4FD88  mulu    r4, r5
+  0x4FD8A  mov     r4, MDL
+  0x4FD8E  mov     r5, 0A480h ; 31E480h
+  0x4FD92  cmp     r4, #0
+  0x4FD94  jmpr    cc_N, loc_4FDA2
+  0x4FD96  mul     r5, r4
+  0x4FD98  mov     r11, MDH
+  0x4FD9C  mov     r10, MDL
+  0x4FDA0  jmpr    cc_UC, loc_4FDBC
+  0x4FDA2  and     r4, #7FFFh
+  0x4FDA6  mul     r5, r4
+  0x4FDA8  mov     r11, MDH
+  0x4FDAC  mov     r10, MDL
+  0x4FDB0  mov     r4, #0
+  0x4FDB2  bmov    r4.15, r5.0
+  0x4FDB6  ashr    r5, #1
+  0x4FDB8  add     r10, r4
+  0x4FDBA  addc    r11, r5
+  0x4FDBC  mov     [r0], r10
+  0x4FDBE  mov     [r0+#2], r11
+  0x4FDC2  cmp     r11, #40h ; '@'
+  0x4FDC6  jmpr    cc_SLT, loc_4FDD2
+  0x4FDC8  mov     r4, #7FFFh
+  0x4FDCC  mov     0A47Eh, r4 ; 31E47Eh
+  0x4FDD0  jmpr    cc_UC, loc_4FDFA
+  0x4FDD2  mov     r4, [r0+#2]
+  0x4FDD6  cmp     r4, #0FFC0h
+  0x4FDDA  jmpr    cc_SGT, loc_4FDE6
+  0x4FDDC  mov     r5, #8000h
+  0x4FDE0  mov     0A47Eh, r5 ; 31E47Eh
+  0x4FDE4  jmpr    cc_UC, loc_4FDFA
+  0x4FDE6  mov     r4, [r0]
+  0x4FDE8  mov     r5, [r0+#2]
+  0x4FDEC  mov     r2, r5
+  0x4FDEE  shr     r4, #7
+  0x4FDF0  ashr    r5, #7
+  0x4FDF2  shl     r2, #9
+  0x4FDF4  or      r4, r2
+  0x4FDF6  mov     0A47Eh, r4 ; 31E47Eh
+  0x4FDFA  jnb     word_FD22.2, loc_4FE04
+  0x4FDFE  mov     0A484h, ZEROS ; 31E484h
+  0x4FE02  jmpr    cc_UC, loc_4FE72
+  0x4FE04  jnb     word_FD22.1, loc_4FE68
+  0x4FE08  mov     r6, 0A47Ch ; 31E47Ch
+  0x4FE0C  add     r6, 0A47Eh ; 31E47Eh
+  0x4FE10  jmpr    cc_NV, loc_4FE18
+  0x4FE12  mov     r6, #7FFFh
+  0x4FE16  addc    r6, #0
+  0x4FE18  extp    #0C1h, #1
+  0x4FE1C  mov     r4, word_304F30
+  0x4FE20  shr     r4, #1
+  0x4FE22  mov     r5, r6
+  0x4FE24  shr     r4, #1
+  0x4FE26  addc    r5, r4
+  0x4FE28  jmpr    cc_V, loc_4FE2E
+  0x4FE2A  add     r5, r4
+  0x4FE2C  jmpr    cc_NV, loc_4FE32
+  0x4FE2E  mov     r5, #7FFFh
+  0x4FE32  mov     r6, r5
+  0x4FE34  movbz   r4, byte_12D63   ; CAL->0x12d63
+  0x4FE38  shl     r4, #7
+  0x4FE3A  cmp     r6, r4
+  0x4FE3C  jmpr    cc_SLE, loc_4FE4A
+  0x4FE3E  movbz   r4, byte_12D63   ; CAL->0x12d63
+  0x4FE42  shl     r4, #7
+  0x4FE44  mov     0A482h, r4 ; 31E482h
+  0x4FE48  jmpr    cc_UC, loc_4FE4E
+  0x4FE4A  mov     0A482h, r6 ; 31E482h
+  0x4FE4E  mov     r4, 0A482h ; 31E482h
+  0x4FE52  cmp     r4, #0
+  0x4FE54  jmpr    cc_SGE, loc_4FE5C
+  0x4FE56  mov     0A484h, ZEROS ; 31E484h
+  0x4FE5A  jmpr    cc_UC, loc_4FE72
+  0x4FE5C  mov     r4, 0A482h ; 31E482h
+  0x4FE60  shl     r4, #1
+  0x4FE62  mov     0A484h, r4 ; 31E484h
+  0x4FE66  jmpr    cc_UC, loc_4FE72
+  0x4FE68  movbz   r4, byte_12D63   ; CAL->0x12d63
+  0x4FE6C  shl     r4, #8
+  0x4FE6E  mov     0A484h, r4 ; 31E484h
+  0x4FE72  add     r0, #4
+  0x4FE74  mov     r6, [r0+]
+  0x4FE76  mov     r7, [r0+]
+  0x4FE78  mov     r8, [r0+]
+  0x4FE7A  mov     r9, [r0+]
+  0x4FE7C  rets

@@ -1,0 +1,1621 @@
+addr,name,comment
+0x00001,ZKPVDKT,axis -
+0x00002,DZWSTTA,axis -
+0x00003,TTRQACNM,axis -
+0x00005,TANSELI,axis -
+0x00006,NWENGFS,axis -
+0x00008,FKAPROG,axis -
+0x0000A,DLATRNLN,axis -
+0x0000B,KLMRHO,axis -
+0x0000C,MDSM,axis -
+0x00010,KRMXN,axis -
+0x00013,LDIATA,axis -
+0x00014,NLDIAPU,axis -
+0x00016,TLRVAM,axis -
+0x0001A,KLWDKPED,axis -
+0x0001C,TLKRLDAB,axis -
+0x0001E,NDLDRAPU,axis -
+0x00020,NWDKSST,axis -
+0x00022,KLETAZW_UM,axis -
+0x0002D,KFDLULS,axis -
+0x00032,FRLMNHO,axis -
+0x00033,FKATEB,axis -
+0x00039,TANDT,axis -
+0x0003C,FNSTABNV,axis -
+0x00040,WNWSTA,axis -
+0x00055,NZHITL,axis -
+0x0005D,DZWAML,axis -
+0x00065,RLNOT,axis -
+0x00075,TFWDKPN,axis -
+0x00076,FUKNSTM,axis -
+0x00078,NSTOEL,axis -
+0x00079,FWFTBRTA,axis -
+0x0007D,KRFKN,axis -
+0x00080,KLFRTMKI,axis -
+0x0008D,TLRBAM,axis -
+0x000AB,TMODT,axis -
+0x000B1,DMDNSM_1_A,axis -
+0x000CD,PVDPUMXN,axis -
+0x000FA,DZWOLA,axis -
+0x000FF,BTRKHTMS,axis -
+0x001EC,KIMSALLFACT,axis -
+0x001FB,FPWDKAPP,axis -
+0x00220,TVKTSPEV,axis -
+0x00300,FWRLDKNM,axis -
+0x00302,DATANAME,axis -
+0x0051F,ZPVDKR,axis -
+0x00666,O2VK,axis -
+0x00CCD,KLKTKVK,axis -
+0x01000,ZKKHCTEV,axis -
+0x01006,KLPND,axis -
+0x01714,DEVTMAGR,axis -
+0x0189E,ZDBTMP,axis -
+0x02492,TIPINOFSET,axis -
+0x02660,MSNTATE,axis -
+0x02900,KAKFAD,axis -
+0x03200,TEBXLI,axis -
+0x0370A,ZKGAFRANM,axis -
+0x04186,NNWTWOTL,axis -
+0x0665C,ZKMSDKTHFM,axis -
+0x06D64,TWSTT,axis -
+0x08000,FLAMPMR,axis -
+0x082C0,FRLFSDP,axis -
+0x0B885,KFLDRX,axis RPM
+0x0B8A5,KFLDRX,axis Lambda
+0x0C502,"Map """"Bosch II 16""""",axis Grad C
+0x0C556,"Map """"Bosch II 16""""",axis Grad C
+0x0C59E,"Map """"Bosch II 16""""",table -
+0x0D729,FVRMDYN,axis -
+0x0E906,KLWDKABST,axis -
+0x0F16D,KFKASNH,axis 1/min
+0x0F500,TDMFWEMI,axis -
+0x0F931,KFRLMN,axis Upm
+0x0FA9A,FZANSSM1_0_A,axis Grad C
+0x0FB7D,FZANSSM2_0_A,axis Grad C
+0x0FC29,ZLASOHML,axis -
+0x0FF6F,KLDPDK,axis -
+0x0FFFF,FUEPMLD,axis -
+0x11D7B,WDKUGDN,axis Upm
+0x12361,TLDOBAN,axis Upm
+0x12607,CW_NOROMCODECHKRESET,constant
+0x1260D,ESKONF,table -
+0x12614,NDECJ,constant 1/min
+0x12615,Min. Ubat-threshold f. release of the BSP752R-power stage diagnosis,constant V
+0x12616,Max. Ubat-threshold f. release of the BSP 752 R-power stage diagnosis,constant V
+0x126A2,"Map """"Bosch II 16""""",axis Upm
+0x126AC,"Map """"Bosch II 16""""",axis -
+0x126B2,"Map """"Bosch II 16""""",table -
+0x126EB,KFATMZW2,axis %
+0x126EC,KLATMZWE,axis %
+0x126F3,Fuel cut in map depending on rpm,axis
+0x12702,KFLDRQ0,axis hPa
+0x12730,KFMRES,axis 1/min
+0x12737,Acceleration enrichment factor KFBAKL,axis RPM
+0x12751,KFFLDEO,axis RPM
+0x12763,Phase correction,axis Upm
+0x12776,KFZWWLNM,axis 1/min
+0x12784,WDKUGDN,axis
+0x127B3,KFLDRQ1,axis U/min
+0x127C4,KFLDIOPU,axis hPa
+0x127D2,FZWWLRLN,axis %
+0x127FF,KFFWLRL_0_A,axis %
+0x12812,KFFKASX,axis Grad C
+0x1281E,KFLDHBN,axis gradC
+0x12827,Delta ignition sparc advance during engine warm up phase,axis Grad C
+0x12839,KFMRESKH,axis tmot
+0x12844,Fuel cut in map depending on rpm,axis Grad C
+0x12850,KFNLLNST,axis Grad C
+0x12858,KFRLMN,axis Grad C
+0x12867,KLMRESLI,axis Grad C
+0x12868,DZWDYN,axis Grad C
+0x1287A,MDSM,axis Grad C
+0x12885,KFFWL,axis Grad C
+0x12892,KFNLLNST,axis s
+0x128A2,KFWPLGTA,axis °C
+0x128A3,"Map """"Bosch III 8""""",axis -
+0x128AB,Map lambda desired engine with catalytic converter heating,axis Grad C
+0x128AF,"Map """"Bosch III 8""""",axis -
+0x128B7,"Map """"Bosch III 8""""",table -
+0x128C1,KFFLLDE,axis KW
+0x128CA,KFFSLDE,axis Grad KW
+0x128D3,KFFLDEO,axis KW
+0x12A15,ETADZW,table %
+0x12A8D,ETALAM,curve %
+0x12AA2,KFZWOP-STD,table gradKW
+0x12B52,KFZWOP-MAX,table gradKW
+0x12C02,KFZWOP-STD - Chassis 3,table gradKW
+0x12CB2,KFZWOP-MAX - Chassis 3,table gradKW
+0x12D62,CWNMAXMD,constant -
+0x12D63,MDIMX,constant %
+0x12D71,VNMX,constant km/h
+0x12D72,CREDSTU,table
+0x12D73,DMIZWMN,table %
+0x12D79,FRLMNHO,axis Grad C
+0x12D7E,FRLMNHO,table -
+0x12D85,ZWAPPL,constant grad KW
+0x12D88,FFLDZ,axis V
+0x12D90,FFLDZ,curve ms
+0x12DAC,KFFFANZ,axis Grad C
+0x12DB4,KFFFANZ,axis 1/min
+0x12DBC,KFFFANZ,table
+0x12DFE,KFFFANZ,axis Grad C
+0x12E06,KFFFANZ,axis 1/min
+0x12E0E,KFFFANZ,table 1 : 1 conversion (dez/hex)
+0x12E4E,DZWETA,curve grad KW
+0x12E74,"Char. map corr. of lambda setpoint value the cont. lambda controller, bank 2",axis %
+0x12F19,DNTIPDYN,constant U/min/s
+0x12F1A,DNZWMN,constant Upm
+0x12F2B,KFZWMN,table grad KW
+0x12FEB,KFZWMNKH,table Grad KW
+0x130AB,KFZWMNST_0_A,table Grad KW
+0x1316B,KFZWMNST_1_A,curve Grad KW
+0x1322B,KFZWMS,curve Grad KW
+0x13230,TTIPINEN,constant s
+0x13391,KFZW,axis %
+0x133B1,KFZW,table gradKW
+0x13471,KFZW2,table gradKW
+0x13531,KFZW - Chassis 3,table gradKW
+0x135F1,KFZW2 - Chassis 3,table gradKW
+0x136B2,CWSAWE,table
+0x136B3,DNSAH_0_A,table 1/min
+0x136B4,DNSAL_0_A,table 1/min
+0x136B5,DNSAH_1_A,table 1/min
+0x136B6,DNSAL_1_A,table 1/min
+0x136BB,DVSA,table km/h
+0x136D3,NHMAX,curve U/min
+0x13754,"Char. map corr. of lambda setpoint value the cont. lambda controller, bank 2",table -
+0x1379E,FMDWAT,curve -
+0x13801,Codeword for R Pedal maps,constant -
+0x13802,MDNORM,table Nm
+0x13804,CAN,constant s
+0x1380F,CWGGLSU,table
+0x1382D,TASHS,table Grad C
+0x13831,TLRHS,table s
+0x13832,CLRSKA,constant -
+0x13835,KFDLSAO,table -
+0x138A5,KFKHFM,axis Upm
+0x138A7,"Char. map corr. of lambda setpoint value the cont. lambda controller, bank 2",axis Upm
+0x138B3,KFKHFM,axis %
+0x138C1,KFKHFM,table -
+0x13986,ZMLRO,table s
+0x13997,KRVST,table
+0x139D9,KFMDWMX,axis km/h
+0x139DF,KFMDWMX,axis Grad C
+0x139E7,KFMDWMX,table %
+0x13A26,DN10BURN,table U/min
+0x13A27,IMLHS,table kg
+0x13A2A,KFHSTT_0_A,axis Grad C
+0x13A30,Faktor Heißstart,axis Grad C
+0x13A33,Faktor Heißstart,table -
+0x13A47,KFWHSTT_0_A,axis Grad C
+0x13A4D,KFWHSTT_0_A,axis
+0x13A53,KFWHSTT_0_A,table -
+0x13A55,"Map """"Bosch II 8""""",table -
+0x13A87,KFWKSTN,axis Grad C
+0x13A8B,KFWKSTN,axis Upm
+0x13A8F,KFWKSTN,table -
+0x13AA1,KFWKSTT,axis Grad C
+0x13AAD,KFWKSTT,axis
+0x13ABB,KFWKSTT,curve -
+0x13B71,Schwelle Temperaturdifferenz Ansaugluft für Heißstart,axis Grad C
+0x13B79,Schwelle Temperaturdifferenz Ansaugluft für Heißstart,table Grad C
+0x13B81,Ansauglufttemperatur - Schwelle heiß,constant Grad C
+0x13B82,Motortemperatur - Schwelle heiß,constant Grad C
+0x13B83,Motortemperatur Heißstartgrenze,constant Grad C
+0x13B86,Schwelle Temperaturdifferenz Wassertemperatur für Heißstart,axis Grad C
+0x13B89,Schwelle Temperaturdifferenz Wassertemperatur für Heißstart,table Grad C
+0x13B8E,Schwelle erkannte Verbrennungen für Wiederholstart,constant
+0x13B8F,KFFWLRL_0_A,curve -
+0x13BBF,KFFWLRL_1_A,table -
+0x13BEF,KFWWLML_0_A,table -
+0x13CA7,"Map """"Bosch II 8""""",axis -
+0x13CAF,"Map """"Bosch II 8""""",axis -
+0x13CB7,"Map """"Bosch II 8""""",table -
+0x13D6F,CWMDZUL,constant
+0x13D70,KFDMT,table %
+0x13DB0,KFMOF,table %
+0x13DF0,KLDMMX,curve %
+0x13DF8,KLLLRZU,curve %
+0x13E00,KLMIMAX,curve %
+0x13E08,KLMZUMN,table %
+0x13E10,NSTART,constant 1/min
+0x13E11,NSTEND,constant 1/min
+0x13E12,KFMOF,axis %
+0x13E1C,KFZW_UM,axis Upm
+0x13E25,KFDMT,axis TMOT Grad C
+0x13E2E,KFPZU,axis %PED
+0x13E36,TANSMN,constant
+0x13E37,TMMKH,constant s
+0x13E38,TMNSMN,constant Grad C
+0x13E39,TMOMIN,constant Grad C
+0x13E3A,TNSOF,constant s
+0x13E8B,CWARMD,constant
+0x13E8E,FRARHG,axis gangi
+0x13E94,FRARHG,curve -
+0x13EA2,TMLAST,constant s
+0x13EA5,TVKUPAR,constant s
+0x13EA6,TVKUPHS,table s
+0x13EAC,TVKUPRS,table s
+0x13EB2,TZSPINI,constant s
+0x13FA4,"Map """"Bosch II 8""""",axis -
+0x13FAA,"Map """"Bosch II 8""""",axis -
+0x13FB0,"Map """"Bosch II 8""""",table -
+0x13FDD,CWBGFKMS,constant
+0x13FDF,KUMSRL,constant (kg/h)/(1/min)(%)
+0x13FE0,KVLAD,constant %
+0x13FE9,DPUPS,constant hPa
+0x13FFC,ZUPVDIMN,constant
+0x140AD,Desired pressure ratio throttle plate in stationary condition - KFVPDKSE,axis
+0x14660,"Map """"Bosch II 8""""",axis -
+0x1466C,"Map """"Bosch II 8""""",axis -
+0x14678,"Map """"Bosch II 8""""",table -
+0x14709,Minimum engine speed for calculation of throttle angle default value from charge,constant 1/min
+0x1470A,TDKPAW,table s
+0x1470C,TFWDKPN,axis 1/min
+0x14712,TFWDKPN,curve s
+0x14772,CWWL,table
+0x14773,DLAMNSWL,table -
+0x147B7,KLWDKPED,axis %PED
+0x147BA,KLWDKPED,curve %DK
+0x147C1,GWPLDU,constant %
+0x147C2,HDLDSUA,constant hPa
+0x147C3,HSLDSUA,constant hPa
+0x147C4,PIDLDSUA,constant -
+0x147C5,SDLDSUA,curve hPa
+0x147D5,SVDLDUVS,curve -
+0x14B5A,"Map """"Bosch II 8""""",axis -
+0x14B5D,"Map """"Bosch II 8""""",axis -
+0x14B62,"Map """"Bosch II 8""""",table -
+0x14EE3,CW_NOROMCHKRESET,constant
+0x14F17,KFDMDARO,axis gangi
+0x14F3C,KFMRESNL,axis %
+0x14F46,"Map """"Bosch II 16""""",axis -
+0x14F50,"Map """"Bosch II 16""""",axis -
+0x14F5E,"Map """"Bosch II 16""""",table -
+0x14F7E,KFWPLGTA,axis 1/min
+0x14F90,KFVPDKSD,axis U/min
+0x14FAA,KFLDRL,axis U/min
+0x14FCC,KFMDS_1,axis 1/min
+0x14FEE,KFZW1,axis RPM
+0x1502C,KFZW1,axis %
+0x15046,KFMRESTA,axis Grad C
+0x1504E,"Map """"Bosch II 16""""",table -
+0x1505C,KFVPDKSD,axis -
+0x1505E,KFVPDKS,table -
+0x150A8,WNWREO,constant Grad KW
+0x150FC,KFDMDPO,axis %
+0x15108,KFDMDPO,axis
+0x15110,KFDMDPO,table %
+0x15174,"Map """"Bosch II 16""""",axis -
+0x15184,"Map """"Bosch II 16""""",axis -
+0x15190,"Map """"Bosch II 16""""",table -
+0x15252,Delta torque: release of load reversal damping at open lockup clutch,axis 1/min
+0x15262,Delta torque: release of load reversal damping at open lockup clutch,axis
+0x15265,Delta torque: release of load reversal damping at open lockup clutch,table %
+0x1529A,KFMIFABG_1_A,axis %
+0x152AA,KFMIFABG_1_A,axis 1/min
+0x152BA,KFMIFABG_1_A,table %
+0x1533E,KFMIFABGWK,axis %
+0x1534E,KFMIFABGWK,axis 1/min
+0x15356,KFMIFABGWK,table %
+0x15398,KFMIFALS,axis
+0x153A0,KFMIFALS,axis %
+0x153B0,KFMIFALS,table %
+0x15434,Initial value for positive torque slope limitation,axis %
+0x15440,Initial value for positive torque slope limitation,axis 1/min
+0x15450,Initial value for positive torque slope limitation,table %
+0x154B8,MRFALLO,table %
+0x154BA,Lower threshold of relative torque for idle detection,constant %
+0x154C6,TDMFWEMI,axis %
+0x154D6,TDMFWEMI,curve s
+0x154E8,TIPINOFSET,axis 1/min
+0x154F0,TIPINOFSET,table %
+0x154FA,KFPEDR,curve -
+0x1567C,KFPED,axis RPM
+0x15696,KFPED,axis %
+0x156B7,DZWOLA,axis Grad C
+0x156C1,DZWOLA,table grad KW
+0x156CC,KFMIOP,table %
+0x1582E,KFMDS_1,axis %
+0x15844,DNMAX,table U/min
+0x15846,DNMAXDZ,table U/min
+0x15848,DNMAXH,constant RPM
+0x1584A,ITNMAXP,constant s
+0x1584C,ITNMXH,constant s
+0x1584E,NMAX,constant U/min
+0x15850,NMAXDV,table U/Min
+0x15852,Integrator gain for engine speed limitation in case of throttle actuator error,constant U/Min
+0x15854,?,constant U/Min
+0x15856,Engine speed limit for condition double ignition,constant U/Min
+0x15858,NMAXOG,constant U/min
+0x1585A,Maximaldrehzahl bei unbekannter Drosselklappenposition,constant U/min
+0x1585C,TNMXH,constant s
+0x1585E,FWPEDRLS,constant -
+0x15864,KFMIRL,axis RPM
+0x15884,KFMIRL,axis miopt_w
+0x158A4,KFMIRL,table rl_w
+0x15AA6,ZKDRLSOL,constant s
+0x15ACC,KFSZT,axis V
+0x15AD4,Closing time map,axis Upm
+0x15AE4,Closing time map,table ms
+0x15B66,KFZWSTTM,axis 1/min
+0x15B6C,KFZWSTTM,axis Grad C
+0x15B72,Ignition angle during start,table Grad KW
+0x15BA0,ZWSPTIP,constant s
+0x15BCF,Fuel cut-in engine speed,axis U/min/s
+0x15BD4,Fuel cut-in engine speed,table Upm
+0x15BDB,Delta Fuel cut-in engine speed with Drive,axis U/min/s
+0x15BE0,Delta Fuel cut-in engine speed with Drive,table Upm
+0x15BE6,Delay time for CPV closing for fuel cut off,constant s
+0x15BE8,Delay fuel cut off at gear 0,constant s
+0x15C8A,"Map """"Bosch II 16""""",axis -
+0x15C96,"Map """"Bosch II 16""""",axis -
+0x15CA2,"Map """"Bosch II 16""""",table -
+0x15D21,KLTATRS,axis 1/min
+0x15D27,KLTATRS,curve Grad C
+0x15D35,TLRVAM_1,axis Grad C
+0x15D3C,TLRVAM_1,table s
+0x15D54,O2VK,axis uA
+0x15D74,O2VK,table % O2
+0x15D94,TABGL,table s
+0x15D96,TABGS,table s
+0x15D98,Dead time for switch-over: CJ120/CJ125 for electrical adjustment,constant s
+0x15D9A,TVABGL,table s
+0x15D9C,LSU,constant V
+0x15D9E,Filter time constant for LSU voltage adjustment upstream of the catalyzer,constant s
+0x15DA8,KLKTKVK,axis K
+0x15DBE,KLKTKVK,curve -
+0x15DE6,LALIO,axis % O2
+0x15E18,LALIO,table -
+0x15E7D,TLRBAM,axis Grad C
+0x15E85,TLRBAM,curve s
+0x15E97,TLRVAM,axis Grad C
+0x15E9F,TLRVAM,curve s
+0x15EB2,LALIUSH,axis V
+0x15EC6,LALIUSH,curve -
+0x15F0A,"Map """"Bosch III 16/8""""",axis -
+0x15F0F,"Map """"Bosch III 16/8""""",axis V
+0x15F17,"Map """"Bosch III 16/8""""",table -
+0x15F44,KFLRST,axis U/min
+0x15F52,KFLRST,axis %
+0x15F53,KFWWLML_0_A,axis Grad C
+0x15F62,Continuous lambda control,table s
+0x15FD6,KFLRST,axis -
+0x15FE3,KFFWLRL_1_A,axis Grad C
+0x15FE4,KFLRST,axis -
+0x15FF4,KFLRST,table -
+0x1608E,KFIGESWK,axis -
+0x16094,KFIGESWK,axis gangi
+0x1609C,KFIGESWK,table -
+0x160CC,NGANGMIN,table U/min
+0x160CE,NVQUOT1O,table (U/min)/(km/h)
+0x160D0,NVQUOT1U,table (U/min)/(km/h)
+0x160D2,NVQUOT2O,table (U/min)/(km/h)
+0x160D4,NVQUOT2U,table (U/min)/(km/h)
+0x160D6,NVQUOT3O,table (U/min)/(km/h)
+0x160D8,NVQUOT3U,table (U/min)/(km/h)
+0x160DA,NVQUOT4O,table (U/min)/(km/h)
+0x160DC,NVQUOT4U,table (U/min)/(km/h)
+0x160DE,NVQUOT5O,table (U/min)/(km/h)
+0x160E0,NVQUOT5U,table (U/min)/(km/h)
+0x160E2,NVQUOT6O,table (U/min)/(km/h)
+0x160E4,NVQUOT6U,table (U/min)/(km/h)
+0x160E6,MLMIN,constant kg/h
+0x160E8,MAF,table
+0x161EA,FMLDMXKO,table -
+0x161EE,KFMLDMX,axis Throttle#
+0x161FE,KFMLDMX,axis RPM
+0x16208,KFMLDMX,table -
+0x16298,MLDHFMKO,table kg/h
+0x1629A,CWFKMSDKA,table
+0x162F6,KFWKSTAB,axis s
+0x162FE,Faktor Wiederholkaltstart zur Reduzierung der Startmenge,axis Grad C
+0x16302,Faktor Wiederholkaltstart zur Reduzierung der Startmenge,table -
+0x16314,Schwelle Abstellzeit für Wiederholstart,axis Grad C
+0x1632C,Schwelle Abstellzeit für Wiederholstart,table s
+0x1647C,KFZWKS,axis Upm
+0x1648C,KFZWKS,axis %
+0x16496,KFZWKS,table grad KW
+0x16538,WKSVN,curve grad KW
+0x1655C,TEMIN,constant ms
+0x1655E,TEMINVA,constant ms
+0x16560,KLMIMIN,curve %
+0x16570,Filter time constant for delayed moment for torque monitoring,constant s
+0x16572,Delay time for permissible torque in torque monitoring,constant s
+0x16574,TNSC,constant s
+0x16576,TEGA,constant s
+0x16580,FPVMXP,table -
+0x165AC,KFRARHG,axis
+0x165B2,KFRARHG,axis Upm
+0x165B8,KFRARHG,table %/Upm
+0x165DE,DNFILO,constant U/min
+0x165E0,NDFILOG,curve U/min
+0x16656,DFKMSMN,constant -
+0x16658,DFKMSMX,constant -
+0x1665A,FKMSDKMN,constant -
+0x1665C,FKMSDKMX,constant -
+0x16660,FWRLDKNM,axis U/min
+0x1666C,FWRLDKNM,curve -
+0x1667C,KFMSNWDK,axis %
+0x1669C,KFMSNWDK,axis RPM
+0x166A8,KFMSNWDK,curve kg/h
+0x16768,Air discharge characteristic (KLAF),table
+0x16B52,LADFIL,table -
+0x16B54,Air mass flow threshold for multipl. Balance of HFM and DK mass flow (MLFKMSDK),constant kg/h
+0x16B56,PSPVDKUG,table -
+0x16B58,(PSSOLNGRD),table hPa/s
+0x16B5A,PSSOLPF,table hPa/s
+0x16B5C,PSSOLPGRD,table hPa/s
+0x16B5E,Release time delay adjustment after start end (TDABGLST),constant s
+0x16B60,TDPSSOL,table s
+0x16B62,WDKUGDN,curve %
+0x16B7C,Fast adaptation time constant mass flow (in comparison with HFM signal (ZKMSDKTHFM),axis -
+0x16B8C,Fast adaptation time constant mass flow (in comparison with HFM signal (ZKMSDKTHFM),table s
+0x16B9C,DRLSOLMF,table %
+0x16BA0,FPWDKAPP,axis % PED
+0x16BE2,FUEPMLD,axis %
+0x16BEA,FUEPMLD,table -
+0x16BF6,KFWDKMSN,axis kg/h
+0x16C16,KFWDKMSN,axis RPM
+0x16C22,KFWDKMSN,table %
+0x16C72,Delay time fuel cutoff at high speeds and high-temperature KAT,axis Grad C
+0x16CE8,Applikationswert für Soll-Ladedruck,constant hPa
+0x16CEA,TWDKSV,curve s
+0x16D08,ZPVDKR,axis -
+0x16D14,ZPVDKR,curve s
+0x16E30,"Map """"Bosch II 8""""",axis -
+0x16E34,"Map """"Bosch II 8""""",axis -
+0x16E39,"Map """"Bosch II 8""""",table -
+0x1719E,NPVDGMN,constant 1/min
+0x171A0,PVDE,constant hPa
+0x171A2,DSVDGRAD,constant hPa/V
+0x171A4,DSVDOFS,constant hPa
+0x171A6,NPVDSEG,constant 1/min
+0x171A8,UDSVDMN,constant V
+0x171AA,UDSVDMX,constant V
+0x171B0,KFLANS,axis Grad C
+0x171BC,KFLANS,axis
+0x171D4,KFLANS,curve -
+0x1722C,FVERZDYN,axis -
+0x17316,"Map """"Bosch II 16""""",axis -
+0x17336,"Map """"Bosch II 16""""",axis -
+0x1734E,"Map """"Bosch II 16""""",table -
+0x17436,KFZNSM,axis Grad C
+0x174CE,Desired pressure ratio throttle plate in dynamic condition - KFVPDKSD,table
+0x175EE,Desired pressure ratio throttle plate in stationary condition - KFVPDKSE,table
+0x1770E,TDPDK,constant s
+0x17712,KLPND,axis V
+0x17718,KLPND,table kPa
+0x17770,LC_SPEED_THRESHOLD,constant km/h
+0x17771,LC_NLS_TEMPERATURE_THRESHOLD,constant -
+0x17772,LC_MIN_RPM_IGNITION_RETARD,constant RPM
+0x17773,LC_TARGET_RPM,constant rpm
+0x17774,LC_NLS_IGNITION_CUT_DURATION,constant ms
+0x17775,LC_PEDAL_THRESHOLD,constant %
+0x17776,LC_NLS_RPM_THRESHOLD,constant rpm
+0x17777,LC_IGNITION_ANGLE,constant -
+0x17778,CEL_SHIFT_RPM,constant
+0x17779,CEL_KNOCK_DETECTION_THRESHOLD,constant *
+0x1777A,RA_TARGET_RPM,constant rpm
+0x1777B,RA_IGNITION_ANGLE,constant -
+0x1777D,RA_MIN_RPM_IGNITION_RETARD,constant RPM
+0x1777E,RA_MIN_PEDAL_POS,constant %
+0x17801,Identifier for requesting a reset pulse control factor from function monitoring,constant
+0x17802,UMRST_TV_UM,constant
+0x1780A,Error tolerance time for engine speed monitoring function for monitoring,constant ms
+0x1780B,Allowed difference between mot and nz_um in function monitoring,constant Upm
+0x1780C,Minimum speed for engine speed monitoring function monitoring,constant Upm
+0x1780D,Entprellzeit für Abschaltung der Nachstartaufweitung,constant ms
+0x1780E,Motordrehzahlschwelle für Unterdrehzahl-Ausstieg für die Fkt.-Überwachung,constant Upm
+0x1780F,Motordrehzahlschwelle für Startende in der Fkt.-Überwachung,constant Upm
+0x17810,Ansauglufttemperaturschwelle zur Nachstartaufweitung in der Fkt.-Überwachung,constant Grad C
+0x17811,Motortemperaturschwelle für die Nachstartaufweitung in der FKT.-Überwachung,constant Grad C
+0x17812,Fehlertoleranzzeit der Zündwinkelüberwachung in der Funktionsüberw.,constant
+0x17813,ZYLANZ_UM,table
+0x17814,IP1A_MX_UM,table V
+0x17815,IP2A_MN_UM,table V
+0x17816,Fehlertoleranzzeit für unteren DK-Anschlag im ungültigen Bereich f. d. Fktüberw.,constant ms
+0x17819,KFRLWDK_UM,axis %
+0x17821,KFRLWDK_UM,axis Upm
+0x17829,KFRLWDK_UM,table %
+0x17869,Engine speed threshold for the rl/rlip comparison in function monitoring,constant Upm
+0x1786A,Fehlertoleranzzeit für den rl-Vergleich mit der Funktion in der Funktionsüberw.,constant ms
+0x1786B,Filter time constant for delayed load information rlipt_um in function monitor.,constant ms
+0x1786C,Delay time for load information rlip_um in functioning monitoring,constant ms
+0x1786D,Fault tolerance time for the rl/rlip comparison in function monitoring,constant ms
+0x1786E,Offset for tolerance straight line f(rl_um) for rlipf_um in function monitoring,constant %
+0x1786F,Increase for tolerance straight line f(rl_um) for rlipf_um in function monitor.,constant
+0x17870,SP12LL_UM,table %
+0x17871,SP12VG_UM,table %
+0x17872,SPSC_MIN_UM,constant %
+0x17873,Fault time for nominal values in func. monitor. which are mutually not plaus.,constant ms
+0x17874,SPSVG_UM,table %
+0x17881,KFMI_UM,axis Upm
+0x1788A,KFMI_UM,axis %
+0x17893,KFMI_UM,axis %
+0x1789B,KFMI_UM,curve %
+0x178DB,KFZW_UM,table grad KW
+0x1791B,KLETAZW_UM,curve %
+0x1791C,KLETAZW_UM,axis Grad C
+0x17924,KLETAZW_UM,table %
+0x17C67,AUSGH_T_UM,table ms
+0x17C68,AUSG_T_UM,table -
+0x17C69,AUSZH_T_UM,table ms
+0x17C6A,AUSZ_T_UM,table -
+0x17CB0,DSMGRAD,constant -
+0x17CB2,DSMOFS,constant -
+0x17CC4,MAP,axis RPM
+0x17CD0,MAP,axis mBar
+0x17CDC,MAP,table -
+0x17E34,LKRN,axis Upm
+0x17E44,KRMXN,axis Upm
+0x18002,CDSLSE,constant -
+0x1800F,CDKAT,constant -
+0x18012,CDKVS,constant -
+0x18015,Hardware identification: EPROM-Stüli-Nummer,axis ?
+0x1801F,Hardware identification: Software-Typ-Teile-Nummer,axis ?
+0x18029,AUTOGET,constant -
+0x1802B,CWMDAPP,constant
+0x1802F,EPRSLNR,curve 1 : 1 conversion (dez/hex)
+0x18038,Hardware identification: Software-Typ-Teile-Nummer,table
+0x18094,NMNWSTMN,table 1/min
+0x18123,FNWSKRE,axis Grad KW
+0x18126,FNWSKRE,curve -
+0x1812B,KFNWTME,axis Grad C
+0x1812F,KFNWTME,axis Grad C
+0x18133,KFNWTME,table -
+0x18144,NWTMKHE,axis Grad C
+0x1814A,NWTMKHE,curve -
+0x18150,TNWWSPE,constant s
+0x18218,FKFPEDV,axis km/h
+0x1821A,FKFPEDV,curve -
+0x182B2,Gain P component of the VMAX control,table %/km/h
+0x182BA,Speed prediction for VMAX control,table s
+0x182CE,KFRLMNSA,curve %
+0x182EC,DATADBID,axis ?
+0x182F6,DATANAME,axis ?
+0x18300,DATAPROJ,axis ?
+0x1830A,ECUVOLVOID,axis ?
+0x18316,KFRLMN,table %
+0x18370,Phase correction,table grad KW
+0x18376,Map,constant -
+0x18378,DZWDYN,curve grad KW
+0x18380,DZWSPM,curve grad KW
+0x18383,KFRLMNSA,table %
+0x1838C,Fuel cut in map depending on rpm,table Upm
+0x183B4,KFTVSA,table s
+0x183DC,"Map """"Bosch II 8""""",axis -
+0x183E4,"Map """"Bosch II 8""""",axis -
+0x183E8,"Map """"Bosch II 8""""",table -
+0x18409,ECUVOLVONO,axis ?
+0x1842F,NLLMG,axis Deg C
+0x1844A,KFHLAMN,axis Grad C
+0x1844E,KFHLAMN,axis Grad C
+0x18452,KFHLAMN,table 1/min
+0x18462,KFNLLNST,curve 1/min
+0x18486,KFZNSM,curve s
+0x18489,PGMDBID,axis ?
+0x18493,PGMNAME,axis ?
+0x1849D,PGMPROJ,axis ?
+0x184AB,KLNLLV,axis km/h
+0x184B0,KLNLLV,curve 1/min
+0x184B5,Engine speed follow-up inhibition band,constant 1/min
+0x184B6,LBZO1,table %
+0x184B7,LBZO2,table %
+0x184B8,LBZU,table %
+0x184B9,NFS2M,curve 1/min
+0x184C8,NLL2M,table 1/min
+0x184CE,NLLMG,table RPM
+0x184FE,NLLMIN,constant 1/min
+0x18502,NSKS,table 1/min
+0x18503,NSL,table 1/min
+0x18504,NSLBZFS,table 1/min
+0x18505,NSLBZLL,table 1/min
+0x18506,Engine speed threshold to switch the target speed due to lbz,constant 1/min
+0x18507,Desired speed when PWG-signals malfunction,constant 1/min
+0x18508,NSNLDG,table 1/min
+0x18509,NSNOT,table 1/min
+0x1850A,NSOLMX,table 1/min
+0x1850C,NSTOEL,axis Grad C
+0x18510,NSTOEL,table 1/min
+0x18515,NZHDTL,axis %
+0x1851B,NZHDTL,curve 1/min
+0x18522,NZHITL,axis %
+0x18528,NZHITL,curve 1/min
+0x1852F,NLLMG,axis Gear
+0x18538,KFMRESKH,axis dns
+0x1854C,CWLLDE,constant
+0x1854D,DMRESLL,constant %
+0x18551,KFMRES,table %
+0x18569,KFMRESFS,table %
+0x18581,KFMRESK,table %
+0x18599,KFMRESKH,table -
+0x185B1,KFMRESNL,table %
+0x185C9,KFMRESPS,curve %
+0x185E1,KFMRESTA,table %
+0x185F2,KLDNLLDE,axis 1/min
+0x185F8,KLDNLLDE,table 1/min/s
+0x185FE,KLMRESLI,curve %
+0x18609,KLMRESTM,axis Grad C
+0x18613,KLMRESTM,table %
+0x1861E,KLMRHO,axis -
+0x18628,KLMRHO,curve %
+0x18632,LIVFZDE,constant km/h
+0x18637,MRESLL,constant %
+0x1863C,VANF,constant km/h
+0x18691,"Map """"Bosch II 8""""",axis -
+0x18697,"Map """"Bosch II 8""""",axis -
+0x1869D,"Map """"Bosch II 8""""",table -
+0x186C3,"Map """"Bosch II 8""""",axis -
+0x186C9,"Map """"Bosch II 8""""",axis -
+0x186CF,"Map """"Bosch II 8""""",table -
+0x1871A,CNFMDVER,table
+0x1871E,CWTRANS,constant
+0x1872B,DATADBID,curve 1 : 1 conversion (dez/hex)
+0x18735,DATANAME,curve 1 : 1 conversion (dez/hex)
+0x1873F,DATAPROJ,curve 1 : 1 conversion (dez/hex)
+0x18749,ECUVOLVOID,curve 1 : 1 conversion (dez/hex)
+0x18848,ECUVOLVONO,table
+0x188C8,PGMDBID,curve 1 : 1 conversion (dez/hex)
+0x188D2,PGMNAME,curve 1 : 1 conversion (dez/hex)
+0x188DC,PGMPROJ,curve 1 : 1 conversion (dez/hex)
+0x188ED,KFFWLW,axis Upm
+0x188F5,CARCONFNUM,table -
+0x188FD,SWNUM,table -
+0x18904,ECUVOLVONUMBER,table -
+0x1890D,ATMABKA,curve -
+0x18913,ATMABKK,table -
+0x1891A,FATMRML,table -
+0x18921,FWMABGML,constant -
+0x18922,FWMABGR,constant -
+0x18923,FWMABGW,constant
+0x18924,FWMKATML,constant -
+0x18925,FWMKATR,constant -
+0x18926,FWMKATW,constant -
+0x18927,FWMZAPWF,constant -
+0x18928,FWMZKPWF,constant -
+0x18929,IMTUMTAT,constant kg
+0x1892A,KATMEXML,table °C
+0x18938,KFATMLA,curve Grad C
+0x1895C,KFATMZW2,curve Grad C
+0x18982,KFTATM,axis 1/min
+0x1898A,KFTATM,axis %
+0x18992,KFTATM,table °C
+0x189D2,KLATMILAE,table -
+0x189D8,KLATMIZWE,table -
+0x189DE,KLATMLAE,table -
+0x189E4,KLATMZWE,table -
+0x189EA,NTUMTAT,constant 1/min
+0x189EB,TABGMEX,constant °C
+0x189EC,TASTBFA,constant °C
+0x189ED,TATMKH,constant °C
+0x189EE,TATMKW,constant °C
+0x189EF,TATMSA,constant °C
+0x189F0,TATMSAE,constant °C
+0x189F1,TATMSTI,constant °C
+0x189F3,TATMTP,constant °C
+0x189F4,TATMWMK,constant °C
+0x189F5,TDMLWMA,constant s
+0x189F6,TDMLWMK,constant s
+0x189F7,TIKATMOE,constant °C
+0x189F8,TKATMOE,constant °C
+0x189F9,TKSTBFA,constant °C
+0x189FA,TUMTAIT,constant °C
+0x189FB,TVWMABG,constant s
+0x189FC,TVWMKAT,constant s
+0x189FD,VTUMTAT,constant km/h
+0x18A02,ATRP,constant 1/K
+0x18A03,ATRSTP,constant 1/K
+0x18A04,CWTATR,constant
+0x18A07,KFRLATR,axis 1/min
+0x18A0C,KFRLATR,axis Grad C
+0x18A11,KFRLATR,table %
+0x18B9D,ZBALM,axis Grad C
+0x18C18,PBFTBA,table s
+0x18C19,TAC,table s
+0x18C1B,TTRQACNM,axis 1/min
+0x18C20,TTRQACNM,table s
+0x18C4E,CWMDBGRG,constant
+0x18C50,DTMIBG,constant Grad C
+0x18C53,KFFRTMKI,axis 1/min
+0x18C59,KFFRTMKI,axis
+0x18C61,KFFRTMKI,curve -
+0x18C92,KLFRTMKI,axis Grad C
+0x18C96,KLFRTMKI,table -
+0x18C9A,TAGAT,constant s
+0x18C9B,TMMIBGR,constant Grad C
+0x18C9C,TMXMIBG,constant Grad C
+0x18C9D,TNGAT,constant s
+0x18C9E,TVBRMX,constant
+0x18C9F,TVGAT,constant -
+0x18CA0,VMIBGR,constant km/h
+0x18CA1,VMKBRMX,constant
+0x18CA9,UBHFMSQ,constant V
+0x18CAE,EVTMODO,axis Grad C
+0x18CBA,EVTMODO,curve Grad C
+0x18CC7,FDVANS,axis Grad C
+0x18CCF,FDVANS,curve -
+0x18CD8,FWFTBRTA,axis Grad C
+0x18CE6,FWFTBRTA,curve -
+0x18CF5,FWLKFTBR,axis Grad C
+0x18CFD,FWLKFTBR,curve -
+0x18D07,KFFWTBR,axis %
+0x18D11,KFFWTBR,axis Upm
+0x18D19,KFFWTBR,curve -
+0x193E3,SENZZYL0,table -
+0x193E4,SENZZYL1,table -
+0x193E5,SENZZYL2,table -
+0x193E6,SENZZYL3,table -
+0x193E7,SENZZYL4,table -
+0x193E8,SENZZYL5,table -
+0x193E9,SENZZYL6,table -
+0x193EA,SENZZYL7,table -
+0x193EB,CWKR2,table
+0x193EC,KE1N,curve -
+0x193FC,KE2N,curve -
+0x1940C,KE3N,curve -
+0x1941C,KE4N,curve -
+0x1942C,KE5N,curve -
+0x1943C,KE6N,curve -
+0x1944C,KE7N,curve -
+0x1945C,KE8N,curve -
+0x1946C,Maximum of reference level for knock detection threshold cylinder group 1,table V
+0x1947C,RKRMX2N,curve V
+0x1948E,DWKRMSN,curve grad KW
+0x1949E,KRAL1N,curve %
+0x194AE,KRAL2N,curve %
+0x194BE,KRAL3N,curve %
+0x194CE,KRALH,table %
+0x194CF,KRAN1,table Upm
+0x194D0,KRAN2,table Upm
+0x194D1,KRAN3,table Upm
+0x194D2,KRAN4,table Upm
+0x194D3,KRANH,table Upm
+0x194D4,KRDWSN,curve grad KW
+0x194E4,KRFKN,curve grad KW
+0x194F4,KRMXN,curve grad KW
+0x1950C,KRVFN,curve 1 : 1 conversion (dez/hex)
+0x1951C,KRVFSN,curve 1 : 1 conversion (dez/hex)
+0x19520,"Map """"Bosch III 8""""",axis c
+0x19524,"Map """"Bosch III 8""""",axis -
+0x19529,"Map """"Bosch III 8""""",table -
+0x1952C,LKRN,curve %
+0x19582,NKRUM,table Upm
+0x1959F,FZWWLRLN,curve -
+0x195E7,Delta ignition sparc advance during engine warm up phase,table Grad KW
+0x196B8,BTRKHTMS,axis Grad C
+0x196C0,BTRKHTMS,table
+0x196C9,CWKHZ,table
+0x196CB,DTKATMN,table Grad C
+0x196CE,FKHABMN,table -
+0x196CF,FTMLAKH,curve -
+0x196DA,"Map """"Bosch II 8""""",axis -
+0x196DF,"Map """"Bosch II 8""""",axis -
+0x196E3,"Map """"Bosch II 8""""",table -
+0x196F7,MLKHMX,table kg/h
+0x196F9,Idle set speed with short test secondary air diagnosis,constant U/min
+0x196FD,Debounce time for termination conditions of the catalytic converter heating function,constant s
+0x196FE,Debounce time for the end Kat heating speed in LL,constant s
+0x19719,"Map """"Bosch II 8""""",axis -
+0x1971F,"Map """"Bosch II 8""""",axis -
+0x19723,"Map """"Bosch II 8""""",table -
+0x1973C,FNSHO,axis -
+0x19740,FNSHO,curve -
+0x19744,FNSSM_0_A,curve -
+0x19750,FNSSM_1_A,curve -
+0x1975C,FZANSSA1_0_A,curve -
+0x19762,FZANSSA2,curve -
+0x19768,FZANSSA1_1_A,curve -
+0x1976E,FZANSSA2_0_A,curve -
+0x19774,FZANSSA2_1_A,curve -
+0x1977A,FZANSSM1_0_A,curve -
+0x19798,KFFWL,curve -
+0x19828,KFFWLW,curve -
+0x19869,FZANSSM1,curve -
+0x19875,FZANSSM2_0_A,curve -
+0x1989D,Height factor in the UK afterstart,axis Upm
+0x198A3,FUKNSTHO,curve -
+0x198AA,KFABAK,axis Grad C
+0x198B3,FUKNSTM,curve -
+0x198BC,KFABAK,table -
+0x198FB,KFAVAK,table -
+0x1993A,Acceleration enrichment factor KFBAKL,table -
+0x1997B,KFBALB,axis Upm
+0x19981,KFBALB,axis %
+0x19987,Acceleration enrichment factor loading area,table hPa/(g*s)
+0x199AB,Deceleration enrichment factor - KFVAKL,table -
+0x19A18,ZBALM,table -
+0x19A21,ZVALM,curve -
+0x19A2A,LAMLGMTM,curve -
+0x19A66,ZBALM,curve -
+0x19A89,NOLRA,constant -
+0x19A98,Time constant for frm filter (short test),constant s
+0x19A99,CWLAMBTS,constant
+0x19A9A,KFFDLBTS,table -
+0x19B5A,KFLBTS,table -
+0x19C1B,KFFDLBTS,axis U/min
+0x19C34,CWEVTEMP,constant
+0x19C35,CWGANG,constant
+0x19C36,CWNDRUM,constant
+0x19C38,CWDMIL,constant -
+0x19C39,KMITIBGR,constant %/ms*s
+0x19C42,CWPKAPP,table
+0x19C43,PVMITIBGR,constant -
+0x19C44,DLAMOB,curve -
+0x19C52,KFDMP,curve %
+0x19C80,"Map ""Bosch 8""",axis -
+0x19C8A,"Map ""Bosch 8""",axis -
+0x19C92,KFDMP,table %
+0x19CD2,KFPZU_SPORT,curve %
+0x19D12,KFPZU,table %
+0x19DA5,CWDEGFEE,constant
+0x19DA6,TDEGFE,constant s
+0x19DA7,ZKPVDKTF,constant -
+0x19DA9,BPHUTEB,axis -
+0x19DAD,BPHUTEB,curve 1 : 1 conversion (dez/hex)
+0x19DB1,CWMSTEFG,table
+0x19DB2,FAKFPUF,table -
+0x19DB4,FBTEFKA,axis -
+0x19DB9,FBTEFKA,curve -
+0x19DBF,FGWRKA,axis -
+0x19DC9,FGWRKA,curve -
+0x19DD3,FGWRMSMX,table -
+0x19DD5,FKAPROG,axis -
+0x19DDA,FKAPROG,curve -
+0x19DE0,FKASTINX,axis g
+0x19DE5,FKASTINX,curve -
+0x19DEB,Characteristic line fuel portion depending on te / TEMIN,axis -
+0x19DEF,Characteristic line fuel portion depending on te / TEMIN,table -
+0x19DF3,FQTIMNH,table -
+0x19DF4,FSRFKAS,table -
+0x19DF5,FUMRBRK,table -
+0x19DF7,FVERMN,axis 1/min
+0x19DFD,FVERMN,curve -
+0x19E03,FVRMDYN,curve -
+0x19E08,KAHCTEMK,curve 1/s
+0x19E0D,KFFKASX,table -
+0x19E23,KFFTEVFX,axis 1/min
+0x19E27,KFFTEVFX,axis -
+0x19E2B,KFFTEVFX,table -
+0x19E3B,KFKASNH,table -
+0x19E4B,KFTEKAH,table -
+0x19E5B,KHCTEMNH,table -
+0x19E5C,KHCTEMX,table -
+0x19E5D,KTEVANMK,curve 1/s
+0x19E62,TEMINREL,constant -
+0x19E63,TVEVLOCTE,table s
+0x19E64,TVTEBVZ,constant s
+0x19E66,CAKFA,table kg
+0x19E6A,DFTEVFLO,axis -
+0x19E74,DFTEVFLO,curve -
+0x19E76,"Map """"Bosch II 8""""",axis -
+0x19E7B,"Map """"Bosch II 8""""",axis -
+0x19E84,"Map """"Bosch II 8""""",table -
+0x19EB3,"Map """"Bosch II 8""""",axis -
+0x19EB9,"Map """"Bosch II 8""""",axis -
+0x19EBC,"Map """"Bosch II 8""""",table -
+0x19FD7,TMDMN,table Grad C
+0x1A073,"Map """"Bosch II 8""""",axis -
+0x1A07A,"Map """"Bosch II 8""""",axis -
+0x1A080,"Map """"Bosch II 8""""",table -
+0x1A1C6,FFMSBFIRST,table
+0x1A1D5,CWDFPM,table
+0x1A1D6,CLAAAA,table
+0x1AA47,KFATMZW2,axis kg/h
+0x1AA73,KFATMLA,axis -
+0x1AA8F,KFATMLA,axis kg/h
+0x1B3F4,KAHCTEMK,axis kg/h
+0x1B49E,KFKASNH,axis %
+0x1B9A2,PUE,constant hPa
+0x1B9A3,VHA,constant km/h
+0x1B9AE,TDPLPVDI,constant s
+0x1B9AF,TDPVDSG,constant s
+0x1B9B0,TPVDR,constant s
+0x1B9B1,TDDU,constant s
+0x1B9B2,TDDVD,constant s
+0x1B9B3,TDIDSSU,constant s
+0x1B9B4,TTOOTHMN,constant
+0x1B9BC,KFLASWLR,table -
+0x1BA4C,LASWLTM,table -
+0x1BA58,FUKNSTHO,curve -
+0x1BA62,NWDKSST,axis Grad C
+0x1BA68,NWDKSST,curve 1/min
+0x1BA6E,CWBGSRM,constant -
+0x1BAC1,CWBBLDR,constant
+0x1BAC2,DLUL,constant hPa
+0x1BAC3,EDLDRP,constant hPa
+0x1BAC4,EDLDRP4,table hPa
+0x1BAC5,FVMXLDRA,table -
+0x1BAC6,FVPDKLDL,table -
+0x1BAC7,FVPDKLDS,table -
+0x1BACA,KFVPDKLD,axis U/min
+0x1BAD2,KFVPDKLD,axis %DK
+0x1BADA,KFVPDKLD,table -
+0x1BB1B,KFDLULS,axis hPa
+0x1BB23,KFDLULS,curve hPa
+0x1BB2C,KLDLUL,axis °C
+0x1BB34,KLDLUL,table -
+0x1BB3C,LKVDKNMN,constant RPM
+0x1BB3E,NDLDRAPU,axis hPa
+0x1BB40,NDLDRAPU,table U/min
+0x1BB44,SDLDRL,constant -
+0x1BB51,ELDOB,constant hPa
+0x1BB52,Correction factor for Delta rl in the overboost mode,table -
+0x1BB5A,GWPLDOB,table %/s
+0x1BB5D,KFLDRXO,axis Upm
+0x1BB65,Delta load (rl) under overboost condition,axis Grad C
+0x1BB69,Delta load (rl) under overboost condition,table %
+0x1BB89,Down regulation interval for LDR overboost,table s
+0x1BB91,TLDOBAN,curve s
+0x1BB99,Sperrzeit für LDR-Overboost,table s
+0x1BBA2,TVLDOBSO,table s
+0x1BBA5,KFFKRXTM,axis nmot
+0x1BBAB,KFFKRXTM,axis tmot
+0x1BBAF,KFFKRXTM,curve -
+0x1BBC7,KFFLDEO,table -
+0x1BC07,KFDLULS,table
+0x1BC47,KFFSLDE,curve -
+0x1BC87,KFLDHBN,curve -
+0x1BCC7,KFTARX,table -
+0x1BCCE,FZANSSA1_0_A,axis Grad C
+0x1BCD4,FZANSSA1_1_A,axis Grad C
+0x1BD07,LDORXN,table %
+0x1BD0F,LDPBN,curve hPa
+0x1BD17,RLKRLDA,curve %
+0x1BD1F,CWLDIMX,constant -
+0x1BD20,FTLDIA,constant -
+0x1BD21,FTLDIAP,constant -
+0x1BD22,KFLDIOPU,table -
+0x1BD62,LDEIAO,constant hPa
+0x1BD63,LDEIAP,constant hPa
+0x1BD64,LDEIAPS,constant hPa
+0x1BD65,LDEIAU,constant hPa
+0x1BD66,LDHIA,constant RPM
+0x1BD67,LDIATA,table -
+0x1BD6F,LDRVL,constant %
+0x1BD70,STLDIA1,constant RPM
+0x1BD71,STLDIA2,constant RPM
+0x1BD72,STLDIA3,constant RPM
+0x1BD73,STLDIA4,constant RPM
+0x1BD74,TLDIAN,constant -
+0x1BD75,TLDIAPN,table s
+0x1BD7D,UMDYLDR,constant hPa
+0x1BD7E,CWPLGU,constant -
+0x1BD7F,KFWPLGTA,table -
+0x1BDBF,ZKPLGRU,constant s
+0x1BDC2,KFLDRAPP,axis Upm
+0x1BDCA,KFLDRAPP,axis %
+0x1BDD2,KFLDRAPP,table %
+0x1BE14,KFTVLDRE,axis Upm
+0x1BE1C,KFTVLDRE,axis hPa
+0x1BE20,KFTVLDRE,curve %
+0x1BE40,LDRAPP,constant %
+0x1BE41,LDRPBU,constant %
+0x1BE42,TVLDMN,constant %
+0x1BE43,CWBGRLMXS,constant -
+0x1BE46,CWPVV,constant -
+0x1BE48,CMXFLPVV,constant -
+0x1BE49,CWDSNDER,constant -
+0x1BE4D,KFFLUSHR,axis 1/min
+0x1BE51,KFFLUSHR,axis %
+0x1BE55,KFFLUSHR,table -
+0x1BE65,TAPCMINI,constant %
+0x1BE66,TAPCMSA,constant %
+0x1BE67,TMOTPVVLFL,constant °C
+0x1BE68,TMXFLPVV,constant s
+0x1BE69,TMXPCMVL,constant s
+0x1BE6A,TVLOADFL,constant s
+0x1BE74,CLRSHK,table
+0x1BECC,VMAX,constant Mph
+0x1BECE,VMAX,constant Mph
+0x1BED0,VMAX,constant Mph
+0x1BEE2,Maximum Allowable Speed Limit During Clutch Engagement,constant mph
+0x1C1A0,TSKRLDAB,axis U/min
+0x1C304,"Map """"Bosch II 16""""",axis V
+0x1C30E,"Map """"Bosch II 16""""",axis V
+0x1C314,"Map """"Bosch II 16""""",table -
+0x1C547,KLATMILAE,axis -
+0x1C55F,FATMRML,axis kg/h
+0x1D0DA,Characteristic line for E-Box temperature sensor,axis V
+0x1D0FE,Characteristic line for E-Box temperature sensor,table Grad C
+0x1D3C4,KFNWKHLLA,axis 1/min
+0x1D3D0,KFNWWLLE,axis 1/min
+0x1D3E8,KFNWKHA,axis 1/min
+0x1D40A,KFNWKRE,axis 1/min
+0x1D42C,KFNWKHLLA,axis %
+0x1D438,KFNWKHLLE,axis %
+0x1D444,KFNWWLA,axis %
+0x1D454,KFNWKHKE,axis %
+0x1D456,KFNWSE,axis %
+0x1D47C,NNWTWOTL,axis Grad C
+0x1D484,NNWTWOTL,curve 1/min
+0x1D494,TVNWSTNMTM,axis Grad C
+0x1D49C,TVNWSTNMTM,curve s
+0x1D4CD,Characteristic line minimum engine speed for diagnosis outlet camshaft control,axis Grad C
+0x1D4D3,Characteristic line minimum engine speed for diagnosis outlet camshaft control,table 1/min
+0x1D560,DWNWABGE,table Grad KW
+0x1D56A,KFNWKHE,table Grad KW
+0x1D66A,KFNWKHKE,table Grad KW
+0x1D76A,KFNWKHLLE,table Grad KW
+0x1D79C,KFNWKHLLKE,curve Grad KW
+0x1D7CE,KFNWKRE,table Grad KW
+0x1D8CE,KFNWLLE,table Grad KW
+0x1D900,KFNWSE,table Grad KW
+0x1DA00,KFNWWLE,table Grad KW
+0x1DB00,KFNWWLLE,curve Grad KW
+0x1DB36,KFWNWSAPE,axis 1/min
+0x1DB4E,KFWNWSAPE,axis %
+0x1DB5E,KFWNWSAPE,table Grad KW
+0x1DC1F,NMKFNWLLE,constant 1/min
+0x1DC21,TNWSBGNSTE,axis Grad C
+0x1DC25,TNWSBGNSTE,curve s
+0x1DC55,WNWDSHKE,axis -
+0x1DC5D,WNWDSHKE,curve Grad KW
+0x1DC72,WNWSTE,axis Grad C
+0x1DC76,WNWSTE,table Grad KW
+0x1DC9A,KFDWNWDMXE,axis 1/min
+0x1DCA2,DWNWABGE,axis 1/min
+0x1DCA6,KFDWNWDMXE,axis Grad C
+0x1DCB0,KFDWNWDMXE,table Grad KW
+0x1DCF0,KFTDDNWNPE,axis 1/min
+0x1DCF8,KFTDDNWNPE,axis Grad C
+0x1DD02,KFTDDNWNPE,table s
+0x1DD70,KFNWKHA,table Grad KW
+0x1DE70,KFNWKHKA,curve Grad KW
+0x1DF70,KFNWKHLLA,table Grad KW
+0x1DFA2,KFNWKHLLKA,table Grad KW
+0x1DFD4,KFNWKRA,curve Grad KW
+0x1E106,KFNWSA,table Grad KW
+0x1E206,KFNWWLA,table Grad KW
+0x1E306,KFNWWLLA,table Grad KW
+0x1E33C,KFWNWSAPA,axis 1/min
+0x1E354,KFWNWSAPA,axis %
+0x1E364,KFWNWSAPA,curve Grad KW
+0x1E43A,WNWDSHKA,axis -
+0x1E442,WNWDSHKA,table Grad KW
+0x1E44A,WNWRAS,constant Grad KW
+0x1E44C,WNWSAAPP,constant Grad KW
+0x1E44E,WNWSAPFA,constant Grad KW
+0x1E450,Application value: des. angle f. retarded pos. at exh. cam. jumps,constant Grad KW
+0x1E452,WNWSGUDA,table Grad KW
+0x1E454,WNWSMNA,table Grad KW
+0x1E45A,WNWSTA,axis Grad C
+0x1E45E,WNWSTA,table Grad KW
+0x1E46C,WNWSWOFA,axis Grad C
+0x1E470,WNWSWOFA,table Grad KW
+0x1E482,"Map """"Bosch II 16""""",axis -
+0x1E48E,"Map """"Bosch II 16""""",axis -
+0x1E498,"Map """"Bosch II 16""""",table -
+0x1E4D8,"Map """"Bosch II 16""""",axis -
+0x1E4E0,"Map """"Bosch II 16""""",axis -
+0x1E4EA,"Map """"Bosch II 16""""",table -
+0x1E776,KFPED,table % Requested Torque
+0x1E8F6,KFPEDL,curve % Requested Torque
+0x1EA76,KFPED,curve % Requested Torque
+0x1EBF6,KFPEDL,table % Requested Torque
+0x1ED78,"Map """"Bosch II 8""""",axis -
+0x1ED7B,"Map """"Bosch II 8""""",axis -
+0x1ED80,"Map """"Bosch II 8""""",table -
+0x1ED9E,NMAXDVG,curve RPM
+0x1EDAE,NMAXGA,curve RPM
+0x1EDBE,TMOTNMX,constant Grad C
+0x1EDC0,Gain I Component of the VMAX control,table %/(km/h)/s
+0x1EDD4,"Map """"Bosch II 16""""",axis -
+0x1EDE0,"Map """"Bosch II 16""""",axis -
+0x1EDEC,"Map """"Bosch II 16""""",table -
+0x1EE35,DZWSTTA,axis Grad C
+0x1EE3B,DZWSTTA,curve Grad KW
+0x1EE44,DMAUFN,axis Grad C
+0x1EE54,DMAUFN,curve %
+0x1EE65,DZWAML,axis Grad C
+0x1EE71,DZWAML,curve grad KW
+0x1EE80,KFZWMNKH,axis Grad C
+0x1EE86,KFZWMNKH,curve s
+0x1EE93,KFZWMNST,axis Grad C
+0x1EE99,KFZWMNST,curve s
+0x1EEA6,FZWKHMX,constant -
+0x1EEAC,KFDZWKG,axis Upm
+0x1EEB4,KFDZWKG,axis -
+0x1EEB9,KFDZWKG,table grad KW
+0x1EEE2,KFTVSAKAT,axis Upm
+0x1EFC2,DNLLRESW,constant 1/min
+0x1EFCC,MRESKH,constant %
+0x1EFD0,TVRESLL,constant s
+0x1EFD6,"Map """"Bosch II 8""""",axis -
+0x1EFDC,"Map """"Bosch II 8""""",axis -
+0x1EFE0,"Map """"Bosch II 8""""",table -
+0x1F002,FNSTABNV,axis -
+0x1F00E,FNSTABNV,table -
+0x1F11A,DMVERLMN,constant %
+0x1F11C,KFMDS_0,table %
+0x1F27C,KFMDS_1,curve %
+0x1F3FE,MDSM,curve %
+0x1F427,DMDNSM_1_A,axis Grad C
+0x1F42F,DMDNSM_1_A,curve %
+0x1F6D4,KFLRSG4,axis U/min
+0x1F720,KFLRSP4,axis %
+0x1F7F3,DLATRNLN,axis 1/min
+0x1F7F8,DLATRNLN,table -
+0x1F7FE,LATRO,constant -
+0x1FC70,"Map """"Bosch II 16""""",axis -
+0x1FC80,"Map """"Bosch II 16""""",axis -
+0x1FC90,"Map """"Bosch II 16""""",table -
+0x1FE22,"Map """"Bosch II 16""""",axis -
+0x1FE32,"Map """"Bosch II 16""""",axis -
+0x1FE42,"Map """"Bosch II 16""""",table -
+0x1FEC6,"Map """"Bosch II 16""""",axis -
+0x1FED6,"Map """"Bosch II 16""""",axis -
+0x1FEE6,"Map """"Bosch II 16""""",table -
+0x1FFC8,"Map """"Bosch 16""""",axis -
+0x1FFD2,"Map """"Bosch 16""""",table -
+0x20FF4,FLAMPFT,axis hPa
+0x21008,FLAMPFT,curve -
+0x2101E,FLAMPMR,axis hPa
+0x21032,FLAMPMR,table -
+0x21048,Caracteristic line: trasfomation of internal resistor of nernst cell into temp.,axis Ohm
+0x21074,Caracteristic line: trasfomation of internal resistor of nernst cell into temp.,table Grad C
+0x21126,"Map """"Bosch II 16""""",axis -
+0x21132,"Map """"Bosch II 16""""",axis -
+0x21142,"Map """"Bosch II 16""""",table -
+0x211D3,TLRTMS,axis Grad C
+0x211D8,TLRTMS,curve s
+0x21284,"Map """"Bosch II 8""""",axis -
+0x2128A,"Map """"Bosch II 8""""",axis -
+0x21290,"Map """"Bosch II 8""""",table -
+0x212FA,ZLASOHML,axis kg/h
+0x2130A,ZLASOHML,curve s
+0x21428,Characteristic map control parameter g4 continuous lambda controller,table -
+0x215E8,Characteristic map control parameter p4 continuous lambda controller,table -
+0x2169A,Max. delta pressure output of low-pass filter for brake-booster,constant hPa
+0x2169C,Max. delta pressure (ambient - intake manifold) for brake booster,constant hPa
+0x2169E,Min. delta pressure (ambient - intake manifold) for brake booster,constant hPa
+0x216C2,KFMDBGRG,axis RPM
+0x216DA,KFMDBGRG,axis Gear
+0x216E8,KFMDBGRG,curve % mi
+0x21792,MDGAT,axis RPM
+0x2179E,MDGAT,curve %
+0x217AC,MKBRMXWP,axis % PED
+0x217BC,MKBRMXWP,table %
+0x217DC,KFMLDMN,axis -
+0x217EC,KFMLDMN,axis -
+0x217F6,KFMLDMN,table -
+0x2188A,MLDHFMKU,table kg/h
+0x21897,DEVTMAGR,axis Grad C
+0x218A7,DEVTMAGR,table Grad C
+0x218BA,KFDFBTMN,axis Grad C
+0x218C6,KFDFBTMN,axis 1/min
+0x218CE,KFDFBTMN,curve -
+0x21900,KFDFBTMP,axis Grad C
+0x2190C,KFDFBTMP,axis 1/min
+0x21914,KFDFBTMP,table -
+0x21944,ZBRT,constant s
+0x21948,ZDBTMN,axis 1/min
+0x21958,ZDBTMN,curve s
+0x2196A,ZDBTMP,axis 1/min
+0x2197A,ZDBTMP,curve s
+0x2198C,ZTMMBR,constant s
+0x21990,KVB,axis -
+0x21998,KVB,axis -
+0x219A0,KVB,constant cm^3/min
+0x21AEE,"Map """"Bosch II 16""""",axis -
+0x21AF2,"Map """"Bosch II 16""""",axis -
+0x21AFA,"Map """"Bosch II 16""""",axis -
+0x21B06,"Map """"Bosch II 16""""",table -
+0x21B12,"Map """"Bosch II 16""""",axis -
+0x21B22,"Map """"Bosch II 16""""",table -
+0x21B2A,KFLANSKH,table -
+0x21BBE,KFLASKH,axis U/min
+0x21BCE,KFLASKH,axis %
+0x21BDE,KFLASKH,table -
+0x21C62,KFLMSKH,axis U/min
+0x21C72,KFLMSKH,axis %
+0x21C82,KFLMSKH,table -
+0x21D06,"Map """"Bosch II 16""""",axis -
+0x21D16,"Map """"Bosch II 16""""",axis -
+0x21D26,"Map """"Bosch II 16""""",table -
+0x21DCC,KFZWWLRL,axis Grad C
+0x21DD4,KFZWWLRL,axis %
+0x21DDA,KFZWWLRL,table Grad KW
+0x21EBA,KFNFSKHM,axis Grad C
+0x21EC2,Desired idle engine speed while cat heating with drive engaged,axis -
+0x21ECA,Desired idle engine speed while cat heating with drive engaged,table U/min
+0x21EEC,KFNLLKHM,axis Grad C
+0x21EF4,KFNLLKHM,axis -
+0x21EFC,KFNLLKHM,curve U/min
+0x21F1E,KFWNWWKA,axis -
+0x21F2E,KFWNWWKA,axis Grad C
+0x21F36,KFWNWWKA,table -
+0x21F78,KFWNWWKE_0_A,axis -
+0x21F88,KFWNWWKE_0_A,axis Grad C
+0x21F90,KFWNWWKE_0_A,table -
+0x22004,FHOKH,table -
+0x2205C,KFKWTMP,axis U/min
+0x22064,KFKWTMP,axis %
+0x2206C,KFKWTMP,curve %
+0x220C4,KFMDKH,axis U/min
+0x220D4,KFMDKH,axis %
+0x220E4,KFMDKH,curve %
+0x22168,KFMDKH,axis U/min
+0x22178,KFMDKH,axis %
+0x22188,KFMDKH,curve %
+0x221E3,KFWWLML_0_A,axis kg
+0x23320,KFWWNS_0_A,axis Grad C
+0x23328,KFWWNS_0_A,axis s
+0x23338,KFWWNS_0_A,curve -
+0x234AE,DTBTS,table Grad C
+0x234B6,FBSTABGM,axis Grad C
+0x234BE,FBSTABGM,curve -
+0x234C7,FBSTMOT,axis Grad C
+0x234CB,FBSTMOT,curve -
+0x234D2,KFDLBTS,axis %
+0x234DA,KFDLBTS,axis RPM
+0x234DE,KFDLBTS,table -
+0x23500,KFFDLBTS,axis %
+0x23518,TABGBTS,constant -
+0x2351A,TDLAMBTS,table s
+0x2351C,TIKATBTS,table Grad C
+0x2351E,Catalyst temperature threshold for component protection,constant Grad C
+0x23524,Time constant delta lambda component protection,constant s
+0x23526,Time constant lambda component protection,constant s
+0x2355C,FKKVS,axis RPM
+0x2357C,FKKVS,axis ms
+0x2359C,FKKVS,table FKKVS
+0x2379E,FRLFSDP,axis hPa
+0x237B4,FRLFSDP,curve FRLFSDP
+0x237E6,KLFUDENS,axis Grad C
+0x237EC,KLFUDENS,table
+0x237F2,KRKTE,constant ms/%
+0x237F4,PSAPES,constant hPa
+0x237FC,TVKTSPEV,axis Grad C
+0x23804,TVKTSPEV,curve ms
+0x2380A,TVUB,axis -
+0x2380D,TVUB,axis V
+0x23812,TVUB,curve ms
+0x2381C,ZTSPEV,constant s
+0x2381E,ZUPND2,constant s
+0x23822,LAMFA,axis RPM
+0x23832,LAMFA,axis % Pedal
+0x2383E,LAMFA,table % Pedal
+0x238CC,"Map """"Bosch II 8""""",axis -
+0x238D2,"Map """"Bosch II 8""""",axis -
+0x238D7,"Map """"Bosch II 8""""",table -
+0x238F8,"Map """"Bosch II 8""""",axis -
+0x238FE,"Map """"Bosch II 8""""",axis -
+0x23902,"Map """"Bosch II 8""""",table -
+0x23936,DFEMPOS,constant -
+0x23938,DFEMPUS,constant -
+0x2393A,DFRAOS,constant -
+0x2393C,DFRAUS,constant -
+0x2393E,FEMPOS,constant -
+0x23940,FEMPUS,constant -
+0x23942,FRAOS,constant -
+0x23944,FRAUS,constant -
+0x23946,TLADEGFE,constant s
+0x2394A,ZKGAFRANM,axis -
+0x2395A,ZKGAFRANM,curve s
+0x2396D,DFTEVFLO,axis -
+0x23977,DFTEVFLO,curve -
+0x23983,DMSTES,axis kg/h
+0x2398D,DMSTES,curve kg/h
+0x23997,DSTEMIN,table -
+0x2399B,FBADMKA,axis -
+0x239A5,FBADMKA,curve -
+0x239B1,FBTEFKAX,axis -
+0x239BB,FBTEFKAX,curve -
+0x239C5,FKAKORBMN,table -
+0x239C7,FKAKORBMX,table -
+0x239C9,FRKTEMN,table -
+0x239CB,FRKTEMX,table -
+0x239CD,FTEADNPMN,table -
+0x239CF,FTEADNPMX,table -
+0x239D1,FVERZDYN,curve min
+0x239DD,KADMKAFK,axis -
+0x239E7,KADMKAFK,curve kg/(h*s)
+0x239F3,KAKFAD,axis m^3/h
+0x239FB,KAKFAD,curve -
+0x23A13,TFTEINI,table s
+0x23A17,TQTEXMAB,table s
+0x23A19,Delay Time for calculationg stop of HC-concentration at PCV,constant s
+0x23A1F,Filter time constant for HC- concentration st PCV,axis m^3/h
+0x23A27,Filter time constant for HC- concentration st PCV,table s
+0x23AEB,TANSELI,axis V
+0x23AFF,TANSELI,curve Grad C
+0x23B78,"Map """"Bosch II 8""""",axis -
+0x23B7D,"Map """"Bosch II 8""""",axis -
+0x23B81,"Map """"Bosch II 8""""",table -
+0x23B98,"Map """"Bosch II 8""""",axis -
+0x23B9D,"Map """"Bosch II 8""""",axis -
+0x23BA1,"Map """"Bosch II 8""""",table -
+0x23BB8,"Map """"Bosch II 8""""",axis -
+0x23BBD,"Map """"Bosch II 8""""",axis -
+0x23BC1,"Map """"Bosch II 8""""",table -
+0x23D30,KFDMDARO,table MKAR_W
+0x23D90,KFDMDARU,table %
+0x23DF0,KIFZGAG,curve -
+0x23DFC,KIFZGAWG,curve -
+0x23E08,KIFZGHG,table -
+0x23E14,NDIFFOG,table U/min
+0x23E22,KFDMDARO,axis mkar_w
+0x23E4E,"Map """"Bosch II 16""""",axis -
+0x23E58,"Map """"Bosch II 16""""",axis Grad C
+0x23E5E,"Map """"Bosch II 16""""",table -
+0x23EB2,"Map """"Bosch II 16""""",axis -
+0x23EBC,"Map """"Bosch II 16""""",axis -
+0x23EC6,"Map """"Bosch II 16""""",table -
+0x2402E,KFPVTMSV,axis kg/h
+0x2403A,KFPVTMSV,axis 1/(g*s)
+0x2404A,KFPVTMSV,table -
+0x243C0,DFKPVMN,constant -
+0x243C2,DFKPVMX,constant -
+0x243C4,FKPVDKMN,constant -
+0x243C6,FKPVDKMX,constant -
+0x243CA,KIMSALLFACT,axis -
+0x243D4,KIMSALLFACT,curve -
+0x243DE,KIMSALL,constant s/(kg/h)
+0x243E0,MSALLMN,constant kg/h
+0x243E2,MSALLMX,constant kg/h
+0x243E5,RLNOT,axis 1/min
+0x243EB,RLNOT,table %
+0x243FA,ZKPVDKT,axis -
+0x2440A,ZKPVDKT,table s
+0x2441E,KFWDKSMX,axis U/min
+0x24432,KFWDKSMX,axis -
+0x24438,KFWDKSMX,table %
+0x24476,KLDPDK,axis kg/h
+0x24496,KLDPDK,curve hPa
+0x24F95,"Map """"Bosch 16""""",table -
+0x25054,CDKAAA,table
+0x2721E,PLFMS,axis kg/h
+0x2722E,PLFMS,curve hPa
+0x2723E,ZDSU,table s
+0x27248,NPUPVDMX,constant 1/min
+0x2724C,PUPLMX,constant hPa
+0x2724E,PUPLMN,constant hPa
+0x2725E,TPLPU,constant s
+0x27260,WDKPUPVDMX,constant %DK
+0x27262,DPLFMX,constant hPa
+0x27264,DPUPVDTX,constant
+0x27266,PVDMX,constant hPa
+0x2726A,PVDPUMXN,axis 1/min
+0x27272,PVDPUMXN,curve -
+0x27286,DSUGRAD,constant hPa/V
+0x27288,DSUOFS,constant hPa
+0x2728A,UDSUMN,constant V
+0x2728C,UDSUMX,constant V
+0x2728E,OFIPVDMN,constant hPa
+0x27290,OFIPVDMX,constant hPa
+0x27292,ZIPVD,constant s
+0x27294,ATISLATM,table
+0x272AC,ATIWKSTM,curve 1 : 1 Umrechnug (dez/hex)
+0x272C6,KFWDKTHO,axis Grad C
+0x272D2,KFWDKTHO,axis -
+0x272DA,KFWDKTHO,table %DK
+0x2733C,KLWDKABST,axis s
+0x27344,KLWDKABST,table -
+0x2734C,TFWDKSOM,table s
+0x2734F,TWDKSNST,axis Grad C
+0x27355,TWDKSNST,curve s
+0x27363,WDKSNLN,axis 1/min
+0x2736B,WDKSNLN,curve %DK
+0x27374,DNWVSMN,table Grad KW
+0x27376,FPVMXST,table -
+0x27378,FUPSRLMN,table %/hPa
+0x2737A,FUPSRLMX,table %/hPa
+0x2737C,FWNWVSAP,table -
+0x27386,KFPRG,axis Grad KW
+0x2739A,KFPRG,axis RPM
+0x273AE,KFPRG,table %/hPa
+0x2747A,KFPRGSU,axis Grad KW
+0x2748E,KFPRGSU,axis RPM
+0x274A2,KFPRGSU,table %/hPa
+0x2756E,KFURL,axis Grad KW
+0x27582,KFURL,axis RPM
+0x27596,KFURL,curve %/hPa
+0x27662,KFURLSU,axis Grad KW
+0x27676,KFURLSU,axis RPM
+0x2768A,KFURLSU,curve %/hPa
+0x27752,KISRM,constant
+0x2775E,HFM,axis -
+0x27776,HFM,axis -
+0x2778E,HFM,table -
+0x278B2,HFM,axis -
+0x278CA,HFM,axis -
+0x278E2,HFM,table -
+0x27A06,"Map """"Bosch II 16""""",axis -
+0x27A26,"Map """"Bosch II 16""""",axis -
+0x27A3E,"Map """"Bosch II 16""""",table -
+0x27E00,KFDPVL,axis kg/h
+0x27E0C,KFDPVL,axis km/h
+0x27E12,KFDPVL,table hPa
+0x27E38,KLAFTE,axis -
+0x27E54,KLAFTE,curve -
+0x27E72,MSNTATE,axis %
+0x27E86,MSNTATE,curve kg/h
+0x27EB6,KFLDRX,axis RPM
+0x27ED6,KFLDRX,axis Lambda
+0x27EE2,KFLDRX,table KFLDRX - Maximum cylinder charg
+0x27FA2,TLKRLDAB,curve s
+0x27FB2,TLKRLDAU,table s
+0x27FC2,TSKRLDAB,table s
+0x27FD2,TSKRLDAU,curve s
+0x27FE2,PODBVKVND,constant kPa
+0x27FE4,FPTAND,constant %/kPa
+0x27FE6,KINDR,constant -
+0x27FE8,KPNDR,constant -
+0x27FEA,PRGLNDMAX,constant kPa
+0x27FEC,PRGLNDMIN,constant kPa
+0x27FEE,CWPNDSOLAP,constant -
+0x2BBC0,FHBASAPP,constant -
+0x2BBC6,KFDPLGU,axis 1/min
+0x2BBD6,KFDPLGU,axis hPa
+0x2BBE6,KFDPLGU,table hPa
+0x2BC6A,KFPLGUB,axis 1/min
+0x2BC7A,KFPLGUB,axis hPa
+0x2BC8A,KFPLGUB,table hPa
+0x2BD0B,FRLMXRED,axis 1/min
+0x2BD13,FRLMXRED,curve -
+0x2BD1D,KFFTSRRX,axis °C
+0x2BD23,KFFTSRRX,axis 1/min
+0x2BD29,KFFTSRRX,table -
+0x2BD52,KFDMRTE,axis kPa
+0x2BD5A,KFDMRTE,axis %
+0x2BD60,KFDMRTE,table %
+0x2BD7C,KFPNDSOL,axis 1/min
+0x2BD8A,KFPNDSOL,axis %
+0x2BD98,KFPNDSOL,table kPa
+0x2BDFB,KLAPNDTMST,axis °C
+0x2BE00,KLAPNDTMST,table kPa
+0x2BE0B,KLDHST,axis °C
+0x2BE10,KLDHST,table s
+0x2BE1B,KLVAPORP,axis °C
+0x2BE20,KLVAPORP,table kPa
+0x2BE28,PGRADN,constant kPa
+0x2BE2A,PGRADNLL,constant kPa
+0x2BE2C,PGRADP,constant kPa
+0x2BE2E,PNDMAX,constant kPa
+0x2BE30,PNDMIN,constant kPa
+0x2BE37,TVTAVSTSTA,constant s
+0x2BE38,FURKVK,constant -
+0x2BE3C,FVSTPNM,axis 1/min
+0x2BE48,FVSTPNM,table -
+0x2BE54,KADTAPCM,constant -
+0x2BE58,KLVAPSOL,axis kPa
+0x2BE66,KLVAPSOL,table %
+0x2BE76,KLVARK,axis %
+0x2BE84,KLVARK,table %
+0x2BE94,KLVSPVV,axis kPa
+0x2BEA0,KLVSPVV,table l/h
+0x2BEAE,KLVZTP,axis kPa
+0x2BEBA,KLVZTP,table s
+0x2BEC6,TAPCMADMN,constant %
+0x2BEC8,TAPCMADMX,constant %
+0x2BECE,TAPCMSOL,axis l/h
+0x2BEDA,TAPCMSOL,axis kPa
+0x2BEE6,TAPCMSOL,table %
+0x2BF2E,VSTDTKPSOL,constant -
+0x2BF30,ZVSTDTPSOL,constant s
+0x2BF32,ZVSTPCMDT,constant s
+0x2BF35,KLAPCMUB,axis V
+0x2BF3C,KLAPCMUB,table -
+0x2BF48,PFLPVVS,constant kPa
+0x2BF4C,PSMAXNDWE,constant kPa
+0x2BF4E,TAPCMMN,constant %
+0x2BF50,TAPCMMX,constant %
+0x2BF52,TMXPCMTEBF,constant s
+0x2C000,KFLDIMX,table %
+0x2C102,KFLDIWL,axis Grad C
+0x2C10A,KFLDIWL,axis kg
+0x2C112,KFLDIWL,table %
+0x2C152,KFLDRL,table %
+0x2C292,KFLDRQ0,table %/100hPa
+0x2C312,KFLDRQ1,table %/100hPa
+0x2C392,KFLDRQ2,table %/100hPa
+0x2C414,KFRBGOF,axis U/min/s
+0x2C41C,KFRBGOF,axis Upm
+0x2C422,KFRBGOF,table %
+0x2C452,LDAMN,constant %
+0x2C454,LDDIAN,constant %
+0x2C456,LDDIAP,constant %
+0x2C458,LDDIMXN,curve %
+0x2C468,LDDIMNN,curve %
+0x2C478,LDDIMXN,curve %
+0x2C488,LDMXNN,constant %
+0x2C48A,LDMXNP,constant %
+0x2C48C,LDRQ0S,constant %/100hPa
+0x2C48E,LDRQ1ST,curve %/100hPa
+0x2C4AF,NLDIAPU,axis hPa
+0x2C4B1,NLDIAPU,table Upm
+0x2C4B6,KFLDIMX,axis hPa
+0x2C4C8,KFLDRL,axis % LDTVR_W
+0x2C4DC,TVLDMX,constant %
+0x3F4DA,KFLDRX,axis RPM
+0x3F4FA,KFLDRX,axis Lambda
+0x3F5CA,KFLDRX,axis RPM
+0x3F5EA,KFLDRX,axis Lambda
+0x3FF38,NOP,table -
+0x47922,VVT,table -
+0x47BF0,VVT,table -
+0x509CE,ZWOUT,table -
+0x50A16,ZWOUT,table -
+0x50AB4,ZWOUT,table -
+0x50C44,Antilag Main Call Insert,table -
+0x518BE,KFZW,table -
+0x518CE,KFZW,table -
+0x518D0,KFZW2,axis -
+0x518D4,KFZW2,table -
+0x518E4,KFZW2,table -
+0x51956,KFZW3,table -
+0x51966,KFZW3,table -
+0x51968,KFZW4,axis -
+0x5196C,KFZW4,table -
+0x5197C,KFZW4,table -
+0x7ADFC,Knock Detection Hack,table -
+0x85CA6,LeanBurnHackCall,table -
+0x85CAA,LeanBurnHackNOP,table -
+0x85D58,LeanBurnHackNOP2,table -
+0x85D6C,LeanBurnJumpUC,table -
+0x97968,ImmoLockNOP,table -
+0x9796C,ImmoLock Function Call,table -
+0x9D40A,fpabnav_w division,table -
+0xA0A20,Misfire Detection Hack,table -
+0xCFCC6,fhom_w division,constant
+0xCFE0E,fho_w division,constant
+0xCFED6,fho_w division,constant
+0xCFF6C,GGPVD_1,table -
+0xCFF92,fpvdkds_w division,constant
+0xD0062,GGPVD_2,table -
+0xD0088,vpvdkpu_w division,constant
+0xD0144,GGPVD_3,table -
+0xD016A,fpvdkds_w division,constant
+0xD01F2,GGPVD_4,table -
+0xD0218,fpvdkds_w division,constant
+0xD309A,Speed Density Code,table -
+0xD327E,Speed Density Main Code,table -
+0xD9C10,KFLDRX,axis -
+0xD9C14,KFLDRX,table -
+0xD9C1A,KFLDRX,table -
+0xDA050,LDRPID,axis -
+0xDA054,LDRPID,table -
+0xDA8FA,KDLRL,table -
+0xDA900,KFLDRL,table -
+0xE4200,PIN,table -
+0xE5004,KFDLDIMXG,axis RPM
+0xE5014,KFDLDIMXG,axis Gear
+0xE5020,KFDLDIMXG,table %
+0xE8000,KFZW,table gradKW
+0xE80C0,KFZW2,table gradKW
+0xE8180,KFZW3,table gradKW
+0xE8240,KFZW4,table gradKW
+0xE8300,KFZW,table gradKW
+0xE83C0,KFZW2,table gradKW
+0xE8480,KFZW3,table gradKW
+0xE8540,KFZW4,table gradKW
+0xE8600,KFLDRL,table %
+0xE8740,KFLDRL,table %
+0xE8884,KFLDRX,axis RPM
+0xE88A4,KFLDRX,axis Lambda
+0xE88B0,KFLDRX,table KFLDRX - Maximum cylinder charg
+0xE8974,KFLDRX,axis RPM
+0xE8994,KFLDRX,axis Lambda
+0xE89A0,KFLDRX,table KFLDRX - Maximum cylinder charg
+0xEAE0E,KFZW,table gradKW
+0xEAECE,KFZW2,table gradKW
+0xEAF8E,KFZW3,table gradKW
+0xEB04E,KFZW4,table gradKW
+0xEB10E,KFZW,table gradKW
+0xEB1CE,KFZW2,table gradKW
+0xEB28E,KFZW3,table gradKW
+0xEB34E,KFZW4,table gradKW
+0xEB40E,KFLDRL,table %
+0xEB54E,KFLDRL,table %
+0xEB692,KFLDRX,axis RPM
+0xEB6B2,KFLDRX,axis Lambda
+0xEB6BE,KFLDRX,table
+0xEB782,KFLDRX,axis RPM
+0xEB7A2,KFLDRX,axis Lambda
+0xEB7AE,KFLDRX,table
+0xEF13C,PIN,table -
+0xEFFFF,CWAKA,constant -
+0xF0000,Functions,table -
+0xF0600,Functions Lean Burn Hack,table -
+0xF0800,Functions Antilag,table -

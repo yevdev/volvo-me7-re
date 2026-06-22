@@ -1,0 +1,1781 @@
+
+===== sub_86318  (0x86318-0x875B4) =====
+CALLERS: 
+  0x86318  mov     [-r0], r9
+  0x8631A  mov     [-r0], r8
+  0x8631C  mov     [-r0], r6
+  0x8631E  sub     r0, #4
+  0x86320  mov     r12, word_303B78
+  0x86324  mov     [r0+#2], r12
+  0x86328  mov     [r0], word_303B7A
+  0x8632C  mov     r13, word_302634
+  0x86330  jnb     r13.0, loc_86360
+  0x86334  jnb     r13.15, loc_86360
+  0x86338  extp    #0C1h, #1
+  0x8633C  mov     word_30521E, ZEROS
+  0x86340  mov     r14, #8000h
+  0x86344  extp    #0C1h, #1
+  0x86348  mov     word_305222, ZEROS
+  0x8634C  extp    #0C1h, #1
+  0x86350  mov     word_30521A, r14
+  0x86354  extp    #0C1h, #1
+  0x86358  mov     word_305216, r14
+  0x8635C  jmpa    cc_UC, loc_875AA
+  0x86360  mov     r8, loc_F474
+  0x86364  extp    #8, #1
+  0x86368  cmp     r8, word_2348E   ; CAL->0x2348e
+  0x8636C  jmpr    cc_UGT, loc_86388
+  0x8636E  movb    rl6, byte_F40E
+  0x86372  extp    #6, #1
+  0x86376  cmpb    rl6, byte_19A87   ; CAL->0x19a87
+  0x8637A  jmpr    cc_UGT, loc_86388
+  0x8637C  movb    rl1, #4
+  0x8637E  extp    #0C1h, #1
+  0x86382  orb     byte_30479C, rl1
+  0x86386  jmpr    cc_UC, loc_86394
+  0x86388  movb    rl6, #0FBh
+  0x8638C  extp    #0C1h, #1
+  0x86390  andb    byte_30479C, rl6
+  0x86394  movb    rl6, byte_F40E
+  0x86398  extp    #6, #1
+  0x8639C  cmpb    rl6, DTMPTA   ; CAL->0x19a8b
+  0x863A0  jmpr    cc_C, loc_863E8
+  0x863A2  extp    #6, #1
+  0x863A6  cmpb    rl6, TCFL   ; CAL->0x19a88
+  0x863AA  jmpr    cc_UGT, loc_863E8
+  0x863AC  mov     r8, loc_F474
+  0x863B0  extp    #8, #1
+  0x863B4  cmp     r8, word_23494   ; CAL->0x23494
+  0x863B8  jmpr    cc_C, loc_863E8
+  0x863BA  extp    #8, #1
+  0x863BE  cmp     r8, word_23490   ; CAL->0x23490
+  0x863C2  jmpr    cc_UGT, loc_863E8
+  0x863C4  movb    rl1, byte_F473
+  0x863C8  extp    #6, #1
+  0x863CC  cmpb    rl1, TUMDMN   ; CAL->0x19a91
+  0x863D0  jmpr    cc_C, loc_863E8
+  0x863D2  extp    #6, #1
+  0x863D6  cmpb    rl1, TDTUMPL   ; CAL->0x19a8f
+  0x863DA  jmpr    cc_UGT, loc_863E8
+  0x863DC  movb    rl2, #2
+  0x863DE  extp    #0C1h, #1
+  0x863E2  orb     byte_30479C, rl2
+  0x863E6  jmpr    cc_UC, loc_863F4
+  0x863E8  movb    rl6, #0FDh
+  0x863EC  extp    #0C1h, #1
+  0x863F0  andb    byte_30479C, rl6
+  0x863F4  movb    rl6, byte_F40E
+  0x863F8  extp    #6, #1
+  0x863FC  cmpb    rl6, DTUMPTA   ; CAL->0x19a8c
+  0x86400  jmpr    cc_C, loc_86434
+  0x86402  mov     r8, loc_F474
+  0x86406  extp    #8, #1
+  0x8640A  cmp     r8, word_23492   ; CAL->0x23492
+  0x8640E  jmpr    cc_UGT, loc_86434
+  0x86410  movb    rl1, byte_F473
+  0x86414  extp    #6, #1
+  0x86418  cmpb    rl1, TUMDMX   ; CAL->0x19a92
+  0x8641C  jmpr    cc_C, loc_86434
+  0x8641E  extp    #6, #1
+  0x86422  cmpb    rl1, TTUMPLC   ; CAL->0x19a90
+  0x86426  jmpr    cc_UGT, loc_86434
+  0x86428  movb    rl2, #8
+  0x8642A  extp    #0C1h, #1
+  0x8642E  orb     byte_30479C, rl2
+  0x86432  jmpr    cc_UC, loc_86440
+  0x86434  movb    rl6, #0F7h
+  0x86438  extp    #0C1h, #1
+  0x8643C  andb    byte_30479C, rl6
+  0x86440  movb    rl6, byte_F473
+  0x86444  extp    #6, #1
+  0x86448  cmpb    rl6, TUMELI   ; CAL->0x19a93
+  0x8644C  jmpr    cc_C, loc_86468
+  0x8644E  mov     r8, loc_F474
+  0x86452  extp    #8, #1
+  0x86456  cmp     r8, word_23496   ; CAL->0x23496
+  0x8645A  jmpr    cc_C, loc_86468
+  0x8645C  movb    rl1, #1
+  0x8645E  extp    #0C1h, #1
+  0x86462  orb     byte_30479C, rl1
+  0x86466  jmpr    cc_UC, loc_86474
+  0x86468  movb    rl6, #0FEh
+  0x8646C  extp    #0C1h, #1
+  0x86470  andb    byte_30479C, rl6
+  0x86474  extp    #6, #1
+  0x86478  movb    rl1, ANTISCAN_MAX   ; CAL->0x19a89
+  0x8647C  movb    rl6, byte_301279
+  0x86480  jnb     r6.3, loc_864A8
+  0x86484  movb    rl2, #20h ; ' '
+  0x86488  extp    #0C1h, #1
+  0x8648C  orb     byte_30479A, rl2
+  0x86490  movb    rl3, #4
+  0x86492  extp    #0C1h, #1
+  0x86496  orb     byte_30479B, rl3
+  0x8649A  movb    rl4, #40h ; '@'
+  0x8649E  extp    #0C1h, #1
+  0x864A2  orb     byte_30479A, rl4
+  0x864A6  jmpr    cc_UC, loc_86504
+  0x864A8  jnb     r1.0, loc_864BA
+  0x864AC  movb    rl6, #20h ; ' '
+  0x864B0  extp    #0C1h, #1
+  0x864B4  orb     byte_30479A, rl6
+  0x864B8  jmpr    cc_UC, loc_864C6
+  0x864BA  movb    rl6, #0DFh
+  0x864BE  extp    #0C1h, #1
+  0x864C2  andb    byte_30479A, rl6
+  0x864C6  jnb     r1.1, loc_864D6
+  0x864CA  movb    rl6, #4
+  0x864CC  extp    #0C1h, #1
+  0x864D0  orb     byte_30479B, rl6
+  0x864D4  jmpr    cc_UC, loc_864E2
+  0x864D6  movb    rl6, #0FBh
+  0x864DA  extp    #0C1h, #1
+  0x864DE  andb    byte_30479B, rl6
+  0x864E2  jnb     r1.2, loc_864F4
+  0x864E6  movb    rl6, #40h ; '@'
+  0x864EA  extp    #0C1h, #1
+  0x864EE  orb     byte_30479A, rl6
+  0x864F2  jmpr    cc_UC, loc_86500
+  0x864F4  movb    rl6, #0BFh
+  0x864F8  extp    #0C1h, #1
+  0x864FC  andb    byte_30479A, rl6
+  0x86500  jnb     r1.7, loc_86510
+  0x86504  movb    rl6, #2
+  0x86506  extp    #0C1h, #1
+  0x8650A  orb     byte_30479B, rl6
+  0x8650E  jmpr    cc_UC, loc_8651C
+  0x86510  movb    rl6, #0FDh
+  0x86514  extp    #0C1h, #1
+  0x86518  andb    byte_30479B, rl6
+  0x8651C  jnb     word_FD60.7, loc_86524
+  0x86520  jnb     r1.4, loc_86528
+  0x86524  jb      r1.3, loc_86534
+  0x86528  movb    rl6, #8
+  0x8652A  extp    #0C1h, #1
+  0x8652E  orb     byte_30479A, rl6
+  0x86532  jmpr    cc_UC, loc_86540
+  0x86534  movb    rl6, #0F7h
+  0x86538  extp    #0C1h, #1
+  0x8653C  andb    byte_30479A, rl6
+  0x86540  mov     r8, word_302816
+  0x86544  sub     r8, #8000h
+  0x86548  jmpr    cc_C, loc_86552
+  0x8654A  jmpr    cc_NN, loc_86558
+  0x8654C  mov     r8, #7FFFh
+  0x86550  jmpr    cc_UC, loc_86558
+  0x86552  jmpr    cc_N, loc_86558
+  0x86554  mov     r8, #8000h
+  0x86558  extp    #0C1h, #1
+  0x8655C  mov     word_305212, r8
+  0x86560  movb    rl6, byte_3015BA
+  0x86564  jb      r6.1, loc_8656C
+  0x86568  jmpa    cc_UC, loc_8664C
+  0x8656C  extp    #0C1h, #1
+  0x86570  movb    rl1, byte_30479C
+  0x86574  jnb     r1.2, loc_86592
+  0x86578  extp    #0C1h, #1
+  0x8657C  movb    rl2, byte_30479A
+  0x86580  jb      r2.5, loc_86592
+  0x86584  movb    rl3, #80h
+  0x86588  extp    #0C2h, #1
+  0x8658C  orb     byte_30A0DC, rl3
+  0x86590  jmpr    cc_UC, loc_865AA
+  0x86592  movb    rl6, #7Fh
+  0x86596  extp    #0C2h, #1
+  0x8659A  andb    byte_30A0DC, rl6
+  0x8659E  movb    rl1, #0BDh
+  0x865A2  extp    #0C2h, #1
+  0x865A6  andb    byte_30A0DC, rl1
+  0x865AA  extp    #0C1h, #1
+  0x865AE  movb    rl6, byte_30479C
+  0x865B2  jnb     r6.1, loc_865D0
+  0x865B6  extp    #0C1h, #1
+  0x865BA  movb    rl1, byte_30479B
+  0x865BE  jb      r1.2, loc_865D0
+  0x865C2  movb    rl2, #80h
+  0x865C6  extp    #0C2h, #1
+  0x865CA  orb     byte_30A0DB, rl2
+  0x865CE  jmpr    cc_UC, loc_865E8
+  0x865D0  movb    rl6, #7Fh
+  0x865D4  extp    #0C2h, #1
+  0x865D8  andb    byte_30A0DB, rl6
+  0x865DC  movb    rl1, #0BDh
+  0x865E0  extp    #0C2h, #1
+  0x865E4  andb    byte_30A0DB, rl1
+  0x865E8  extp    #0C1h, #1
+  0x865EC  movb    rl6, byte_30479C
+  0x865F0  jnb     r6.0, loc_8660E
+  0x865F4  extp    #0C1h, #1
+  0x865F8  movb    rl1, byte_30479B
+  0x865FC  jb      r1.1, loc_8660E
+  0x86600  movb    rl2, #80h
+  0x86604  extp    #0C2h, #1
+  0x86608  orb     byte_30A0DA, rl2
+  0x8660C  jmpr    cc_UC, loc_86626
+  0x8660E  movb    rl6, #7Fh
+  0x86612  extp    #0C2h, #1
+  0x86616  andb    byte_30A0DA, rl6
+  0x8661A  movb    rl1, #0BDh
+  0x8661E  extp    #0C2h, #1
+  0x86622  andb    byte_30A0DA, rl1
+  0x86626  extp    #0C1h, #1
+  0x8662A  movb    rl6, byte_30479C
+  0x8662E  jnb     r6.3, loc_8667C
+  0x86632  extp    #0C1h, #1
+  0x86636  movb    rl1, byte_30479A
+  0x8663A  jb      r1.6, loc_8667C
+  0x8663E  movb    rl2, #80h
+  0x86642  extp    #0C2h, #1
+  0x86646  orb     byte_30A0DD, rl2
+  0x8664A  jmpr    cc_UC, loc_86694
+  0x8664C  movb    rl6, #7Fh
+  0x86650  extp    #0C2h, #1
+  0x86654  andb    byte_30A0DC, rl6
+  0x86658  movb    rl1, #0BDh
+  0x8665C  extp    #0C2h, #2
+  0x86660  andb    byte_30A0DC, rl1
+  0x86664  andb    byte_30A0DB, rl6
+  0x86668  extp    #0C2h, #2
+  0x8666C  andb    byte_30A0DB, rl1
+  0x86670  andb    byte_30A0DA, rl6
+  0x86674  extp    #0C2h, #1
+  0x86678  andb    byte_30A0DA, rl1
+  0x8667C  movb    rl6, #7Fh
+  0x86680  extp    #0C2h, #1
+  0x86684  andb    byte_30A0DD, rl6
+  0x86688  movb    rl1, #0BDh
+  0x8668C  extp    #0C2h, #1
+  0x86690  andb    byte_30A0DD, rl1
+  0x86694  extp    #0C2h, #1
+  0x86698  movb    rl6, byte_30A0DC
+  0x8669C  jnb     r6.6, loc_866A4
+  0x866A0  mov     r13, #1
+  0x866A2  jmpr    cc_UC, loc_866A6
+  0x866A4  mov     r13, #0
+  0x866A6  extp    #6, #1
+  0x866AA  movb    rl1, byte_19A97   ; CAL->0x19a97
+  0x866AE  mov     r12, #8770h
+  0x866B2  cmp     r13, #0
+  0x866B4  jmpr    cc_Z, loc_866BC
+  0x866B6  movb    rl6, #0
+  0x866B8  movb    [r12], rl6
+  0x866BA  jmpr    cc_UC, loc_866C8
+  0x866BC  movb    rl6, [r12]
+  0x866BE  cmpb    rl6, rl1
+  0x866C0  jmpr    cc_NC, loc_866CC
+  0x866C2  movb    rl6, [r12]
+  0x866C4  addb    rl6, #1
+  0x866C6  movb    [r12], rl6
+  0x866C8  mov     r12, #1
+  0x866CA  jmpr    cc_UC, loc_866CE
+  0x866CC  mov     r12, #0
+  0x866CE  cmp     r12, #0
+  0x866D0  jmpr    cc_Z, loc_866E8
+  0x866D2  extp    #0C2h, #1
+  0x866D6  movbz   r8, byte_30A0DC
+  0x866DA  or      r8, #4
+  0x866DC  mov     r6, r8
+  0x866DE  extp    #0C2h, #1
+  0x866E2  movb    byte_30A0DC, rl6
+  0x866E6  jmpr    cc_UC, loc_866F4
+  0x866E8  movb    rl6, #0FBh
+  0x866EC  extp    #0C2h, #1
+  0x866F0  andb    byte_30A0DC, rl6
+  0x866F4  extp    #0C2h, #1
+  0x866F8  movb    rl6, byte_30A0DB
+  0x866FC  jnb     r6.6, loc_86704
+  0x86700  mov     r13, #1
+  0x86702  jmpr    cc_UC, loc_86706
+  0x86704  mov     r13, #0
+  0x86706  extp    #6, #1
+  0x8670A  movb    rl1, byte_19A96   ; CAL->0x19a96
+  0x8670E  mov     r12, #876Eh
+  0x86712  cmp     r13, #0
+  0x86714  jmpr    cc_Z, loc_8671C
+  0x86716  movb    rl6, #0
+  0x86718  movb    [r12], rl6
+  0x8671A  jmpr    cc_UC, loc_86728
+  0x8671C  movb    rl6, [r12]
+  0x8671E  cmpb    rl6, rl1
+  0x86720  jmpr    cc_NC, loc_8672C
+  0x86722  movb    rl6, [r12]
+  0x86724  addb    rl6, #1
+  0x86726  movb    [r12], rl6
+  0x86728  mov     r12, #1
+  0x8672A  jmpr    cc_UC, loc_8672E
+  0x8672C  mov     r12, #0
+  0x8672E  cmp     r12, #0
+  0x86730  jmpr    cc_Z, loc_86748
+  0x86732  extp    #0C2h, #1
+  0x86736  movbz   r8, byte_30A0DB
+  0x8673A  or      r8, #4
+  0x8673C  mov     r6, r8
+  0x8673E  extp    #0C2h, #1
+  0x86742  movb    byte_30A0DB, rl6
+  0x86746  jmpr    cc_UC, loc_86754
+  0x86748  movb    rl6, #0FBh
+  0x8674C  extp    #0C2h, #1
+  0x86750  andb    byte_30A0DB, rl6
+  0x86754  extp    #0C2h, #1
+  0x86758  movb    rl6, byte_30A0DA
+  0x8675C  jnb     r6.6, loc_86764
+  0x86760  mov     r13, #1
+  0x86762  jmpr    cc_UC, loc_86766
+  0x86764  mov     r13, #0
+  0x86766  extp    #6, #1
+  0x8676A  movb    rl1, byte_19A95   ; CAL->0x19a95
+  0x8676E  mov     r12, #876Fh
+  0x86772  cmp     r13, #0
+  0x86774  jmpr    cc_Z, loc_8677C
+  0x86776  movb    rl6, #0
+  0x86778  movb    [r12], rl6
+  0x8677A  jmpr    cc_UC, loc_86788
+  0x8677C  movb    rl6, [r12]
+  0x8677E  cmpb    rl6, rl1
+  0x86780  jmpr    cc_NC, loc_8678C
+  0x86782  movb    rl6, [r12]
+  0x86784  addb    rl6, #1
+  0x86786  movb    [r12], rl6
+  0x86788  mov     r12, #1
+  0x8678A  jmpr    cc_UC, loc_8678E
+  0x8678C  mov     r12, #0
+  0x8678E  cmp     r12, #0
+  0x86790  jmpr    cc_Z, loc_867A8
+  0x86792  extp    #0C2h, #1
+  0x86796  movbz   r8, byte_30A0DA
+  0x8679A  or      r8, #4
+  0x8679C  mov     r6, r8
+  0x8679E  extp    #0C2h, #1
+  0x867A2  movb    byte_30A0DA, rl6
+  0x867A6  jmpr    cc_UC, loc_867B4
+  0x867A8  movb    rl6, #0FBh
+  0x867AC  extp    #0C2h, #1
+  0x867B0  andb    byte_30A0DA, rl6
+  0x867B4  extp    #0C2h, #1
+  0x867B8  movb    rl6, byte_30A0DD
+  0x867BC  jnb     r6.6, loc_867C4
+  0x867C0  mov     r13, #1
+  0x867C2  jmpr    cc_UC, loc_867C6
+  0x867C4  mov     r13, #0
+  0x867C6  extp    #6, #1
+  0x867CA  movb    rl1, byte_19A98   ; CAL->0x19a98
+  0x867CE  mov     r12, #8771h
+  0x867D2  cmp     r13, #0
+  0x867D4  jmpr    cc_Z, loc_867DC
+  0x867D6  movb    rl6, #0
+  0x867D8  movb    [r12], rl6
+  0x867DA  jmpr    cc_UC, loc_867E8
+  0x867DC  movb    rl6, [r12]
+  0x867DE  cmpb    rl6, rl1
+  0x867E0  jmpr    cc_NC, loc_867EC
+  0x867E2  movb    rl6, [r12]
+  0x867E4  addb    rl6, #1
+  0x867E6  movb    [r12], rl6
+  0x867E8  mov     r12, #1
+  0x867EA  jmpr    cc_UC, loc_867EE
+  0x867EC  mov     r12, #0
+  0x867EE  cmp     r12, #0
+  0x867F0  jmpr    cc_Z, loc_86808
+  0x867F2  extp    #0C2h, #1
+  0x867F6  movbz   r8, byte_30A0DD
+  0x867FA  or      r8, #4
+  0x867FC  mov     r6, r8
+  0x867FE  extp    #0C2h, #1
+  0x86802  movb    byte_30A0DD, rl6
+  0x86806  jmpr    cc_UC, loc_86814
+  0x86808  movb    rl6, #0FBh
+  0x8680C  extp    #0C2h, #1
+  0x86810  andb    byte_30A0DD, rl6
+  0x86814  extp    #0C1h, #1
+  0x86818  mov     r8, word_305212
+  0x8681C  cmp     r8, #0
+  0x8681E  jmpr    cc_SGE, loc_8682A
+  0x86820  extp    #0C1h, #1
+  0x86824  mov     r8, word_305212
+  0x86828  neg     r8
+  0x8682A  extp    #0C2h, #1
+  0x8682E  movb    rl6, byte_30A0DB
+  0x86832  jnb     r6.2, loc_8683A
+  0x86836  mov     r12, #1
+  0x86838  jmpr    cc_UC, loc_8683C
+  0x8683A  mov     r12, #0
+  0x8683C  cmp     r12, #0
+  0x8683E  jmpa    cc_Z, loc_868C4
+  0x86842  extp    #0C2h, #1
+  0x86846  movb    rl6, byte_30A0DB
+  0x8684A  jnb     r6.7, loc_86852
+  0x8684E  mov     r12, #1
+  0x86850  jmpr    cc_UC, loc_86854
+  0x86852  mov     r12, #0
+  0x86854  cmp     r12, #0
+  0x86856  jmpr    cc_Z, loc_868C4
+  0x86858  extp    #6, #1
+  0x8685C  movbz   r12, byte_19A94   ; CAL->0x19a94
+  0x86860  shl     r12, #8
+  0x86862  mov     r13, r8
+  0x86864  mov     r14, word_300774
+  0x86868  mov     r15, word_300772
+  0x8686C  calls   4, sub_43904   ; CALL sub_43904
+  0x86870  mov     word_300772, r4
+  0x86874  mov     word_300774, r5
+  0x86878  mov     r12, word_300774
+  0x8687C  shr     r12, #6
+  0x8687E  cmp     r12, #0FFh
+  0x86882  jmpr    cc_ULE, loc_8688E
+  0x86884  extp    #0C1h, #1
+  0x86888  movb    byte_304797, ONES
+  0x8688C  jmpr    cc_UC, loc_86898
+  0x8688E  mov     r6, r12
+  0x86890  extp    #0C1h, #1
+  0x86894  movb    byte_304797, rl6
+  0x86898  jnb     word_FD4E.13, loc_868A6
+  0x8689C  extp    #6, #1
+  0x868A0  movb    rl6, TDTUMNF   ; CAL->0x19a8e
+  0x868A4  jmpr    cc_UC, loc_868BC
+  0x868A6  mov     r12, #1A5Bh
+  0x868AA  mov     r13, #6
+  0x868AE  extp    #0C1h, #1
+  0x868B2  movbz   r14, byte_304797
+  0x868B6  calls   4, sub_419F4   ; CALL sub_419F4
+  0x868BA  movb    rl6, rl4
+  0x868BC  extp    #0C2h, #1
+  0x868C0  movb    byte_30A0BF, rl6
+  0x868C4  extp    #0C2h, #1
+  0x868C8  movb    rl6, byte_30A0DA
+  0x868CC  jnb     r6.2, loc_868D4
+  0x868D0  mov     r12, #1
+  0x868D2  jmpr    cc_UC, loc_868D6
+  0x868D4  mov     r12, #0
+  0x868D6  cmp     r12, #0
+  0x868D8  jmpa    cc_Z, loc_8695E
+  0x868DC  extp    #0C2h, #1
+  0x868E0  movb    rl6, byte_30A0DA
+  0x868E4  jnb     r6.7, loc_868EC
+  0x868E8  mov     r12, #1
+  0x868EA  jmpr    cc_UC, loc_868EE
+  0x868EC  mov     r12, #0
+  0x868EE  cmp     r12, #0
+  0x868F0  jmpr    cc_Z, loc_8695E
+  0x868F2  extp    #6, #1
+  0x868F6  movbz   r12, byte_19A94   ; CAL->0x19a94
+  0x868FA  shl     r12, #8
+  0x868FC  mov     r13, r8
+  0x868FE  mov     r14, word_300778
+  0x86902  mov     r15, word_300776
+  0x86906  calls   4, sub_43904   ; CALL sub_43904
+  0x8690A  mov     word_300776, r4
+  0x8690E  mov     word_300778, r5
+  0x86912  mov     r12, word_300778
+  0x86916  shr     r12, #6
+  0x86918  cmp     r12, #0FFh
+  0x8691C  jmpr    cc_ULE, loc_86928
+  0x8691E  extp    #0C1h, #1
+  0x86922  movb    byte_304796, ONES
+  0x86926  jmpr    cc_UC, loc_86932
+  0x86928  mov     r6, r12
+  0x8692A  extp    #0C1h, #1
+  0x8692E  movb    byte_304796, rl6
+  0x86932  jnb     word_FD4E.13, loc_86940
+  0x86936  extp    #6, #1
+  0x8693A  movb    rl6, TDTUM   ; CAL->0x19a8d
+  0x8693E  jmpr    cc_UC, loc_86956
+  0x86940  mov     r12, #1A4Eh
+  0x86944  mov     r13, #6
+  0x86948  extp    #0C1h, #1
+  0x8694C  movbz   r14, byte_304796
+  0x86950  calls   4, sub_419F4   ; CALL sub_419F4
+  0x86954  movb    rl6, rl4
+  0x86956  extp    #0C2h, #1
+  0x8695A  movb    byte_30A0BE, rl6
+  0x8695E  extp    #0C2h, #1
+  0x86962  movb    rl6, byte_30A0DC
+  0x86966  jnb     r6.2, loc_8696E
+  0x8696A  mov     r12, #1
+  0x8696C  jmpr    cc_UC, loc_86970
+  0x8696E  mov     r12, #0
+  0x86970  cmp     r12, #0
+  0x86972  jmpa    cc_Z, loc_869EA
+  0x86976  extp    #0C2h, #1
+  0x8697A  movb    rl6, byte_30A0DC
+  0x8697E  jnb     r6.7, loc_86986
+  0x86982  mov     r12, #1
+  0x86984  jmpr    cc_UC, loc_86988
+  0x86986  mov     r12, #0
+  0x86988  cmp     r12, #0
+  0x8698A  jmpr    cc_Z, loc_869EA
+  0x8698C  extp    #6, #1
+  0x86990  movbz   r12, byte_19A94   ; CAL->0x19a94
+  0x86994  shl     r12, #8
+  0x86996  mov     r13, r8
+  0x86998  mov     r14, word_30077C
+  0x8699C  mov     r15, word_30077A
+  0x869A0  calls   4, sub_43904   ; CALL sub_43904
+  0x869A4  mov     word_30077A, r4
+  0x869A8  mov     word_30077C, r5
+  0x869AC  mov     r12, word_30077C
+  0x869B0  shr     r12, #6
+  0x869B2  cmp     r12, #0FFh
+  0x869B6  jmpr    cc_ULE, loc_869C2
+  0x869B8  extp    #0C1h, #1
+  0x869BC  movb    byte_304798, ONES
+  0x869C0  jmpr    cc_UC, loc_869CC
+  0x869C2  mov     r6, r12
+  0x869C4  extp    #0C1h, #1
+  0x869C8  movb    byte_304798, rl6
+  0x869CC  mov     r12, #1A68h
+  0x869D0  mov     r13, #6
+  0x869D4  extp    #0C1h, #1
+  0x869D8  movbz   r14, byte_304798
+  0x869DC  calls   4, sub_419F4   ; CALL sub_419F4
+  0x869E0  movb    rl6, rl4
+  0x869E2  extp    #0C2h, #1
+  0x869E6  movb    byte_30A0C0, rl6
+  0x869EA  extp    #0C2h, #1
+  0x869EE  movb    rl6, byte_30A0DD
+  0x869F2  jnb     r6.2, loc_869FA
+  0x869F6  mov     r12, #1
+  0x869F8  jmpr    cc_UC, loc_869FC
+  0x869FA  mov     r12, #0
+  0x869FC  cmp     r12, #0
+  0x869FE  jmpa    cc_Z, loc_86A76
+  0x86A02  extp    #0C2h, #1
+  0x86A06  movb    rl6, byte_30A0DD
+  0x86A0A  jnb     r6.7, loc_86A12
+  0x86A0E  mov     r12, #1
+  0x86A10  jmpr    cc_UC, loc_86A14
+  0x86A12  mov     r12, #0
+  0x86A14  cmp     r12, #0
+  0x86A16  jmpr    cc_Z, loc_86A76
+  0x86A18  extp    #6, #1
+  0x86A1C  movbz   r12, byte_19A94   ; CAL->0x19a94
+  0x86A20  shl     r12, #8
+  0x86A22  mov     r13, r8
+  0x86A24  mov     r14, word_300780
+  0x86A28  mov     r15, word_30077E
+  0x86A2C  calls   4, sub_43904   ; CALL sub_43904
+  0x86A30  mov     word_30077E, r4
+  0x86A34  mov     word_300780, r5
+  0x86A38  mov     r12, word_300780
+  0x86A3C  shr     r12, #6
+  0x86A3E  cmp     r12, #0FFh
+  0x86A42  jmpr    cc_ULE, loc_86A4E
+  0x86A44  extp    #0C1h, #1
+  0x86A48  movb    byte_304799, ONES
+  0x86A4C  jmpr    cc_UC, loc_86A58
+  0x86A4E  mov     r6, r12
+  0x86A50  extp    #0C1h, #1
+  0x86A54  movb    byte_304799, rl6
+  0x86A58  mov     r12, #1A75h
+  0x86A5C  mov     r13, #6
+  0x86A60  extp    #0C1h, #1
+  0x86A64  movbz   r14, byte_304799
+  0x86A68  calls   4, sub_419F4   ; CALL sub_419F4
+  0x86A6C  movb    rl6, rl4
+  0x86A6E  extp    #0C2h, #1
+  0x86A72  movb    byte_30A0C1, rl6
+  0x86A76  mov     r8, word_302A02
+  0x86A7A  mov     r9, word_302E0A
+  0x86A7E  mov     MDL, r9
+  0x86A82  divu    r8
+  0x86A84  jmpr    cc_V, loc_86A8C
+  0x86A86  mov     r13, MDL
+  0x86A8A  jmpr    cc_UC, loc_86A90
+  0x86A8C  mov     r13, #0FFFFh
+  0x86A90  shl     r13, #1
+  0x86A92  cmp     r13, #0FFh
+  0x86A96  jmpr    cc_ULE, loc_86A9C
+  0x86A98  mov     r13, #0FFh
+  0x86A9C  extp    #6, #1
+  0x86AA0  movbs   r12, byte_19A86   ; CAL->0x19a86
+  0x86AA4  shl     r12, #8
+  0x86AA6  extp    #6, #1
+  0x86AAA  movbz   r8, byte_19A84   ; CAL->0x19a84
+  0x86AAE  shl     r8, #8
+  0x86AB0  cmp     r12, word_3029EE
+  0x86AB4  jmpr    cc_SLE, loc_86AEA
+  0x86AB6  extp    #0C1h, #1
+  0x86ABA  movb    rl6, byte_304950
+  0x86ABE  extp    #6, #1
+  0x86AC2  cmpb    rl6, byte_19A83   ; CAL->0x19a83
+  0x86AC6  jmpr    cc_SGE, loc_86AEA
+  0x86AC8  movb    rl1, byte_301612
+  0x86ACC  jnb     r1.2, loc_86ADA
+  0x86AD0  extp    #0C1h, #1
+  0x86AD4  cmp     r8, word_3052A8
+  0x86AD8  jmpr    cc_ULE, loc_86AE6
+  0x86ADA  extp    #6, #1
+  0x86ADE  movbz   r8, byte_19A85   ; CAL->0x19a85
+  0x86AE2  cmp     r13, r8
+  0x86AE4  jmpr    cc_C, loc_86AEA
+  0x86AE6  bclr    word_FD4A.14
+  0x86AE8  jmpr    cc_UC, loc_86B04
+  0x86AEA  extp    #0C1h, #1
+  0x86AEE  movb    rl6, byte_304950
+  0x86AF2  extp    #6, #1
+  0x86AF6  cmpb    rl6, byte_19A83   ; CAL->0x19a83
+  0x86AFA  jmpr    cc_SGE, loc_86B02
+  0x86AFC  cmp     r12, word_3029EE
+  0x86B00  jmpr    cc_SGT, loc_86B04
+  0x86B02  bset    word_FD4A.14
+  0x86B04  jnb     word_FD4A.14, loc_86BC6
+  0x86B08  extp    #0C1h, #1
+  0x86B0C  mov     r9, word_30521A
+  0x86B10  extp    #8, #1
+  0x86B14  cmp     r9, word_2341E   ; CAL->0x2341e
+  0x86B18  jmpr    cc_C, loc_86B24
+  0x86B1A  extp    #0C1h, #1
+  0x86B1E  mov     r9, word_30521A
+  0x86B22  jmpr    cc_UC, loc_86B2C
+  0x86B24  extp    #8, #1
+  0x86B28  mov     r9, word_2341E   ; CAL->0x2341e
+  0x86B2C  extp    #8, #1
+  0x86B30  cmp     r9, word_23422   ; CAL->0x23422
+  0x86B34  jmpr    cc_UGT, loc_86B5C
+  0x86B36  extp    #0C1h, #1
+  0x86B3A  mov     r9, word_30521A
+  0x86B3E  extp    #8, #1
+  0x86B42  cmp     r9, word_2341E   ; CAL->0x2341e
+  0x86B46  jmpr    cc_C, loc_86B52
+  0x86B48  extp    #0C1h, #1
+  0x86B4C  mov     r9, word_30521A
+  0x86B50  jmpr    cc_UC, loc_86B5A
+  0x86B52  extp    #8, #1
+  0x86B56  mov     r9, word_2341E   ; CAL->0x2341e
+  0x86B5A  jmpr    cc_UC, loc_86B64
+  0x86B5C  extp    #8, #1
+  0x86B60  mov     r9, word_23422   ; CAL->0x23422
+  0x86B64  mov     r8, r9
+  0x86B66  extp    #0C1h, #1
+  0x86B6A  mov     r6, word_30521A
+  0x86B6E  extp    #8, #1
+  0x86B72  cmp     r6, word_23420   ; CAL->0x23420
+  0x86B76  jmpr    cc_UGT, loc_86B82
+  0x86B78  extp    #0C1h, #1
+  0x86B7C  mov     r6, word_30521A
+  0x86B80  jmpr    cc_UC, loc_86B8A
+  0x86B82  extp    #8, #1
+  0x86B86  mov     r6, word_23420   ; CAL->0x23420
+  0x86B8A  extp    #8, #1
+  0x86B8E  cmp     r6, word_23424   ; CAL->0x23424
+  0x86B92  jmpr    cc_C, loc_86BBA
+  0x86B94  extp    #0C1h, #1
+  0x86B98  mov     r6, word_30521A
+  0x86B9C  extp    #8, #1
+  0x86BA0  cmp     r6, word_23420   ; CAL->0x23420
+  0x86BA4  jmpr    cc_UGT, loc_86BB0
+  0x86BA6  extp    #0C1h, #1
+  0x86BAA  mov     r6, word_30521A
+  0x86BAE  jmpr    cc_UC, loc_86BB8
+  0x86BB0  extp    #8, #1
+  0x86BB4  mov     r6, word_23420   ; CAL->0x23420
+  0x86BB8  jmpr    cc_UC, loc_86BC2
+  0x86BBA  extp    #8, #1
+  0x86BBE  mov     r6, word_23424   ; CAL->0x23424
+  0x86BC2  mov     r9, r6
+  0x86BC4  jmpr    cc_UC, loc_86BD6
+  0x86BC6  extp    #8, #1
+  0x86BCA  mov     r9, word_23420   ; CAL->0x23420
+  0x86BCE  extp    #8, #1
+  0x86BD2  mov     r8, word_2341E   ; CAL->0x2341e
+  0x86BD6  extp    #0C1h, #1
+  0x86BDA  movb    rl6, byte_30479B
+  0x86BDE  jnb     r6.2, loc_86BFA
+  0x86BE2  mov     r12, #8000h
+  0x86BE6  mov     word_3035E6, r12
+  0x86BEA  mov     word_3035E4, ZEROS
+  0x86BEE  extp    #0C1h, #1
+  0x86BF2  mov     word_30521A, r12
+  0x86BF6  jmpa    cc_UC, loc_86D72
+  0x86BFA  mov     r6, word_303ADA
+  0x86BFE  jnb     r6.0, loc_86C36
+  0x86C02  extp    #0C1h, #1
+  0x86C06  mov     r6, word_30521A
+  0x86C0A  extp    #8, #1
+  0x86C0E  cmp     r6, word_23414   ; CAL->0x23414
+  0x86C12  jmpr    cc_UGT, loc_86C26
+  0x86C14  extp    #0C1h, #1
+  0x86C18  mov     r6, word_30521A
+  0x86C1C  extp    #8, #1
+  0x86C20  cmp     r6, word_23412   ; CAL->0x23412
+  0x86C24  jmpr    cc_NC, loc_86C32
+  0x86C26  mov     r6, word_303B78
+  0x86C2A  jnb     r6.0, loc_86C32
+  0x86C2E  mov     r6, #1
+  0x86C30  jmpr    cc_UC, loc_86C34
+  0x86C32  mov     r6, #0
+  0x86C34  jmpr    cc_UC, loc_86C3C
+  0x86C36  mov     r6, word_303B78
+  0x86C3A  and     r6, #1
+  0x86C3C  cmp     r6, #0
+  0x86C3E  jmpa    cc_Z, loc_86CD8
+  0x86C42  extp    #6, #1
+  0x86C46  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x86C4A  jb      r6.0, loc_86C52
+  0x86C4E  jmpa    cc_UC, loc_86D66
+  0x86C52  extp    #6, #1
+  0x86C56  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x86C5A  jnb     r6.2, loc_86C66
+  0x86C5E  mov     r6, word_303ADA
+  0x86C62  jb      r6.0, loc_86C94
+  0x86C66  extp    #6, #1
+  0x86C6A  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x86C6E  jnb     r6.1, loc_86C94
+  0x86C72  extp    #0C1h, #1
+  0x86C76  mov     r6, word_305218
+  0x86C7A  extp    #0C1h, #1
+  0x86C7E  sub     r6, word_30521A
+  0x86C82  jmpr    cc_C, loc_86C8C
+  0x86C84  jmpr    cc_NN, loc_86C92
+  0x86C86  mov     r6, #7FFFh
+  0x86C8A  jmpr    cc_UC, loc_86C92
+  0x86C8C  jmpr    cc_N, loc_86C92
+  0x86C8E  mov     r6, #8000h
+  0x86C92  jmpr    cc_UC, loc_86CB0
+  0x86C94  mov     r6, #8000h
+  0x86C98  extp    #0C1h, #1
+  0x86C9C  sub     r6, word_30521A
+  0x86CA0  jmpr    cc_C, loc_86CAA
+  0x86CA2  jmpr    cc_NN, loc_86CB0
+  0x86CA4  mov     r6, #7FFFh
+  0x86CA8  jmpr    cc_UC, loc_86CB0
+  0x86CAA  jmpr    cc_N, loc_86CB0
+  0x86CAC  mov     r6, #8000h
+  0x86CB0  mov     [-r0], r9
+  0x86CB2  mov     [-r0], r8
+  0x86CB4  extp    #8, #1
+  0x86CB8  mov     r12, word_234AC   ; CAL->0x234ac
+  0x86CBC  mov     r13, r6
+  0x86CBE  mov     r14, word_3035E6
+  0x86CC2  mov     r15, word_3035E4
+  0x86CC6  calls   4, sub_42F16   ; CALL sub_42F16
+  0x86CCA  add     r0, #4
+  0x86CCC  mov     word_3035E4, r4
+  0x86CD0  mov     word_3035E6, r5
+  0x86CD4  jmpa    cc_UC, loc_86D66
+  0x86CD8  extp    #0C2h, #1
+  0x86CDC  movb    rl6, byte_30A0DB
+  0x86CE0  jnb     r6.7, loc_86CE8
+  0x86CE4  mov     r12, #1
+  0x86CE6  jmpr    cc_UC, loc_86CEA
+  0x86CE8  mov     r12, #0
+  0x86CEA  cmp     r12, #0
+  0x86CEC  jmpa    cc_Z, loc_86D66
+  0x86CF0  extp    #0C2h, #1
+  0x86CF4  movb    rl6, byte_30A0DB
+  0x86CF8  jnb     r6.6, loc_86D00
+  0x86CFC  mov     r12, #1
+  0x86CFE  jmpr    cc_UC, loc_86D02
+  0x86D00  mov     r12, #0
+  0x86D02  cmp     r12, #0
+  0x86D04  jmpr    cc_Z, loc_86D66
+  0x86D06  movb    rl6, byte_3015BA
+  0x86D0A  jnb     r6.1, loc_86D66
+  0x86D0E  extp    #0C1h, #1
+  0x86D12  mov     r12, word_305212
+  0x86D16  mov     [-r0], r12
+  0x86D18  mov     r13, #344Eh
+  0x86D1C  mov     r14, #8
+  0x86D20  mov     [-r0], r14
+  0x86D22  mov     [-r0], r13
+  0x86D24  extp    #8, #1
+  0x86D28  mov     r12, word_23440   ; CAL->0x23440
+  0x86D2C  mov     r13, #3442h
+  0x86D30  mov     r14, #8
+  0x86D34  calls   4, sub_42486   ; CALL sub_42486
+  0x86D38  add     r0, #6
+  0x86D3A  extp    #0C1h, #1
+  0x86D3E  mov     word_305226, r4
+  0x86D42  mov     [-r0], r9
+  0x86D44  mov     [-r0], r8
+  0x86D46  mov     r12, r4
+  0x86D48  extp    #0C1h, #1
+  0x86D4C  mov     r13, word_305212
+  0x86D50  mov     r14, word_3035E6
+  0x86D54  mov     r15, word_3035E4
+  0x86D58  calls   4, sub_42F16   ; CALL sub_42F16
+  0x86D5C  add     r0, #4
+  0x86D5E  mov     word_3035E4, r4
+  0x86D62  mov     word_3035E6, r5
+  0x86D66  mov     r6, word_3035E6
+  0x86D6A  extp    #0C1h, #1
+  0x86D6E  mov     word_30521A, r6
+  0x86D72  extp    #0C1h, #1
+  0x86D76  cmp     r9, word_30521A
+  0x86D7A  jmpr    cc_ULE, loc_86D86
+  0x86D7C  extp    #0C1h, #1
+  0x86D80  cmp     r8, word_30521A
+  0x86D84  jmpr    cc_C, loc_86D92
+  0x86D86  movb    rl6, #2
+  0x86D88  extp    #0C1h, #1
+  0x86D8C  orb     byte_30479A, rl6
+  0x86D90  jmpr    cc_UC, loc_86D9E
+  0x86D92  movb    rl6, #0FDh
+  0x86D96  extp    #0C1h, #1
+  0x86D9A  andb    byte_30479A, rl6
+  0x86D9E  jnb     word_FD4A.14, loc_86E60
+  0x86DA2  extp    #0C1h, #1
+  0x86DA6  mov     r9, word_305216
+  0x86DAA  extp    #8, #1
+  0x86DAE  cmp     r9, word_23416   ; CAL->0x23416
+  0x86DB2  jmpr    cc_C, loc_86DBE
+  0x86DB4  extp    #0C1h, #1
+  0x86DB8  mov     r9, word_305216
+  0x86DBC  jmpr    cc_UC, loc_86DC6
+  0x86DBE  extp    #8, #1
+  0x86DC2  mov     r9, word_23416   ; CAL->0x23416
+  0x86DC6  extp    #8, #1
+  0x86DCA  cmp     r9, word_2341A   ; CAL->0x2341a
+  0x86DCE  jmpr    cc_UGT, loc_86DF6
+  0x86DD0  extp    #0C1h, #1
+  0x86DD4  mov     r9, word_305216
+  0x86DD8  extp    #8, #1
+  0x86DDC  cmp     r9, word_23416   ; CAL->0x23416
+  0x86DE0  jmpr    cc_C, loc_86DEC
+  0x86DE2  extp    #0C1h, #1
+  0x86DE6  mov     r9, word_305216
+  0x86DEA  jmpr    cc_UC, loc_86DF4
+  0x86DEC  extp    #8, #1
+  0x86DF0  mov     r9, word_23416   ; CAL->0x23416
+  0x86DF4  jmpr    cc_UC, loc_86DFE
+  0x86DF6  extp    #8, #1
+  0x86DFA  mov     r9, word_2341A   ; CAL->0x2341a
+  0x86DFE  mov     r8, r9
+  0x86E00  extp    #0C1h, #1
+  0x86E04  mov     r6, word_305216
+  0x86E08  extp    #8, #1
+  0x86E0C  cmp     r6, word_23418   ; CAL->0x23418
+  0x86E10  jmpr    cc_UGT, loc_86E1C
+  0x86E12  extp    #0C1h, #1
+  0x86E16  mov     r6, word_305216
+  0x86E1A  jmpr    cc_UC, loc_86E24
+  0x86E1C  extp    #8, #1
+  0x86E20  mov     r6, word_23418   ; CAL->0x23418
+  0x86E24  extp    #8, #1
+  0x86E28  cmp     r6, word_2341C   ; CAL->0x2341c
+  0x86E2C  jmpr    cc_C, loc_86E54
+  0x86E2E  extp    #0C1h, #1
+  0x86E32  mov     r6, word_305216
+  0x86E36  extp    #8, #1
+  0x86E3A  cmp     r6, word_23418   ; CAL->0x23418
+  0x86E3E  jmpr    cc_UGT, loc_86E4A
+  0x86E40  extp    #0C1h, #1
+  0x86E44  mov     r6, word_305216
+  0x86E48  jmpr    cc_UC, loc_86E52
+  0x86E4A  extp    #8, #1
+  0x86E4E  mov     r6, word_23418   ; CAL->0x23418
+  0x86E52  jmpr    cc_UC, loc_86E5C
+  0x86E54  extp    #8, #1
+  0x86E58  mov     r6, word_2341C   ; CAL->0x2341c
+  0x86E5C  mov     r9, r6
+  0x86E5E  jmpr    cc_UC, loc_86E70
+  0x86E60  extp    #8, #1
+  0x86E64  mov     r9, word_23418   ; CAL->0x23418
+  0x86E68  extp    #8, #1
+  0x86E6C  mov     r8, word_23416   ; CAL->0x23416
+  0x86E70  extp    #0C1h, #1
+  0x86E74  movb    rl6, byte_30479B
+  0x86E78  jnb     r6.1, loc_86E94
+  0x86E7C  mov     r12, #8000h
+  0x86E80  mov     word_3035EA, r12
+  0x86E84  mov     word_3035E8, ZEROS
+  0x86E88  extp    #0C1h, #1
+  0x86E8C  mov     word_305216, r12
+  0x86E90  jmpa    cc_UC, loc_8700C
+  0x86E94  mov     r6, word_303ADA
+  0x86E98  jnb     r6.0, loc_86ED0
+  0x86E9C  extp    #0C1h, #1
+  0x86EA0  mov     r6, word_305216
+  0x86EA4  extp    #8, #1
+  0x86EA8  cmp     r6, word_23414   ; CAL->0x23414
+  0x86EAC  jmpr    cc_UGT, loc_86EC0
+  0x86EAE  extp    #0C1h, #1
+  0x86EB2  mov     r6, word_305216
+  0x86EB6  extp    #8, #1
+  0x86EBA  cmp     r6, word_23412   ; CAL->0x23412
+  0x86EBE  jmpr    cc_NC, loc_86ECC
+  0x86EC0  mov     r6, word_303B78
+  0x86EC4  jnb     r6.0, loc_86ECC
+  0x86EC8  mov     r6, #1
+  0x86ECA  jmpr    cc_UC, loc_86ECE
+  0x86ECC  mov     r6, #0
+  0x86ECE  jmpr    cc_UC, loc_86ED6
+  0x86ED0  mov     r6, word_303B78
+  0x86ED4  and     r6, #1
+  0x86ED6  cmp     r6, #0
+  0x86ED8  jmpa    cc_Z, loc_86F72
+  0x86EDC  extp    #6, #1
+  0x86EE0  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x86EE4  jb      r6.0, loc_86EEC
+  0x86EE8  jmpa    cc_UC, loc_87000
+  0x86EEC  extp    #6, #1
+  0x86EF0  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x86EF4  jnb     r6.2, loc_86F00
+  0x86EF8  mov     r6, word_303ADA
+  0x86EFC  jb      r6.0, loc_86F2E
+  0x86F00  extp    #6, #1
+  0x86F04  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x86F08  jnb     r6.1, loc_86F2E
+  0x86F0C  extp    #0C1h, #1
+  0x86F10  mov     r6, word_305214
+  0x86F14  extp    #0C1h, #1
+  0x86F18  sub     r6, word_305216
+  0x86F1C  jmpr    cc_C, loc_86F26
+  0x86F1E  jmpr    cc_NN, loc_86F2C
+  0x86F20  mov     r6, #7FFFh
+  0x86F24  jmpr    cc_UC, loc_86F2C
+  0x86F26  jmpr    cc_N, loc_86F2C
+  0x86F28  mov     r6, #8000h
+  0x86F2C  jmpr    cc_UC, loc_86F4A
+  0x86F2E  mov     r6, #8000h
+  0x86F32  extp    #0C1h, #1
+  0x86F36  sub     r6, word_305216
+  0x86F3A  jmpr    cc_C, loc_86F44
+  0x86F3C  jmpr    cc_NN, loc_86F4A
+  0x86F3E  mov     r6, #7FFFh
+  0x86F42  jmpr    cc_UC, loc_86F4A
+  0x86F44  jmpr    cc_N, loc_86F4A
+  0x86F46  mov     r6, #8000h
+  0x86F4A  mov     [-r0], r9
+  0x86F4C  mov     [-r0], r8
+  0x86F4E  extp    #8, #1
+  0x86F52  mov     r12, word_234AC   ; CAL->0x234ac
+  0x86F56  mov     r13, r6
+  0x86F58  mov     r14, word_3035EA
+  0x86F5C  mov     r15, word_3035E8
+  0x86F60  calls   4, sub_42F16   ; CALL sub_42F16
+  0x86F64  add     r0, #4
+  0x86F66  mov     word_3035E8, r4
+  0x86F6A  mov     word_3035EA, r5
+  0x86F6E  jmpa    cc_UC, loc_87000
+  0x86F72  extp    #0C2h, #1
+  0x86F76  movb    rl6, byte_30A0DA
+  0x86F7A  jnb     r6.7, loc_86F82
+  0x86F7E  mov     r12, #1
+  0x86F80  jmpr    cc_UC, loc_86F84
+  0x86F82  mov     r12, #0
+  0x86F84  cmp     r12, #0
+  0x86F86  jmpa    cc_Z, loc_87000
+  0x86F8A  extp    #0C2h, #1
+  0x86F8E  movb    rl6, byte_30A0DA
+  0x86F92  jnb     r6.6, loc_86F9A
+  0x86F96  mov     r12, #1
+  0x86F98  jmpr    cc_UC, loc_86F9C
+  0x86F9A  mov     r12, #0
+  0x86F9C  cmp     r12, #0
+  0x86F9E  jmpr    cc_Z, loc_87000
+  0x86FA0  movb    rl6, byte_3015BA
+  0x86FA4  jnb     r6.1, loc_87000
+  0x86FA8  extp    #0C1h, #1
+  0x86FAC  mov     r12, word_305212
+  0x86FB0  mov     [-r0], r12
+  0x86FB2  mov     r13, #3434h
+  0x86FB6  mov     r14, #8
+  0x86FBA  mov     [-r0], r14
+  0x86FBC  mov     [-r0], r13
+  0x86FBE  extp    #8, #1
+  0x86FC2  mov     r12, word_23426   ; CAL->0x23426
+  0x86FC6  mov     r13, #3428h
+  0x86FCA  mov     r14, #8
+  0x86FCE  calls   4, sub_42486   ; CALL sub_42486
+  0x86FD2  add     r0, #6
+  0x86FD4  extp    #0C1h, #1
+  0x86FD8  mov     word_305224, r4
+  0x86FDC  mov     [-r0], r9
+  0x86FDE  mov     [-r0], r8
+  0x86FE0  mov     r12, r4
+  0x86FE2  extp    #0C1h, #1
+  0x86FE6  mov     r13, word_305212
+  0x86FEA  mov     r14, word_3035EA
+  0x86FEE  mov     r15, word_3035E8
+  0x86FF2  calls   4, sub_42F16   ; CALL sub_42F16
+  0x86FF6  add     r0, #4
+  0x86FF8  mov     word_3035E8, r4
+  0x86FFC  mov     word_3035EA, r5
+  0x87000  mov     r6, word_3035EA
+  0x87004  extp    #0C1h, #1
+  0x87008  mov     word_305216, r6
+  0x8700C  extp    #0C1h, #1
+  0x87010  cmp     r9, word_305216
+  0x87014  jmpr    cc_ULE, loc_87020
+  0x87016  extp    #0C1h, #1
+  0x8701A  cmp     r8, word_305216
+  0x8701E  jmpr    cc_C, loc_8702C
+  0x87020  movb    rl6, #1
+  0x87022  extp    #0C1h, #1
+  0x87026  orb     byte_30479A, rl6
+  0x8702A  jmpr    cc_UC, loc_87038
+  0x8702C  movb    rl6, #0FEh
+  0x87030  extp    #0C1h, #1
+  0x87034  andb    byte_30479A, rl6
+  0x87038  jnb     word_FD4A.14, loc_870FA
+  0x8703C  extp    #0C1h, #1
+  0x87040  mov     r9, word_30521E
+  0x87044  extp    #8, #1
+  0x87048  cmp     r9, word_2349C   ; CAL->0x2349c
+  0x8704C  jmpr    cc_SLT, loc_87058
+  0x8704E  extp    #0C1h, #1
+  0x87052  mov     r9, word_30521E
+  0x87056  jmpr    cc_UC, loc_87060
+  0x87058  extp    #8, #1
+  0x8705C  mov     r9, word_2349C   ; CAL->0x2349c
+  0x87060  extp    #8, #1
+  0x87064  cmp     r9, word_234A0   ; CAL->0x234a0
+  0x87068  jmpr    cc_SGT, loc_87090
+  0x8706A  extp    #0C1h, #1
+  0x8706E  mov     r9, word_30521E
+  0x87072  extp    #8, #1
+  0x87076  cmp     r9, word_2349C   ; CAL->0x2349c
+  0x8707A  jmpr    cc_SLT, loc_87086
+  0x8707C  extp    #0C1h, #1
+  0x87080  mov     r9, word_30521E
+  0x87084  jmpr    cc_UC, loc_8708E
+  0x87086  extp    #8, #1
+  0x8708A  mov     r9, word_2349C   ; CAL->0x2349c
+  0x8708E  jmpr    cc_UC, loc_87098
+  0x87090  extp    #8, #1
+  0x87094  mov     r9, word_234A0   ; CAL->0x234a0
+  0x87098  mov     r8, r9
+  0x8709A  extp    #0C1h, #1
+  0x8709E  mov     r6, word_30521E
+  0x870A2  extp    #8, #1
+  0x870A6  cmp     r6, word_2349E   ; CAL->0x2349e
+  0x870AA  jmpr    cc_SGT, loc_870B6
+  0x870AC  extp    #0C1h, #1
+  0x870B0  mov     r6, word_30521E
+  0x870B4  jmpr    cc_UC, loc_870BE
+  0x870B6  extp    #8, #1
+  0x870BA  mov     r6, word_2349E   ; CAL->0x2349e
+  0x870BE  extp    #8, #1
+  0x870C2  cmp     r6, word_234A2   ; CAL->0x234a2
+  0x870C6  jmpr    cc_SLT, loc_870EE
+  0x870C8  extp    #0C1h, #1
+  0x870CC  mov     r6, word_30521E
+  0x870D0  extp    #8, #1
+  0x870D4  cmp     r6, word_2349E   ; CAL->0x2349e
+  0x870D8  jmpr    cc_SGT, loc_870E4
+  0x870DA  extp    #0C1h, #1
+  0x870DE  mov     r6, word_30521E
+  0x870E2  jmpr    cc_UC, loc_870EC
+  0x870E4  extp    #8, #1
+  0x870E8  mov     r6, word_2349E   ; CAL->0x2349e
+  0x870EC  jmpr    cc_UC, loc_870F6
+  0x870EE  extp    #8, #1
+  0x870F2  mov     r6, word_234A2   ; CAL->0x234a2
+  0x870F6  mov     r9, r6
+  0x870F8  jmpr    cc_UC, loc_8710A
+  0x870FA  extp    #8, #1
+  0x870FE  mov     r9, word_2349E   ; CAL->0x2349e
+  0x87102  extp    #8, #1
+  0x87106  mov     r8, word_2349C   ; CAL->0x2349c
+  0x8710A  extp    #0C1h, #1
+  0x8710E  movb    rl6, byte_30479A
+  0x87112  jnb     r6.5, loc_8712A
+  0x87116  mov     word_3035EC, ZEROS
+  0x8711A  mov     word_3035EE, ZEROS
+  0x8711E  extp    #0C1h, #1
+  0x87122  mov     word_30521E, ZEROS
+  0x87126  jmpa    cc_UC, loc_872C4
+  0x8712A  mov     r6, word_303ADA
+  0x8712E  jnb     r6.0, loc_87166
+  0x87132  extp    #0C1h, #1
+  0x87136  mov     r6, word_30521E
+  0x8713A  extp    #8, #1
+  0x8713E  cmp     r6, word_2349A   ; CAL->0x2349a
+  0x87142  jmpr    cc_SGT, loc_87156
+  0x87144  extp    #0C1h, #1
+  0x87148  mov     r6, word_30521E
+  0x8714C  extp    #8, #1
+  0x87150  cmp     r6, word_23498   ; CAL->0x23498
+  0x87154  jmpr    cc_SGE, loc_87162
+  0x87156  mov     r6, word_303B78
+  0x8715A  jnb     r6.0, loc_87162
+  0x8715E  mov     r6, #1
+  0x87160  jmpr    cc_UC, loc_87164
+  0x87162  mov     r6, #0
+  0x87164  jmpr    cc_UC, loc_8716C
+  0x87166  mov     r6, word_303B78
+  0x8716A  and     r6, #1
+  0x8716C  cmp     r6, #0
+  0x8716E  jmpa    cc_Z, loc_871FC
+  0x87172  extp    #6, #1
+  0x87176  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x8717A  jb      r6.0, loc_87182
+  0x8717E  jmpa    cc_UC, loc_87282
+  0x87182  extp    #6, #1
+  0x87186  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x8718A  jnb     r6.2, loc_87196
+  0x8718E  mov     r6, word_303ADA
+  0x87192  jb      r6.0, loc_871BC
+  0x87196  extp    #6, #1
+  0x8719A  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x8719E  jnb     r6.1, loc_871BC
+  0x871A2  extp    #0C1h, #1
+  0x871A6  mov     r6, word_30521C
+  0x871AA  extp    #0C1h, #1
+  0x871AE  sub     r6, word_30521E
+  0x871B2  jmpr    cc_NV, loc_871BA
+  0x871B4  mov     r6, #8000h
+  0x871B8  subc    r6, #0
+  0x871BA  jmpr    cc_UC, loc_871DA
+  0x871BC  extp    #0C1h, #1
+  0x871C0  mov     r6, word_30521E
+  0x871C4  cmp     r6, #8000h
+  0x871C8  jmpr    cc_NZ, loc_871D0
+  0x871CA  mov     r6, #7FFFh
+  0x871CE  jmpr    cc_UC, loc_871DA
+  0x871D0  extp    #0C1h, #1
+  0x871D4  mov     r6, word_30521E
+  0x871D8  neg     r6
+  0x871DA  extp    #8, #1
+  0x871DE  mov     r12, word_234AC   ; CAL->0x234ac
+  0x871E2  mov     r13, r6
+  0x871E4  mov     r14, word_3035EE
+  0x871E8  mov     r15, word_3035EC
+  0x871EC  calls   4, sub_42DF4   ; CALL sub_42DF4
+  0x871F0  mov     word_3035EC, r4
+  0x871F4  mov     word_3035EE, r5
+  0x871F8  jmpa    cc_UC, loc_87282
+  0x871FC  extp    #0C2h, #1
+  0x87200  movb    rl6, byte_30A0DC
+  0x87204  jnb     r6.7, loc_8720C
+  0x87208  mov     r12, #1
+  0x8720A  jmpr    cc_UC, loc_8720E
+  0x8720C  mov     r12, #0
+  0x8720E  cmp     r12, #0
+  0x87210  jmpr    cc_Z, loc_87282
+  0x87212  extp    #0C2h, #1
+  0x87216  movb    rl6, byte_30A0DC
+  0x8721A  jnb     r6.6, loc_87222
+  0x8721E  mov     r12, #1
+  0x87220  jmpr    cc_UC, loc_87224
+  0x87222  mov     r12, #0
+  0x87224  cmp     r12, #0
+  0x87226  jmpr    cc_Z, loc_87282
+  0x87228  movb    rl6, byte_3015BA
+  0x8722C  jnb     r6.1, loc_87282
+  0x87230  extp    #0C1h, #1
+  0x87234  mov     r12, word_305212
+  0x87238  mov     [-r0], r12
+  0x8723A  mov     r13, #3468h
+  0x8723E  mov     r14, #8
+  0x87242  mov     [-r0], r14
+  0x87244  mov     [-r0], r13
+  0x87246  extp    #8, #1
+  0x8724A  mov     r12, word_2345A   ; CAL->0x2345a
+  0x8724E  mov     r13, #345Ch
+  0x87252  mov     r14, #8
+  0x87256  calls   4, sub_42486   ; CALL sub_42486
+  0x8725A  add     r0, #6
+  0x8725C  extp    #0C1h, #1
+  0x87260  mov     word_305228, r4
+  0x87264  mov     r12, r4
+  0x87266  extp    #0C1h, #1
+  0x8726A  mov     r13, word_305212
+  0x8726E  mov     r14, word_3035EE
+  0x87272  mov     r15, word_3035EC
+  0x87276  calls   4, sub_42DF4   ; CALL sub_42DF4
+  0x8727A  mov     word_3035EC, r4
+  0x8727E  mov     word_3035EE, r5
+  0x87282  mov     r6, word_3035EE
+  0x87286  ashr    r6, #3
+  0x87288  cmp     r6, r9
+  0x8728A  jmpr    cc_SLE, loc_872A2
+  0x8728C  extp    #0C1h, #1
+  0x87290  mov     word_30521E, r9
+  0x87294  mov     r6, r9
+  0x87296  shl     r6, #3
+  0x87298  mov     word_3035EE, r6
+  0x8729C  mov     word_3035EC, ZEROS
+  0x872A0  jmpr    cc_UC, loc_872C4
+  0x872A2  cmp     r6, r8
+  0x872A4  jmpr    cc_SGE, loc_872BC
+  0x872A6  extp    #0C1h, #1
+  0x872AA  mov     word_30521E, r8
+  0x872AE  mov     r6, r8
+  0x872B0  shl     r6, #3
+  0x872B2  mov     word_3035EE, r6
+  0x872B6  mov     word_3035EC, ONES
+  0x872BA  jmpr    cc_UC, loc_872C4
+  0x872BC  extp    #0C1h, #1
+  0x872C0  mov     word_30521E, r6
+  0x872C4  extp    #0C1h, #1
+  0x872C8  cmp     r9, word_30521E
+  0x872CC  jmpr    cc_SLE, loc_872D8
+  0x872CE  extp    #0C1h, #1
+  0x872D2  cmp     r8, word_30521E
+  0x872D6  jmpr    cc_SLT, loc_872E6
+  0x872D8  movb    rl6, #80h
+  0x872DC  extp    #0C1h, #1
+  0x872E0  orb     byte_30479A, rl6
+  0x872E4  jmpr    cc_UC, loc_872F2
+  0x872E6  movb    rl6, #7Fh
+  0x872EA  extp    #0C1h, #1
+  0x872EE  andb    byte_30479A, rl6
+  0x872F2  jnb     word_FD4A.14, loc_873B4
+  0x872F6  extp    #0C1h, #1
+  0x872FA  mov     r9, word_305222
+  0x872FE  extp    #8, #1
+  0x87302  cmp     r9, word_234A4   ; CAL->0x234a4
+  0x87306  jmpr    cc_SLT, loc_87312
+  0x87308  extp    #0C1h, #1
+  0x8730C  mov     r9, word_305222
+  0x87310  jmpr    cc_UC, loc_8731A
+  0x87312  extp    #8, #1
+  0x87316  mov     r9, word_234A4   ; CAL->0x234a4
+  0x8731A  extp    #8, #1
+  0x8731E  cmp     r9, word_234A8   ; CAL->0x234a8
+  0x87322  jmpr    cc_SGT, loc_8734A
+  0x87324  extp    #0C1h, #1
+  0x87328  mov     r9, word_305222
+  0x8732C  extp    #8, #1
+  0x87330  cmp     r9, word_234A4   ; CAL->0x234a4
+  0x87334  jmpr    cc_SLT, loc_87340
+  0x87336  extp    #0C1h, #1
+  0x8733A  mov     r9, word_305222
+  0x8733E  jmpr    cc_UC, loc_87348
+  0x87340  extp    #8, #1
+  0x87344  mov     r9, word_234A4   ; CAL->0x234a4
+  0x87348  jmpr    cc_UC, loc_87352
+  0x8734A  extp    #8, #1
+  0x8734E  mov     r9, word_234A8   ; CAL->0x234a8
+  0x87352  mov     r8, r9
+  0x87354  extp    #0C1h, #1
+  0x87358  mov     r6, word_305222
+  0x8735C  extp    #8, #1
+  0x87360  cmp     r6, word_234A6   ; CAL->0x234a6
+  0x87364  jmpr    cc_SGT, loc_87370
+  0x87366  extp    #0C1h, #1
+  0x8736A  mov     r6, word_305222
+  0x8736E  jmpr    cc_UC, loc_87378
+  0x87370  extp    #8, #1
+  0x87374  mov     r6, word_234A6   ; CAL->0x234a6
+  0x87378  extp    #8, #1
+  0x8737C  cmp     r6, word_234AA   ; CAL->0x234aa
+  0x87380  jmpr    cc_SLT, loc_873A8
+  0x87382  extp    #0C1h, #1
+  0x87386  mov     r6, word_305222
+  0x8738A  extp    #8, #1
+  0x8738E  cmp     r6, word_234A6   ; CAL->0x234a6
+  0x87392  jmpr    cc_SGT, loc_8739E
+  0x87394  extp    #0C1h, #1
+  0x87398  mov     r6, word_305222
+  0x8739C  jmpr    cc_UC, loc_873A6
+  0x8739E  extp    #8, #1
+  0x873A2  mov     r6, word_234A6   ; CAL->0x234a6
+  0x873A6  jmpr    cc_UC, loc_873B0
+  0x873A8  extp    #8, #1
+  0x873AC  mov     r6, word_234AA   ; CAL->0x234aa
+  0x873B0  mov     r9, r6
+  0x873B2  jmpr    cc_UC, loc_873C4
+  0x873B4  extp    #8, #1
+  0x873B8  mov     r9, word_234A6   ; CAL->0x234a6
+  0x873BC  extp    #8, #1
+  0x873C0  mov     r8, word_234A4   ; CAL->0x234a4
+  0x873C4  extp    #0C1h, #1
+  0x873C8  movb    rl6, byte_30479A
+  0x873CC  jnb     r6.6, loc_873E4
+  0x873D0  mov     word_3035F0, ZEROS
+  0x873D4  mov     word_3035F2, ZEROS
+  0x873D8  extp    #0C1h, #1
+  0x873DC  mov     word_305222, ZEROS
+  0x873E0  jmpa    cc_UC, loc_8757E
+  0x873E4  mov     r6, word_303ADA
+  0x873E8  jnb     r6.0, loc_87420
+  0x873EC  extp    #0C1h, #1
+  0x873F0  mov     r6, word_305222
+  0x873F4  extp    #8, #1
+  0x873F8  cmp     r6, word_2349A   ; CAL->0x2349a
+  0x873FC  jmpr    cc_SGT, loc_87410
+  0x873FE  extp    #0C1h, #1
+  0x87402  mov     r6, word_305222
+  0x87406  extp    #8, #1
+  0x8740A  cmp     r6, word_23498   ; CAL->0x23498
+  0x8740E  jmpr    cc_SGE, loc_8741C
+  0x87410  mov     r6, word_303B78
+  0x87414  jnb     r6.0, loc_8741C
+  0x87418  mov     r6, #1
+  0x8741A  jmpr    cc_UC, loc_8741E
+  0x8741C  mov     r6, #0
+  0x8741E  jmpr    cc_UC, loc_87426
+  0x87420  mov     r6, word_303B78
+  0x87424  and     r6, #1
+  0x87426  cmp     r6, #0
+  0x87428  jmpa    cc_Z, loc_874B6
+  0x8742C  extp    #6, #1
+  0x87430  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x87434  jb      r6.0, loc_8743C
+  0x87438  jmpa    cc_UC, loc_8753C
+  0x8743C  extp    #6, #1
+  0x87440  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x87444  jnb     r6.2, loc_87450
+  0x87448  mov     r6, word_303ADA
+  0x8744C  jb      r6.0, loc_87476
+  0x87450  extp    #6, #1
+  0x87454  movb    rl6, FRARAWG   ; CAL->0x19a82
+  0x87458  jnb     r6.1, loc_87476
+  0x8745C  extp    #0C1h, #1
+  0x87460  mov     r6, word_305220
+  0x87464  extp    #0C1h, #1
+  0x87468  sub     r6, word_305222
+  0x8746C  jmpr    cc_NV, loc_87474
+  0x8746E  mov     r6, #8000h
+  0x87472  subc    r6, #0
+  0x87474  jmpr    cc_UC, loc_87494
+  0x87476  extp    #0C1h, #1
+  0x8747A  mov     r6, word_305222
+  0x8747E  cmp     r6, #8000h
+  0x87482  jmpr    cc_NZ, loc_8748A
+  0x87484  mov     r6, #7FFFh
+  0x87488  jmpr    cc_UC, loc_87494
+  0x8748A  extp    #0C1h, #1
+  0x8748E  mov     r6, word_305222
+  0x87492  neg     r6
+  0x87494  extp    #8, #1
+  0x87498  mov     r12, word_234AC   ; CAL->0x234ac
+  0x8749C  mov     r13, r6
+  0x8749E  mov     r14, word_3035F2
+  0x874A2  mov     r15, word_3035F0
+  0x874A6  calls   4, sub_42DF4   ; CALL sub_42DF4
+  0x874AA  mov     word_3035F0, r4
+  0x874AE  mov     word_3035F2, r5
+  0x874B2  jmpa    cc_UC, loc_8753C
+  0x874B6  extp    #0C2h, #1
+  0x874BA  movb    rl6, byte_30A0DD
+  0x874BE  jnb     r6.7, loc_874C6
+  0x874C2  mov     r12, #1
+  0x874C4  jmpr    cc_UC, loc_874C8
+  0x874C6  mov     r12, #0
+  0x874C8  cmp     r12, #0
+  0x874CA  jmpr    cc_Z, loc_8753C
+  0x874CC  extp    #0C2h, #1
+  0x874D0  movb    rl6, byte_30A0DD
+  0x874D4  jnb     r6.6, loc_874DC
+  0x874D8  mov     r12, #1
+  0x874DA  jmpr    cc_UC, loc_874DE
+  0x874DC  mov     r12, #0
+  0x874DE  cmp     r12, #0
+  0x874E0  jmpr    cc_Z, loc_8753C
+  0x874E2  movb    rl6, byte_3015BA
+  0x874E6  jnb     r6.1, loc_8753C
+  0x874EA  extp    #0C1h, #1
+  0x874EE  mov     r12, word_305212
+  0x874F2  mov     [-r0], r12
+  0x874F4  mov     r13, #3482h
+  0x874F8  mov     r14, #8
+  0x874FC  mov     [-r0], r14
+  0x874FE  mov     [-r0], r13
+  0x87500  extp    #8, #1
+  0x87504  mov     r12, word_23474   ; CAL->0x23474
+  0x87508  mov     r13, #3476h
+  0x8750C  mov     r14, #8
+  0x87510  calls   4, sub_42486   ; CALL sub_42486
+  0x87514  add     r0, #6
+  0x87516  extp    #0C1h, #1
+  0x8751A  mov     word_30522A, r4
+  0x8751E  mov     r12, r4
+  0x87520  extp    #0C1h, #1
+  0x87524  mov     r13, word_305212
+  0x87528  mov     r14, word_3035F2
+  0x8752C  mov     r15, word_3035F0
+  0x87530  calls   4, sub_42DF4   ; CALL sub_42DF4
+  0x87534  mov     word_3035F0, r4
+  0x87538  mov     word_3035F2, r5
+  0x8753C  mov     r6, word_3035F2
+  0x87540  ashr    r6, #3
+  0x87542  cmp     r6, r9
+  0x87544  jmpr    cc_SLE, loc_8755C
+  0x87546  extp    #0C1h, #1
+  0x8754A  mov     word_305222, r9
+  0x8754E  mov     r6, r9
+  0x87550  shl     r6, #3
+  0x87552  mov     word_3035F2, r6
+  0x87556  mov     word_3035F0, ZEROS
+  0x8755A  jmpr    cc_UC, loc_8757E
+  0x8755C  cmp     r6, r8
+  0x8755E  jmpr    cc_SGE, loc_87576
+  0x87560  extp    #0C1h, #1
+  0x87564  mov     word_305222, r8
+  0x87568  mov     r6, r8
+  0x8756A  shl     r6, #3
+  0x8756C  mov     word_3035F2, r6
+  0x87570  mov     word_3035F0, ONES
+  0x87574  jmpr    cc_UC, loc_8757E
+  0x87576  extp    #0C1h, #1
+  0x8757A  mov     word_305222, r6
+  0x8757E  extp    #0C1h, #1
+  0x87582  cmp     r9, word_305222
+  0x87586  jmpr    cc_SLE, loc_87592
+  0x87588  extp    #0C1h, #1
+  0x8758C  cmp     r8, word_305222
+  0x87590  jmpr    cc_SLT, loc_8759E
+  0x87592  movb    rl6, #1
+  0x87594  extp    #0C1h, #1
+  0x87598  orb     byte_30479B, rl6
+  0x8759C  jmpr    cc_UC, loc_875AA
+  0x8759E  movb    rl6, #0FEh
+  0x875A2  extp    #0C1h, #1
+  0x875A6  andb    byte_30479B, rl6
+  0x875AA  add     r0, #4
+  0x875AC  mov     r6, [r0+]
+  0x875AE  mov     r8, [r0+]
+  0x875B0  mov     r9, [r0+]
+  0x875B2  rets
+
+===== sub_416B0  (0x416B0-0x416F0) =====
+CALLERS: sub_42420, sub_42464, sub_424F4, sub_42544, sub_42596, sub_425E8, sub_42638, sub_42688, sub_426DA
+  0x416B0  mov     r4, #0
+  0x416B2  mov     r3, r15
+  0x416B4  mov     r2, r12
+  0x416B6  extp    r13, #1
+  0x416B8  cmpb    rl3, [r2]
+  0x416BA  jmpr    cc_ULE, locret_416EE
+  0x416BC  add     r2, r14
+  0x416BE  sub     r2, #1
+  0x416C0  extp    r13, #1
+  0x416C2  cmpb    rl3, [r2]
+  0x416C4  jmpr    cc_NC, loc_416EA
+  0x416C6  add     r2, #1
+  0x416C8  sub     r2, #1
+  0x416CA  extp    r13, #1
+  0x416CC  cmpb    rl3, [r2]
+  0x416CE  jmpr    cc_C, loc_416C8
+  0x416D0  extp    r13, #1
+  0x416D2  subb    rl3, [r2]
+  0x416D4  shl     r3, #8
+  0x416D6  mov     MDL, r3
+  0x416DA  extp    r13, #2
+  0x416DC  movb    rl3, [r2+#1]
+  0x416E0  subb    rl3, [r2]
+  0x416E2  movbz   r3, rl3
+  0x416E4  divu    r3
+  0x416E6  mov     r4, MDL
+  0x416EA  sub     r2, r12
+  0x416EC  movb    rh4, rl2
+  0x416EE  rets
+
+===== sub_420A8  (0x420A8-0x420DA) =====
+CALLERS: sub_42464, sub_42486, sub_48126, sub_4AA96, sub_4FE7E, sub_55A68, sub_55DCE, sub_64C80, sub_7040C, sub_84F10, sub_8D766, sub_92224, sub_CA578, sub_CB3C4, sub_D2854, sub_D9AAC, sub_D9EA0
+  0x420A8  mov     r3, r14
+  0x420AA  movbz   r2, rh3
+  0x420AC  shl     r2, #1
+  0x420AE  add     r12, r2
+  0x420B0  extp    r13, #1
+  0x420B2  mov     r4, [r12+]
+  0x420B4  shl     r14, #8
+  0x420B6  jmpr    cc_Z, locret_420D8
+  0x420B8  extp    r13, #1
+  0x420BA  mov     r3, [r12]
+  0x420BC  cmp     r4, r3
+  0x420BE  jmpr    cc_UGT, loc_420CC
+  0x420C0  sub     r3, r4
+  0x420C2  mulu    r14, r3
+  0x420C4  mov     r2, MDH
+  0x420C8  add     r4, r2
+  0x420CA  rets
+  0x420CC  mov     r2, r4
+  0x420CE  sub     r2, r3
+  0x420D0  mulu    r14, r2
+  0x420D2  mov     r2, MDH
+  0x420D6  sub     r4, r2
+  0x420D8  rets
+
+===== sub_DBF44  (0xDBF44-0xDC31A) =====
+CALLERS: sub_B81C
+  0xDBF44  mov     [-r0], r8
+  0xDBF46  movb    rl1, byte_301868
+  0xDBF4A  jb      r1.0, loc_DBFAC
+  0xDBF4E  movb    rl2, byte_30186B
+  0xDBF52  extp    #6, #1
+  0xDBF56  cmpb    rl2, byte_1BE69   ; CAL->0x1be69
+  0xDBF5A  jmpr    cc_NC, loc_DBF6A
+  0xDBF5C  mov     r12, word_302E34
+  0xDBF60  extp    #0Ah, #1
+  0xDBF64  cmp     r12, word_2BF4A   ; CAL->0x2bf4a
+  0xDBF68  jmpr    cc_C, loc_DBF74
+  0xDBF6A  movb    rl1, #0FDh
+  0xDBF6E  andb    byte_301869, rl1
+  0xDBF72  jmpr    cc_UC, loc_DBF90
+  0xDBF74  movb    rl1, byte_301869
+  0xDBF78  jb      r1.0, loc_DBF90
+  0xDBF7C  mov     r8, word_302E34
+  0xDBF80  extp    #0Ah, #1
+  0xDBF84  cmp     r8, word_2BF4A   ; CAL->0x2bf4a
+  0xDBF88  jmpr    cc_NC, loc_DBF90
+  0xDBF8A  movb    rl2, #2
+  0xDBF8C  orb     byte_301869, rl2
+  0xDBF90  movb    rl1, byte_301869
+  0xDBF94  jnb     r1.1, loc_DBFAC
+  0xDBF98  movb    rl2, #1
+  0xDBF9A  orb     byte_301869, rl2
+  0xDBF9E  movb    rl1, byte_30186B
+  0xDBFA2  cmpb    rl1, #0FFh
+  0xDBFA6  jmpr    cc_NC, loc_DBFAC
+  0xDBFA8  subb    byte_30186B, ONES
+  0xDBFAC  mov     r8, word_30256A
+  0xDBFB0  jb      r8.3, loc_DBFD2
+  0xDBFB4  jb      word_FD0E.12, loc_DBFC4
+  0xDBFB8  movb    rl1, byte_301869
+  0xDBFBC  jb      r1.1, loc_DBFC4
+  0xDBFC0  jnb     word_FD7E.13, loc_DBFD2
+  0xDBFC4  movb    rl1, #4
+  0xDBFC6  orb     byte_301867, rl1
+  0xDBFCA  movb    rl2, #2
+  0xDBFCC  orb     byte_301867, rl2
+  0xDBFD0  jmpr    cc_UC, loc_DBFE2
+  0xDBFD2  movb    rl1, #0FBh
+  0xDBFD6  andb    byte_301867, rl1
+  0xDBFDA  movb    rl2, #0FDh
+  0xDBFDE  andb    byte_301867, rl2
+  0xDBFE2  extp    #6, #1
+  0xDBFE6  movb    rl1, byte_1BE46   ; CAL->0x1be46
+  0xDBFEA  jb      r1.0, loc_DBFF2
+  0xDBFEE  jmpa    cc_UC, loc_DC156
+  0xDBFF2  jb      word_FD22.7, loc_DC000
+  0xDBFF6  movb    rl1, byte_301868
+  0xDBFFA  jb      r1.1, loc_DC000
+  0xDBFFE  jmpr    cc_UC, loc_DC004
+  0xDC000  bset    USR0
+  0xDC002  jmpr    cc_UC, loc_DC006
+  0xDC004  bclr    USR0
+  0xDC006  bmov    r8.15, USR0
+  0xDC00A  extp    #0Ah, #1
+  0xDC00E  mov     r12, word_2BF4C   ; CAL->0x2bf4c
+  0xDC012  mov     r13, word_302E3E
+  0xDC016  cmp     r12, #0
+  0xDC018  jmpr    cc_N, loc_DC024
+  0xDC01A  add     r12, r13
+  0xDC01C  jmpr    cc_NC, loc_DC02A
+  0xDC01E  mov     r12, #0FFFFh
+  0xDC022  jmpr    cc_UC, loc_DC02A
+  0xDC024  add     r12, r13
+  0xDC026  jmpr    cc_C, loc_DC02A
+  0xDC028  mov     r12, #0
+  0xDC02A  cmp     r12, word_302E38
+  0xDC02E  jmpr    cc_ULE, loc_DC034
+  0xDC030  bset    USR0
+  0xDC032  jmpr    cc_UC, loc_DC036
+  0xDC034  bclr    USR0
+  0xDC036  bmov    r12.15, USR0
+  0xDC03A  movb    rl1, byte_30186F
+  0xDC03E  jb      r1.4, loc_DC046
+  0xDC042  jnb     r8.15, loc_DC0AE
+  0xDC046  jb      r8.15, loc_DC066
+  0xDC04A  mov     r13, word_302E82
+  0xDC04E  jmpr    cc_Z, loc_DC056
+  0xDC050  add     word_302E82, ONES
+  0xDC054  jmpr    cc_UC, loc_DC07C
+  0xDC056  movbz   r13, byte_30186F
+  0xDC05A  or      r13, #20h
+  0xDC05E  mov     r1, r13
+  0xDC060  movb    byte_30186F, rl1
+  0xDC064  jmpr    cc_UC, loc_DC07C
+  0xDC066  mov     r13, word_17720   ; CAL->0x17720
+  0xDC06A  mov     word_302E82, r13
+  0xDC06E  movbz   r14, byte_30186F
+  0xDC072  and     r14, #0FFDFh
+  0xDC076  mov     r1, r14
+  0xDC078  movb    byte_30186F, rl1
+  0xDC07C  jb      r8.15, loc_DC084
+  0xDC080  jb      r12.15, loc_DC08C
+  0xDC084  movb    rl1, byte_30186F
+  0xDC088  jnb     r1.5, loc_DC09C
+  0xDC08C  movbz   r8, byte_30186F
+  0xDC090  and     r8, #0FFEFh
+  0xDC094  mov     r1, r8
+  0xDC096  movb    byte_30186F, rl1
+  0xDC09A  jmpr    cc_UC, loc_DC0AE
+  0xDC09C  jnb     r8.15, loc_DC0AE
+  0xDC0A0  movbz   r8, byte_30186F
+  0xDC0A4  or      r8, #10h
+  0xDC0A8  mov     r1, r8
+  0xDC0AA  movb    byte_30186F, rl1
+  0xDC0AE  movb    rl1, byte_30186F
+  0xDC0B2  jb      r1.6, loc_DC0BA
+  0xDC0B6  jb      word_FD7A.15, loc_DC156
+  0xDC0BA  jnb     word_FD7A.15, loc_DC0DA
+  0xDC0BE  mov     r8, word_302E80
+  0xDC0C2  jmpr    cc_Z, loc_DC0CA
+  0xDC0C4  add     word_302E80, ONES
+  0xDC0C8  jmpr    cc_UC, loc_DC0F0
+  0xDC0CA  movbz   r8, byte_30186F
+  0xDC0CE  or      r8, #80h
+  0xDC0D2  mov     r1, r8
+  0xDC0D4  movb    byte_30186F, rl1
+  0xDC0D8  jmpr    cc_UC, loc_DC0F0
+  0xDC0DA  mov     r8, word_17720   ; CAL->0x17720
+  0xDC0DE  mov     word_302E80, r8
+  0xDC0E2  movbz   r13, byte_30186F
+  0xDC0E6  and     r13, #0FF7Fh
+  0xDC0EA  mov     r1, r13
+  0xDC0EC  movb    byte_30186F, rl1
+  0xDC0F0  jb      r12.15, loc_DC0FC
+  0xDC0F4  movb    rl1, byte_30186F
+  0xDC0F8  jnb     r1.7, loc_DC10C
+  0xDC0FC  movbz   r8, byte_30186F
+  0xDC100  and     r8, #0FFBFh
+  0xDC104  mov     r1, r8
+  0xDC106  movb    byte_30186F, rl1
+  0xDC10A  jmpr    cc_UC, loc_DC148
+  0xDC10C  movb    rl1, byte_301869
+  0xDC110  jb      r1.2, loc_DC148
+  0xDC114  extp    #0Ah, #1
+  0xDC118  mov     r8, word_2BF4C   ; CAL->0x2bf4c
+  0xDC11C  mov     r12, word_302E3C
+  0xDC120  cmp     r8, #0
+  0xDC122  jmpr    cc_N, loc_DC12E
+  0xDC124  add     r8, r12
+  0xDC126  jmpr    cc_NC, loc_DC134
+  0xDC128  mov     r8, #0FFFFh
+  0xDC12C  jmpr    cc_UC, loc_DC134
+  0xDC12E  add     r8, r12
+  0xDC130  jmpr    cc_C, loc_DC134
+  0xDC132  mov     r8, #0
+  0xDC134  cmp     r8, word_302E38
+  0xDC138  jmpr    cc_UGT, loc_DC148
+  0xDC13A  movbz   r8, byte_30186F
+  0xDC13E  or      r8, #40h
+  0xDC142  mov     r1, r8
+  0xDC144  movb    byte_30186F, rl1
+  0xDC148  movb    rl1, byte_30186F
+  0xDC14C  jnb     r1.6, loc_DC156
+  0xDC150  movb    rl2, #4
+  0xDC152  orb     byte_301869, rl2
+  0xDC156  movb    rl1, byte_30186F
+  0xDC15A  jb      r1.4, loc_DC162
+  0xDC15E  jnb     r1.6, loc_DC16A
+  0xDC162  movb    rl1, #8
+  0xDC164  orb     byte_301867, rl1
+  0xDC168  jmpr    cc_UC, loc_DC172
+  0xDC16A  movb    rl1, #0F7h
+  0xDC16E  andb    byte_301867, rl1
+  0xDC172  movbz   r8, byte_30183C
+  0xDC176  mov     [-r0], r8
+  0xDC178  mov     r12, #3F3Ch
+  0xDC17C  mov     r13, #0Ah
+  0xDC180  mov     [-r0], r13
+  0xDC182  mov     [-r0], r12
+  0xDC184  extp    #0Ah, #1
+  0xDC188  movbz   r12, byte_2BF34   ; CAL->0x2bf34
+  0xDC18C  mov     r13, #3F35h
+  0xDC190  mov     r14, #0Ah
+  0xDC194  calls   4, sub_42464   ; CALL sub_42464
+  0xDC198  add     r0, #6
+  0xDC19A  mov     word_302E7A, r4
+  0xDC19E  mov     r8, word_302E4A
+  0xDC1A2  mov     r12, word_302E60
+  0xDC1A6  shr     r12, #1
+  0xDC1A8  cmp     r8, #0
+  0xDC1AA  jmpr    cc_N, loc_DC1B6
+  0xDC1AC  add     r8, r12
+  0xDC1AE  jmpr    cc_NC, loc_DC1BC
+  0xDC1B0  mov     r8, #0FFFFh
+  0xDC1B4  jmpr    cc_UC, loc_DC1BC
+  0xDC1B6  add     r8, r12
+  0xDC1B8  jmpr    cc_C, loc_DC1BC
+  0xDC1BA  mov     r8, #0
+  0xDC1BC  mulu    r8, r4
+  0xDC1BE  mov     r12, MDL
+  0xDC1C2  mov     r13, MDH
+  0xDC1C6  jmpr    cc_N, loc_DC1D2
+  0xDC1C8  shl     r13, #2
+  0xDC1CA  jmpr    cc_C, loc_DC1D2
+  0xDC1CC  shr     r12, #14
+  0xDC1CE  or      r13, r12
+  0xDC1D0  jmpr    cc_UC, loc_DC1D6
+  0xDC1D2  mov     r13, #0FFFFh
+  0xDC1D6  mov     word_302E7C, r13
+  0xDC1DA  extp    #6, #1
+  0xDC1DE  movb    rl1, byte_1BE49   ; CAL->0x1be49
+  0xDC1E2  jnb     r1.0, loc_DC204
+  0xDC1E6  movb    rl1, byte_301872
+  0xDC1EA  jb      r1.0, loc_DC1F6
+  0xDC1EE  mov     r8, word_303ABC
+  0xDC1F2  jnb     r8.0, loc_DC204
+  0xDC1F6  movbz   r8, byte_30186F
+  0xDC1FA  or      r8, #1
+  0xDC1FC  mov     r1, r8
+  0xDC1FE  movb    byte_30186F, rl1
+  0xDC202  jmpr    cc_UC, loc_DC212
+  0xDC204  movbz   r8, byte_30186F
+  0xDC208  and     r8, #0FFFEh
+  0xDC20C  mov     r1, r8
+  0xDC20E  movb    byte_30186F, rl1
+  0xDC212  movb    rl1, byte_301867
+  0xDC216  jnb     r1.1, loc_DC280
+  0xDC21A  movb    rl2, byte_30186F
+  0xDC21E  jb      r2.0, loc_DC268
+  0xDC222  movb    rl3, byte_301868
+  0xDC226  jb      r3.1, loc_DC268
+  0xDC22A  jnb     r1.3, loc_DC23E
+  0xDC22E  extp    #6, #1
+  0xDC232  movbz   r8, byte_1BE66   ; CAL->0x1be66
+  0xDC236  shl     r8, #8
+  0xDC238  mov     word_302E7E, r8
+  0xDC23C  jmpr    cc_UC, loc_DC296
+  0xDC23E  mov     r8, word_302E7C
+  0xDC242  extp    #0Ah, #1
+  0xDC246  cmp     r8, word_2BF4E   ; CAL->0x2bf4e
+  0xDC24A  jmpr    cc_NC, loc_DC25A
+  0xDC24C  extp    #0Ah, #1
+  0xDC250  mov     r12, word_2BF4E   ; CAL->0x2bf4e
+  0xDC254  mov     word_302E7E, r12
+  0xDC258  jmpr    cc_UC, loc_DC296
+  0xDC25A  mov     r8, word_302E7C
+  0xDC25E  extp    #0Ah, #1
+  0xDC262  cmp     r8, word_2BF50   ; CAL->0x2bf50
+  0xDC266  jmpr    cc_ULE, loc_DC276
+  0xDC268  extp    #0Ah, #1
+  0xDC26C  mov     r8, word_2BF50   ; CAL->0x2bf50
+  0xDC270  mov     word_302E7E, r8
+  0xDC274  jmpr    cc_UC, loc_DC296
+  0xDC276  mov     r8, word_302E7C
+  0xDC27A  mov     word_302E7E, r8
+  0xDC27E  jmpr    cc_UC, loc_DC296
+  0xDC280  extp    #6, #1
+  0xDC284  movb    rl1, KFWNWWK2   ; CAL->0x1be4a
+  0xDC288  jnb     r1.0, loc_DC292
+  0xDC28C  mov     word_302E7E, ONES
+  0xDC290  jmpr    cc_UC, loc_DC296
+  0xDC292  mov     word_302E7E, ZEROS
+  0xDC296  mov     r8, word_302E7C
+  0xDC29A  extp    #0Ah, #1
+  0xDC29E  cmp     r8, word_2BF50   ; CAL->0x2bf50
+  0xDC2A2  jmpr    cc_C, loc_DC2AC
+  0xDC2A4  mov     r12, word_302E42
+  0xDC2A8  cmp     r12, #0
+  0xDC2AA  jmpr    cc_SGT, loc_DC2C2
+  0xDC2AC  mov     r8, word_302E7C
+  0xDC2B0  extp    #0Ah, #1
+  0xDC2B4  cmp     r8, word_2BF4E   ; CAL->0x2bf4e
+  0xDC2B8  jmpr    cc_UGT, loc_DC2CA
+  0xDC2BA  mov     r12, word_302E42
+  0xDC2BE  cmp     r12, #0
+  0xDC2C0  jmpr    cc_SGE, loc_DC2CA
+  0xDC2C2  movb    rl1, #1
+  0xDC2C4  orb     byte_301867, rl1
+  0xDC2C8  jmpr    cc_UC, loc_DC2D2
+  0xDC2CA  movb    rl1, #0FEh
+  0xDC2CE  andb    byte_301867, rl1
+  0xDC2D2  movb    rl1, byte_30186F
+  0xDC2D6  jnb     r1.1, loc_DC2E6
+  0xDC2DA  movbz   r8, rl1
+  0xDC2DC  or      r8, #4
+  0xDC2DE  mov     r2, r8
+  0xDC2E0  movb    byte_30186F, rl2
+  0xDC2E4  jmpr    cc_UC, loc_DC2F4
+  0xDC2E6  movbz   r8, byte_30186F
+  0xDC2EA  and     r8, #0FFFBh
+  0xDC2EE  mov     r1, r8
+  0xDC2F0  movb    byte_30186F, rl1
+  0xDC2F4  jnb     word_FD22.7, loc_DC308
+  0xDC2F8  movbz   r8, byte_30186F
+  0xDC2FC  or      r8, #8
+  0xDC300  mov     r1, r8
+  0xDC302  movb    byte_30186F, rl1
+  0xDC306  jmpr    cc_UC, loc_DC316
+  0xDC308  movbz   r8, byte_30186F
+  0xDC30C  and     r8, #0FFF7h
+  0xDC310  mov     r1, r8
+  0xDC312  movb    byte_30186F, rl1
+  0xDC316  mov     r8, [r0+]
+  0xDC318  rets
