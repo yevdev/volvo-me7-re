@@ -1,6 +1,6 @@
 # ME7 (50GPHJ) C166 — BYTE-map lookup callers (map → reader-function master table)
 
-> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
+> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Load/rl](load-rl.md) · [Charge](charge.md) · [Cam timing](cam-timing.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [Idle gov](idle-governor.md) · [Limiters](limiters.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
 
 Completes the map→function linkage for the **byte-resolution** lookups, the counterpart to
 `lookup_callers.txt` (which covers the word lookup `sub_41A68`). Worked in IDA on
@@ -128,7 +128,7 @@ descriptors, not via its label address. (Matches fueling.md §4 and lookup.md §
 |-------------|----------------|------|-----------------|
 | sub_8DE10 (cluster) | 0x19DA8–0x19DF6 | 6 | ignition/dwell byte tables (many calls) |
 | sub_945C2 | 0x19F49–0x19FE5 | 6 | multi-table reader (8 calls) |
-| sub_72C02 / sub_724E2 | 0x18ACE–0x18BAD | 6 | byte-table cluster (many calls) |
+| sub_72C02 / sub_724E2 | 0x18ACE–0x18BAD | 6 | **brake-booster (BKV) vacuum diagnosis** — Δp(ambient−manifold) staircase → `byte_304753` → fault; booster cals `0x2169A/9C/9E` "brake booster". `sub_724E2`=evaluator, `sub_72C02`=front-end/state-machine **[C]** |
 | sub_8C636 | 0x19D67–0x19D98 | 6 | byte-table cluster (6 calls) |
 | sub_D8DCA | 0x1BB1A–0x27E9C | 6/9 | boost/limit byte tables |
 | sub_DB0E8 | 0x2BD0A | A | byte table page A |

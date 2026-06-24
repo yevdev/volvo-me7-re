@@ -1,6 +1,6 @@
 # Volvo ME7 (50GPHJ) C166 — Torque structure (pedal → torque → load request → boost)
 
-> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
+> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Load/rl](load-rl.md) · [Charge](charge.md) · [Cam timing](cam-timing.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [Idle gov](idle-governor.md) · [Limiters](limiters.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
 
 The torque structure, traced through the C166 disassembly of the stock 50GPHJ firmware
 (Infineon C167CR). Disassembly dumped from `<work>\me7_stock_torque.i64` via
@@ -24,6 +24,16 @@ Confidence is marked **[CONFIRMED]** (read directly from the listing) or
 **[INFERRED]** (standard ME7 semantics applied to the observed arithmetic / A2L names).
 
 ---
+
+> **⚠️ Later corrections — read the body with these in mind.** This doc predates three findings that
+> refine some cell identities used below (the data-flow/arithmetic stay correct; only the labels change):
+> - **`word_F410` is `nmot` (engine speed), NOT `rl_w`** — see [ram-names.md](ram-names.md). Where §3/§4/§5
+>   call it the "measured load / `rl_w`" feedback, read **engine speed**. The genuine measured load `rl` is
+>   **`loc_F47A`/`byte_F473`** — see [load-rl.md](load-rl.md).
+> - **`sub_4F97A` is also the rev limiter**: the `0x15848–0x1585C` "ceiling words" (incl. `0x1584E`) are the
+>   **NMAX rev-limiter cals** (rpm), not load ceilings — see [limiters.md](limiters.md). The §3a "gate"
+>   comparing `word_F410` vs `word_1584E` is the rev-limit compare (`nmot` vs NMAX = 6500 rpm).
+> - The arbitration/conditioning that feeds KFMIRL is the **torque coordinator** (§3b, `sub_4D86C`).
 
 ## 0. The map-lookup primitives (how to read CAL accesses)
 
@@ -194,6 +204,32 @@ ME7 `rlsol_w` — fed forward to LDR boost control. Its smoothed predecessor is
 CONFIRMED data flow.]**
 
 ---
+
+## 3b. Torque coordinator — arbitration & limit conditioning (`sub_4D73A` → `sub_4D86C`)  **[CONFIRMED]**
+
+Between the torque model and KFMIRL sits a coordinator that arbitrates the competing torque/load demands
+and conditions them into the setpoint words KFMIRL's region consumes. Two stages, on the `sub_B81C` page-4
+torque block (its resolved tail `sub_4E3AE` is called at `0x0B854`, ahead of the load/boost/fuel stages):
+
+- **`sub_4D73A`** (0x4D73A–0x4D84E) — **arbitration**: min-combines the load setpoint `rlsol`
+  (`word_31E484`), the VMAX torque ceiling `word_304F3C` ([limiters.md](limiters.md)) and the KFMIOP torque
+  words, emitting the **arbitrated target torque `word_31DAB2`**. **[C]**
+- **`sub_4D86C`** (0x4D86C–0x4E3AE) — **conditioning**: tracks `word_31DAB2` through PT1 filters
+  (`sub_43904`), saturating MAC integrators (`sub_42DF4`) and a KFMIOP-class 2-D torque map (`sub_43430`,
+  base `0x51F0`), gated by a dense mode/limit flag machine (`word_FD1A/1C/1E`). It writes the conditioned
+  setpoint words **`word_31E43C/3A/40/42`** + status byte `byte_31D2F1`, consumed by the KFMIRL/`rlsol`
+  region (`sub_4F0xx`–`sub_4F2xx`). Config cals are the `CDTU*`/`CDTTX2S` coordinator codeword family
+  (`0x150EE–0x150FA`) + delta/limit cals `DVFGREU`/`DVIVZMX`. **[C]**
+
+```
+0x4DDC8  mov   r12, #51F0h          ; KFMIOP-class 2-D torque map (limit path)
+0x4DDD8  calls 4, sub_43430         ; bilinear torque lookup
+0x4DF18  calls 4, sub_42DF4         ; saturating MAC integrate (tracks word_31DAB2)
+```
+
+**It writes only torque/load words and flag bits — no throttle/DK actuator, PWM, or port** (verified: zero
+port/PWM writes). This matches the idle-governor finding that the bin has **no direct throttle servo**: the
+torque structure conditions arbitrated torque into the load setpoint (`rlsol`), and the air path realises it. **[C]**
 
 ## 4. The link to boost control (KFLDRX / KFLDIMX)
 

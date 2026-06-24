@@ -1,6 +1,6 @@
 # Volvo ME7 (50GPHJ) — the control algorithm, from the code
 
-> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
+> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Load/rl](load-rl.md) · [Charge](charge.md) · [Cam timing](cam-timing.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [Idle gov](idle-governor.md) · [Limiters](limiters.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
 
 End-to-end synthesis of the C166 reverse engineering (IDA). Every claim here is grounded
 in the disassembly; per-subsystem detail + cited instruction addresses are in the companion
@@ -8,6 +8,28 @@ docs: [`lookup.md`](lookup.md), [`boost.md`](boost.md), [`ignition.md`](ignition
 (RAM/CAL cell → engineering name) and [`bytemap_callers.md`](bytemap_callers.md) (byte-map linkage). See
 [`methodology.md`](methodology.md) for the toolchain and [`../data/pseudocode/key_functions.c`](../data/pseudocode/key_functions.c) for Ghidra pseudo-C.
 Confirmed unless marked (inferred).
+
+---
+
+## Subsystem map (what's been reverse-engineered)
+
+The control path end to end, with the doc + entry function for each subsystem. All read from the stock 50GPHJ code.
+
+**Air & load** — Air/MAF → relative load `rl` ([load-rl.md](load-rl.md): `sub_D2C9A`/`sub_D34DC`, KFURL/KRKTE) · manifold-pressure → charge model ([charge.md](charge.md): `sub_AD3D0`/`sub_AC5DE`)
+**Torque** ([torque.md](torque.md)) — pedal→torque (KFPED) · optimum-torque model (KFMIOP `sub_4F4BC`) · coordinator (`sub_4D73A`→`sub_4D86C`) → load setpoint `rlsol` (KFMIRL `sub_4F97A`)
+**Boost** — LDR controller ([boost.md](boost.md): `sub_DBB04`/`sub_DBF44`; KFLDIMX/KFLDRX/KFLDRL/KFLDHBN)
+**Ignition** ([ignition.md](ignition.md)) — base advance (KFZW `sub_518B8`) · knock (`sub_7BA8C`) · output (`sub_50984`) — and **cam timing/VVT** ([cam-timing.md](cam-timing.md): dual `sub_49DB8`/`sub_4C878`)
+**Fuelling** ([fueling.md](fueling.md)) — LAMFA (`sub_894C0`) → controller (`sub_8981C`) → RKTI (`sub_775C8`) · LRA adaptation (`sub_88540`, §7) · component protection (KFLBTS `sub_86318`) · cranking/after-start (`sub_7040C`/`sub_7157A`, §10) · EVAP purge (`sub_8DE10`, §8)
+**Idle / warm-up / limits** — idle air governor (LLR, [idle-governor.md](idle-governor.md): `sub_7D58E`) · idle-spark reserve + cat-heating + thermal model ([warmup-idle-thermal.md](warmup-idle-thermal.md)) · rev + ~250 km/h speed limiters ([limiters.md](limiters.md))
+**Machinery & names** — [lookup.md](lookup.md) · [map-inventory.md](map-inventory.md) · [ram-names.md](ram-names.md) · [bytemap_callers.md](bytemap_callers.md) · [methodology.md](methodology.md)
+**Diagnostics** (monitors, not control) — §7: O2, brake-booster, knock-circuit, rationality, misfire.
+
+**Coverage.** The engine-control surface above is mapped end to end; **no control subsystem is known to be
+missing**. Beyond it, five OBD diagnostic monitors are identified (§7). A handful of high-cal-touch functions
+remain unidentified (`sub_9A52`, `sub_E018C`, `sub_922B8`, `sub_C7EEA`, `sub_6C6DA`, `sub_9D894`) — their
+callee signatures and the run of five-straight-diagnostics above point to the diagnostic/monitoring tail, not
+control. The remainder is CAN/KWP2000 comms and leaf/library routines. This is the control algorithm + the
+tooling to extend it, **not** a complete annotated image (see [methodology.md](methodology.md) → Coverage).
 
 ---
 
@@ -124,13 +146,36 @@ image — see [`warmup-idle-thermal.md`](warmup-idle-thermal.md):
   knock windows (`word_FD46.10/.15`) and cat-heat mode (`byte_30133D`); produces the spark reserve/limit
   `byte_301360` on the ignition working band.
 
+## 7. Diagnostics (monitors — identified, not control)
+
+Several of the highest cal-touch functions turned out to be **OBD/diagnostic monitors**: they raise fault
+bits/DTCs and compute no actuator or setpoint, so they're identified for completeness but are **not
+tuning-relevant**. (That five of the top undocumented functions are diagnostics is the signal the control
+surface in §§0–6 is now mapped.)
+
+- **O2 / lambda-sensor monitoring** — `sub_A5A9E` (readiness/plausibility/DTC; cals `INHASE02/04/05`). Pure
+  diagnostic; heater + signal conditioning live in siblings `sub_90000`/`sub_A40D6`. → [fueling.md §9](fueling.md).
+- **Brake-booster (BKV) vacuum diagnosis** — `sub_724E2` (+ front-end `sub_72C02`): Δp(ambient−manifold)
+  staircase → `byte_304753` → fault; cals `0x2169A/9C/9E` "brake booster". → [bytemap_callers.md](bytemap_callers.md).
+- **Knock-control-circuit diagnosis** — `sub_39FCA` (+ init `sub_39F24`): knock-sensor channel-balance /
+  plausibility; cals `CDKKS1/S2/S3`,`CDKKOSE`,`CDKKPE`,`CDKKRTP` (`0x14EE8–0x14EF8`) → fault bits `word_FD06/FD08`
+  + DTC bytes `byte_300108–10A`. Verified: **no spark/actuator write**, no map lookups. **[C]**
+- **Sensor/model rationality monitor** — `sub_9A034` (+ cluster `sub_99414`/`sub_9B534`): builds a modelled
+  quantity (charge × temp via slew/PT1/clamped integrators), windows it against cal thresholds, and sets
+  status/DTC bits (`byte_301667`, counter `word_30530E`). Diagnostic; exact monitored channel **[I]**
+  (cal band `0x1A0xx`/`0x23Exx` carries no dictionary names).
+- **Running-roughness / misfire detection** (Laufunruhe) — `sub_A0000` (0xA0000–0xA1A4A, ~6.7 KB; + workers
+  `sub_9F32E` etc.): a 168-entry per-segment accumulator → min/max **spread** vs limit `0x13ED2`, bucketed
+  into an rpm×load cell grid with per-cell learned banks, matured and published to the `word_FDAE/FDB0/FDB2`
+  fault bits. Verified diagnostic: **0 control integrators, 0 actuator writes, 291 status-bit ops**. **[C]**
+
 ## Cross-checks against canonical ME7
 
 Sanity-checked against the [S4 wiki](https://s4wiki.com/wiki/Tuning) ME7 reference (Audi 2.7T, ME7.1,
 V6 — so expect some divergence). The structure lines up:
 - **KFMIRL** torque→spec-load (`rlsol`), **KFMIOP** load↔torque, **KFPED**→capped by `mimax`/`rlmax_w` — matches §1; `rl` = relative load, 100% ≈ 1 bar.
 - **KFLDIMX** is the LDR **I-regulator limit** (matches §2), **KFLDRL** the **post-PID** WGDC duty linearization, **KFLDHBN** the max pressure-ratio limit.
-- **KFLBTS** component-protection lambda gates on a **calculated EGT** threshold — which is exactly what the §6 thermal model (`sub_64C80`) computes.
+- **KFLBTS** component-protection lambda: on the S4 it gates on a *calculated EGT* (`tabgbts_w > TABGBTS`). **This Volvo image diverges** — `sub_86318` gates on **raw conditioned inputs** (`byte_F473` load + `byte_F40E` rpm-class), there is **no `TABGBTS`** symbol, and the EGT sensor *model* (`sub_945C2`) drives a separate over-temp flag via `sub_8C636`, not KFLBTS. See [warmup-idle-thermal.md §4](warmup-idle-thermal.md).
 - No extrapolation past the last breakpoint — matches [`lookup.md`](lookup.md).
 
 Divergences / naming: this is an **inline-5**, so the torque model divides by **5** (`divu #5`), not 6.

@@ -21,8 +21,8 @@ idat.exe -A -S"ida_apply_names.py <this-folder>" your_carved.i64
 | File | What |
 |---|---|
 | `map_names.csv` | 1,620 GPHJ calibration map/axis names (`addr,name,comment`) |
-| `function_names.csv` | 27 identified control + lookup functions |
-| `ram_names.csv` | key RAM/cal cells (rlsol, knock retard, boost setpoint, KFLDIMX threshold, …) |
+| `function_names.csv` | 72 named functions — control path + 5 OBD diagnostics + lookup/integrator helpers |
+| `ram_names.csv` | 55 key RAM/cal cells (rl/rlsol, nmot, cam phase, lambda trim, EGT, knock retard, KFLDIMX, …) |
 | `ida_me7_load.py` | one-shot: setup + carve + apply |
 | `ida_apply_names.py` | apply names to an already-carved db |
 

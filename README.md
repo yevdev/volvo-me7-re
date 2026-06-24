@@ -14,14 +14,19 @@ out. The aim is to document what the *factory* ECU does, so it's a clean base fo
 
 ## Scope — what's here, what isn't
 
-- ✅ The full control path, read from the code: torque structure → load setpoint → LDR boost →
-  ignition (base + knock) → fuelling (lambda + injection + component protection).
+- ✅ The full control path, read from the code — air/MAF→load, charge model, torque structure +
+  coordinator → load setpoint, LDR boost, ignition (base + knock), VVT cam timing, fuelling (lambda +
+  adaptation + injection + component protection + cranking/after-start + purge), idle (air + spark),
+  warm-up/cat-heat, and the rev/speed limiters. Subsystem map up front in [docs/ALGORITHM.md](docs/ALGORITHM.md).
 - ✅ The lookup machinery, worked out end to end — the six interpolation routines and the map binary layout.
 - ✅ A **1,620-entry calibration dictionary** (`loadkit/map_names.csv` — tables, curves, axes and
   constants with addresses + units), with the control-path maps tied to the functions that read
   them. See **[docs/map-inventory.md](docs/map-inventory.md)**.
-- ✅ ~3,400 functions carved; the control-path functions documented with cited addresses and Ghidra pseudo-C.
-- ❌ Not a function-by-function decompile of all ~6,000 functions. Diagnostics, KWP2000 comms and a lot
+- ✅ **Function coverage: 174 of the 3,417 carved functions are named / role-identified** across the docs —
+  concentrated on the calibration-driven control code (documented end-to-end above) plus five OBD diagnostic
+  monitors, each with cited addresses (and **named** Ghidra pseudo-C for 52 of them). A few high-cal
+  functions remain named-but-untraced — see [docs/ALGORITHM.md](docs/ALGORITHM.md) → Coverage.
+- ❌ Not a function-by-function decompile of all 3,417 carved functions. Diagnostics, KWP2000 comms and a lot
   of leaf routines are carved but not individually written up. C166 has no Hex-Rays decompiler, so the
   IDA output is annotated assembly; Ghidra's module gives the pseudo-C.
 - ❌ Not a whole-ROM byte-coverage proof — the dictionary says what a region is *called*, not that
@@ -31,7 +36,12 @@ out. The aim is to document what the *factory* ECU does, so it's a clean base fo
 - [`docs/ALGORITHM.md`](docs/ALGORITHM.md) — the end-to-end control algorithm (**start here**)
 - `docs/{lookup,boost,ignition,fueling,torque}.md` — per-subsystem detail, cited addresses
 - [`docs/map-inventory.md`](docs/map-inventory.md) — the named-map dictionary + map→reader linkage
-- [`docs/warmup-idle-thermal.md`](docs/warmup-idle-thermal.md) — warm-up / cat-heating, the thermal-protection model, idle spark reserve (second-pass subsystems)
+- [`docs/warmup-idle-thermal.md`](docs/warmup-idle-thermal.md) — warm-up / cat-heating, thermal model, EGT model, idle spark reserve
+- [`docs/limiters.md`](docs/limiters.md) — rev limiter (NMAX) + ≈250 km/h vehicle-speed limiter (VMAX)
+- [`docs/load-rl.md`](docs/load-rl.md) — MAF/HFM → relative-load `rl` (speed-density model, `KRKTE`)
+- [`docs/charge.md`](docs/charge.md) — manifold-pressure → charge model (`sub_AD3D0`; not EGR)
+- [`docs/idle-governor.md`](docs/idle-governor.md) — air-side idle governor (LLR, torque-reserve)
+- [`docs/cam-timing.md`](docs/cam-timing.md) — VVT / cam-phase controller (dual intake+exhaust, NWS)
 - [`docs/ram-names.md`](docs/ram-names.md) — RAM/CAL cell → engineering name (cross-checked against the sibling 50GSHJ A2L/XDF)
 - [`docs/bytemap_callers.md`](docs/bytemap_callers.md) — byte-map → reader-function linkage
 - [`docs/methodology.md`](docs/methodology.md) — toolchain, IDA/Ghidra setup, the baseline image, gotchas
@@ -40,7 +50,7 @@ out. The aim is to document what the *factory* ECU does, so it's a clean base fo
 - [`data/xref/callgraph.csv`](data/xref/callgraph.csv) — caller→callee edges (partial; see scope note)
 - `data/disasm/*.txt` — IDA annotated disassembly of the control functions (`CAL->` + `CALL` refs)
 - [`data/disasm/all_functions.txt.gz`](data/disasm/all_functions.txt.gz) — annotated disassembly of all 3,417 functions
-- [`data/pseudocode/key_functions.c`](data/pseudocode/key_functions.c) — Ghidra pseudo-C of the 16 key control functions
+- [`data/pseudocode/key_functions.c`](data/pseudocode/key_functions.c) — **named** Ghidra pseudo-C of 52 control + diagnostic functions
 - [`loadkit/`](loadkit/) — one-shot IDA loader + name DB (1,620 maps + control functions + key RAM) → an annotated `.i64` from a raw 50GPHJ bin (`ida_me7_load.py`)
 - [`scripts/`](scripts/) — IDA Python (C166 setup, carve, lookup/byte-map enumeration, dumpers, xref export), Ghidra Java, and the A2L parser. Config + usage in [`scripts/README.md`](scripts/README.md).
 
@@ -61,7 +71,7 @@ out. The aim is to document what the *factory* ECU does, so it's a clean base fo
 2. `scripts/ida/ida_lookup_callers.py` / `ida_bytemap_callers.py` → the map→function tables.
 3. `scripts/ida/ida_dump_func.py <out> <addr>...` → annotated disassembly of any function.
 4. Ghidra: install the C166 module; import as C166 at base `0x0`; run `SetDPP.java` + `CarveCode.java`,
-   then `DecompKeyFns.java` for pseudo-C.
+   then `ApplyMe7Names.java <loadkit>` (stamps the loadkit names onto the Ghidra DB) + `DecompKeyFns.java <out> <addrs>` for **named** pseudo-C.
 - Or skip all of that and use [`loadkit/`](loadkit/) — one command takes a raw 50GPHJ bin to a fully annotated `.i64`.
 - **Gotcha:** `idat -A` leaves `.id0/.id1/.nam/.til` working files that block re-open — delete them before each headless run; one IDA process per database.
 

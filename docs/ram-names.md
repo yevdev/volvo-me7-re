@@ -1,6 +1,6 @@
 # Volvo ME7.0 (50GPHJ) — RAM-variable → ME7 name → meaning
 
-> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
+> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Load/rl](load-rl.md) · [Charge](charge.md) · [Cam timing](cam-timing.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [Idle gov](idle-governor.md) · [Limiters](limiters.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
 
 Engineering names for the RAM/CAL cells referenced throughout [`ALGORITHM.md`](ALGORITHM.md) and the
 subsystem docs ([`boost.md`](boost.md), [`ignition.md`](ignition.md), [`fueling.md`](fueling.md), [`torque.md`](torque.md), [`lookup.md`](lookup.md)), so the
@@ -38,6 +38,16 @@ disassembly proves what the cell does); **[NAME-XDF]** = ME7 name corroborated b
 XML/XDF for a sibling bin; **[INFERRED]** = name assigned from ME7 convention + role only.
 
 ---
+
+## ⚠️ Correction: `byte_F40E` is an rpm-class index, NOT coolant
+
+`byte_F40E` is written at `0x98CB6` as **`clamp(word_F410 / 0xA0, 0xFF)`** — i.e. `nmot ÷ 160`,
+saturated to a byte. It is a **quantized engine-speed / rpm-class index**, not a coolant temperature.
+The original docs and the IDA auto-comments label it "coolant"; that is wrong. Wherever a map is
+"keyed on `byte_F40E`", the axis is **rpm-class**. And `byte_F473` / `loc_F474` are **not temperatures either** — they are the load byte (`rl>>5`) and a
+scaled `rl`, both produced from `loc_F47A`=`rl` by `sub_D34DC` (the sole writer). The genuine
+coolant-temperature input cell is **not pinned** in these docs. **[C]**
+(`0x98C96 mov r6,word_F410 · 0x98C9A #0A0h · 0x98CA2 divu · 0x98CB6 movb byte_F40E,rl4`)
 
 ## ⚠️ Correction: `word_F410` is `nmot_w` (engine speed), NOT `rl`
 

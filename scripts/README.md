@@ -4,7 +4,7 @@ Three kinds of script:
 
 - **`ida/*.py`** — run *inside* IDA's Python (headless `idat`), against a loaded ME7 database.
 - **`a2l/parse-a2l.py`** — plain Python (`py`); turns an ASAP2 `.a2l` into a map-dictionary CSV.
-- **`ghidra/*.java`** — Ghidra script-manager scripts (DPP seeding, carve, decompile).
+- **`ghidra/*.java`** — Ghidra scripts: DPP seeding, carve, `DecompKeyFns` (decompile to pseudo-C), and **`ApplyMe7Names`** — stamps the loadkit `function_names.csv`/`ram_names.csv` onto the Ghidra DB (the Ghidra counterpart of `../loadkit/ida_apply_names.py`).
 
 Nothing here hardcodes a machine path. Inputs and outputs come from script arguments, with
 environment variables as the fallback so you can point the kit at your own files:

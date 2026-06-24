@@ -21,6 +21,9 @@ public class DecompKeyFns extends GhidraScript {
         for (int i = 1; i < a.length; i++) {
             long ea = Long.parseLong(a[i], 16);
             Function f = getFunctionContaining(toAddr(ea));
+            if (f == null) {
+                try { disassemble(toAddr(ea)); f = createFunction(toAddr(ea), null); } catch (Exception ex) {}
+            }
             if (f == null) { sb.append("// --- no function at 0x" + a[i] + " ---\n\n"); continue; }
             DecompileResults r = di.decompileFunction(f, 90, monitor);
             sb.append("// ================= " + f.getName() + " @ " + f.getEntryPoint() + " =================\n");

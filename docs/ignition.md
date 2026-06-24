@@ -1,6 +1,6 @@
 # Volvo ME7.0 (50GPHJ) — Ignition timing & knock control algorithm
 
-> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
+> **ME7-RE docs:** [Algorithm](ALGORITHM.md) · [Boost](boost.md) · [Ignition](ignition.md) · [Fueling](fueling.md) · [Torque](torque.md) · [Load/rl](load-rl.md) · [Charge](charge.md) · [Cam timing](cam-timing.md) · [Lookup](lookup.md) · [Maps](map-inventory.md) · [Warm-up/idle](warmup-idle-thermal.md) · [Idle gov](idle-governor.md) · [Limiters](limiters.md) · [RAM names](ram-names.md) · [Byte-maps](bytemap_callers.md) · [Methodology](methodology.md) · [↑ README](../README.md)
 
 Reverse-engineered from the C167CR firmware in IDA
 (DB `<work>\me7_stock_ign.i64`; code byte-identical across calibration revisions).
@@ -179,7 +179,7 @@ t1 = curve(#159F p6 ; #27D1 p4)  via sub_4210C   ; [I temp/IAT axis 2D map]
 m  = map(#15E7 p6 ; #2826 p4) via sub_42180       ; second 2D map
 prod = (t1 * m) >> 7
 final = prod + map3(#1DD4/#1DCC p8 indexed by byte_21DCA/CB, sub_42596)
-      using byte_F473 (a temperature sensor) and byte_30163A (RPM-class index)
+      using byte_F473 (the **load** byte = rl>>5, **not** a temp sensor — see ram-names.md) and byte_30163A (rpm-class index)
 → clamp ±[0x80..0x7F] → byte_30157C                ; IAT/temperature ignition correction
 ```
 So intake-air-temperature/coolant ignition correction **is present and additive**:

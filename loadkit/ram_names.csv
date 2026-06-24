@@ -1,21 +1,56 @@
 addr,name,comment
-0x31E484,rlsol_w,relative-load setpoint (load request fed to LDR boost)
-0x0F410,nmot_w,engine speed (0.25 rpm/ct)
-0x302E62,ldr_setpoint,boost-control setpoint (load domain)
-0x302E58,ldr_actual_ratio,boost actual ratio
-0x302E60,ldr_demand,final LDR wastegate demand
-0x302E7C,ldtvm_scaled,scaled wastegate duty (pre-clamp)
-0x302E68,lditv_w,KFLDIMX-limited boost I-state (32-bit)
-0x0F3FA,wkr_global,global knock retard (subtracted from advance)
-0x30B24C,dwkrz,per-cylinder knock retard accumulator (5 entries)
-0x30132E,zwbas,base ignition advance (0.75 deg/ct)
-0x309317,zwout,emitted per-cylinder spark advance
-0x3029A4,lamfa_w,driver-requested lambda (LAMFA result)
-0x30297C,fuel_mult,commanded fuel multiplier
-0x3029A0,fr_w,lambda control / fuel-trim I-state
-0x30069C,ti_w,injector pulse-width accumulator (32-bit)
-0x31DAEC,miopt_w,optimum indicated torque (KFMIOP output)
-0x02BF4A,KFLDIMX_threshold,LDR enable/authority threshold
-0x02BF4E,WG_duty_min,wastegate duty minimum clamp
-0x02BF50,WG_duty_max,wastegate duty maximum clamp
-0x02BF48,overboost_rpm_trip,over-boost RPM cut threshold (~6000)
+0x0F410,nmot_w,"engine speed (0.25 rpm/ct)"
+0x0F40E,nmot_rpmclass,"rpm-class index = nmot/0xA0 (clamp 0xFF). NOT coolant (corrected)"
+0x0F47A,rl_w,"measured relative load rl (feeds KFMIOP load axis); produced by sub_D34DC"
+0x0F473,rl_byte,"load byte = rl>>5 (loc_F47A>>5). NOT coolant (corrected)"
+0x0F474,rl_scaled,"scaled rl form (load family, sub_D34DC). NOT coolant"
+0x0F478,rl_w_gshj,"rl + offset (matches GSHJ rl_w cell)"
+0x0F45E,ml_hfm,"air-mass (HFM/MAF) signal, linearized (sub_C96FC)"
+0x31E484,rlsol_w,"relative-load setpoint (load request fed to LDR boost)"
+0x302C40,charge_modeled,"modeled charge from manifold pressure (sub_AD3D0)"
+0x302C54,charge_filtered,"PT1-filtered modeled charge"
+0x302496,load_measured,"measured load / boost-actual (shared: LDR + charge model)"
+0x31DAB2,mi_target_arb,"arbitrated target torque (torque-coordinator input)"
+0x31DAEC,miopt_w,"optimum indicated torque (KFMIOP output)"
+0x31E43C,mi_setpoint_cond,"conditioned torque/load setpoint (coordinator -> KFMIRL region)"
+0x302E62,ldr_setpoint,"boost-control setpoint (load domain)"
+0x302E58,ldr_actual_ratio,"boost actual ratio"
+0x302E60,ldr_demand,"final LDR wastegate demand"
+0x302E7C,ldtvm_scaled,"scaled wastegate duty (pre-clamp)"
+0x302E68,lditv_w,"KFLDIMX-limited boost I-state (32-bit)"
+0x02BF4A,KFLDIMX_threshold,"LDR enable/authority threshold"
+0x02BF4E,WG_duty_min,"wastegate duty minimum clamp"
+0x02BF50,WG_duty_max,"wastegate duty maximum clamp"
+0x02BF48,overboost_rpm_trip,"over-boost RPM cut threshold (~6000)"
+0x0F3FA,wkr_global,"global knock retard (subtracted from advance)"
+0x30B24C,dwkrz,"per-cylinder knock retard accumulator (5 entries)"
+0x30132E,zwbas,"base ignition advance (0.75 deg/ct)"
+0x309317,zwout,"emitted per-cylinder spark advance"
+0x31DA76,nwist_intake,"measured intake cam angle (VVT feedback)"
+0x31DA96,nwist_exhaust,"measured exhaust cam angle (VVT feedback)"
+0x31D2CF,vvt_duty_intake,"intake cam-solenoid PWM duty"
+0x31D2E5,vvt_duty_exhaust,"exhaust cam-solenoid PWM duty"
+0x30129C,wnwise,"intake cam phase (KFZW blend fraction)"
+0x30129B,wnwisa,"exhaust cam phase (KFZW blend fraction)"
+0x3029A4,lamfa_w,"driver-requested lambda (LAMFA result)"
+0x30297C,fuel_mult,"commanded fuel multiplier"
+0x3029A0,fr_w,"lambda control / fuel-trim I-state (volatile)"
+0x30069C,ti_w,"injector pulse-width accumulator (32-bit)"
+0x302968,rk_w,"relative fuel mass rk (-> RKTI sub_775C8)"
+0x30A18A,lambda_trim_nv,"persistent learned lambda trim, page 0xC2 (LRA; restored at boot)"
+0x30523E,lambda_trim_applied,"applied learned lambda trim (LRA output)"
+0x30281A,start_enrich_factor,"start/after-start enrichment factor (folded into rk)"
+0x302D70,afterstart_timer,"after-start timer (enrichment decay axis; sub_D22B6)"
+0x30A178,cranking_inj_qty,"cranking injection quantity (battery-backed)"
+0x30A0C2,evap_purge_duty,"EVAP purge-valve PWM duty (page 0xC2)"
+0x304949,evap_fuel_portion,"purge fuel-portion correction (FSRFKAS)"
+0x30133D,catheat_mode,"catalyst-heating/warm-up mode flag (sub_52D16; read by spark reserve)"
+0x301360,idle_spark_reserve,"idle/startup spark reserve byte (sub_53DEC)"
+0x305182,idle_torque_reserve,"published idle torque/load reserve (sub_7E36C)"
+0x30163A,rpmclass_oppoint,"idle/op-point rpm-class index"
+0x304974,egt_modeled,"modeled EGT byte (sub_945C2 -> sub_8C636)"
+0x3007DD,egt_overtemp_flag,"EGT over-temp flag (sub_8C636)"
+0x304753,brake_booster_diag,"brake-booster vacuum diag result (sub_724E2)"
+0x0FD22,flags_torque_revlimit,"torque/load + rev-limit state flags (.2 = over-rev fuel cut)"
+0x0FD7A,flags_start_phase,"start phase flags (.14 cranking, .15 after-start/running)"
+0x0FD46,flags_idle_state,"idle-state flags (.9 = LLR active; read by spark reserve)"

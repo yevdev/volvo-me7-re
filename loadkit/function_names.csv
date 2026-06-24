@@ -1,28 +1,73 @@
 addr,name,comment
-0x41A68,me7_lookup_1d_word,1-D word table interp (offset r12,page r13,input r14 -> r4)
-0x41B5A,me7_lookup_1d_word_signed,1-D word table interp, signed axis
-0x419F4,me7_lookup_1d_byte,1-D byte table interp (r13=page)
-0x41CC0,me7_lookup_2d_word_bilinear,2-D bilinear word map
-0x411F4,me7_lookup_2d_sbyte_bilinear,2-D bilinear sbyte map (KFZW path)
-0x43430,me7_lookup_2d_word_torque,2-D bilinear word map (torque/KFMIOP)
-0x43904,me7_pt1_integrator,PT1/integrator: state += gain*(target-state)
-0x42F16,me7_integrator_minmax,integrator with min/max clamp
-0x42DF4,me7_integrator_sat,integrator with +-0x7FFF saturation
-0xB81C,main_control_scheduler,top-level control scheduler chain
-0xDBB04,ldr_boost_pi_math,LDR boost PI + feed-forward math
-0xDBF44,ldr_boost_enable_limit,LDR enable/limit state machine (KFLDIMX threshold)
-0xDC31A,ldr_solenoid_output,LDR wastegate solenoid output + overboost RPM trip
-0xD5E80,ldr_compressor_ratio,compressor pressure-ratio calc (KFLDHBN guard)
-0x518B8,ign_base_advance,base ignition advance (KFZW1-4 cam-blend)
-0x5086A,ign_apply_knock_retard,subtract global + per-cyl knock retard
-0x50984,ign_final_spark_out,final per-cylinder spark output (zwout)
-0x50BC6,ign_scheduler,ignition scheduler
-0x7BA8C,knock_build_retard,build global knock retard
-0x7BD04,knock_event_handler,per-cylinder knock-event retard accumulator
-0x894C0,fuel_lamfa_request,driver-requested lambda (LAMFA)
-0x8981C,fuel_lambda_multiplier,lambda closed-loop -> fuel multiplier
-0x775C8,fuel_injection_qty,injection quantity accumulator (ti)
-0x86318,fuel_component_protect,component-protection enrichment (KFLBTS)
-0x4F4BC,torque_kfmiop_optimum,optimum indicated torque model (KFMIOP, 5-cyl avg)
-0x4F97A,torque_kfmirl_to_load,torque -> load setpoint (KFMIRL -> rlsol)
-0x4E6F6,pedal_channel_select,pedal channel select/plausibility (KFPED region)
+0x41A68,me7_lookup_1d_word,"1-D word table interp (offset r12; page r13; input r14 -> r4)"
+0x41B5A,me7_lookup_1d_word_signed,"1-D word table interp, signed axis"
+0x419F4,me7_lookup_1d_byte,"1-D byte table interp (r13=page)"
+0x41CC0,me7_lookup_2d_word_bilinear,"2-D bilinear word map"
+0x411F4,me7_lookup_2d_sbyte_bilinear,"2-D bilinear sbyte map (KFZW path)"
+0x43430,me7_lookup_2d_word_torque,"2-D bilinear word map (torque / KFMIOP)"
+0x41BD4,me7_lookup_2d_byte,"2-D byte map interp"
+0x415B0,me7_lookup_2d_misc,"2-D interp variant (after-start / misc)"
+0x40EB0,me7_axis_search,"axis search: returns interp index+fraction (divlu)"
+0x43904,me7_pt1_integrator,"PT1 / integrator: state += gain*(target-state)"
+0x438F6,me7_slew_limiter,"slew / ramp limiter toward target (rate-limited)"
+0x42F16,me7_integrator_minmax,"integrator with min/max clamp"
+0x42DF4,me7_integrator_sat,"32-bit MAC integrator with +-0x7FFF saturation"
+0x42CF4,me7_fraction_blend,"fraction interpolation: out = lo + frac*(hi-lo)"
+0xB81C,main_control_scheduler,"top-level periodic control scheduler chain"
+0xDBB04,ldr_boost_pi_math,"LDR boost PI + feed-forward math"
+0xDBF44,ldr_boost_enable_limit,"LDR enable/limit state machine (KFLDIMX threshold)"
+0xDC31A,ldr_solenoid_output,"LDR wastegate solenoid output + overboost RPM trip"
+0xD5E80,ldr_compressor_ratio,"compressor pressure-ratio calc (KFLDHBN guard)"
+0x518B8,ign_base_advance,"base ignition advance (KFZW1-4, cam-phase blend)"
+0x5086A,ign_apply_knock_retard,"subtract global + per-cyl knock retard"
+0x50984,ign_final_spark_out,"final per-cylinder spark output (zwout)"
+0x50BC6,ign_scheduler,"ignition scheduler"
+0x7BA8C,knock_build_retard,"build global knock retard"
+0x7BD04,knock_event_handler,"per-cylinder knock-event retard accumulator"
+0x894C0,fuel_lamfa_request,"driver-requested lambda (LAMFA)"
+0x8981C,fuel_lambda_multiplier,"lambda closed-loop -> commanded fuel multiplier"
+0x775C8,fuel_injection_qty,"rk -> injection-time accumulator (RKTI / ti)"
+0x86318,fuel_component_protect,"component-protection enrichment (KFLBTS, over-temp)"
+0x4F4BC,torque_kfmiop_optimum,"optimum indicated-torque model (KFMIOP, 5-cyl avg)"
+0x4F97A,torque_kfmirl_revlimit,"KFMIRL torque->load (rlsol) AND the NMAX rev limiter (limiters.md)"
+0x4E6F6,pedal_channel_select,"pedal channel select / plausibility (KFPED region)"
+0xD2C9A,load_model_kfurl,"air->load model: KFURL/KFURLSU speed-density, cam-blended (load-rl.md)"
+0xD34DC,rl_producer,"assembles measured load rl -> loc_F47A / byte_F473(rl>>5) / loc_F478 (load-rl.md)"
+0xC96FC,maf_linearize,"HFM/MAF voltage -> air-mass signal loc_F45E (linear gain/offset)"
+0x98C42,nmot_compute,"compute engine speed word_F410 (nmot) from crank period"
+0xAD3D0,charge_model_estimator,"manifold-pressure -> charge model: pressure-ratio cascade -> word_302C40/302C54 (charge.md)"
+0xAC5DE,charge_model_limiter,"charge ceiling + FD5C/FD5E region/limit machine (charge.md)"
+0x4D73A,torque_arbitration,"torque coordinator arbitration: min(rlsol/VMAX/KFMIOP) -> word_31DAB2 (torque.md 3b)"
+0x4D86C,torque_coordinator,"torque coordinator conditioning -> setpoint words 31E43C/3A/40/42 (torque.md 3b)"
+0x4D84E,torque_coord_init,"torque coordinator init prologue"
+0x4E3AE,torque_coord_stage2,"torque coordinator next stage (sub_B81C callee)"
+0x49DB8,vvt_intake_ctrl,"VVT intake cam-phase PI controller -> duty byte_31D2CF (cam-timing.md)"
+0x4C878,vvt_exhaust_ctrl,"VVT exhaust cam-phase PI controller -> duty byte_31D2E5 (cam-timing.md)"
+0x48786,vvt_intake_setpoint,"VVT intake cam-angle setpoint map KFWNWSAPE @0x1DB32"
+0x4B12E,vvt_exhaust_setpoint,"VVT exhaust cam-angle setpoint map KFWNWSAPA @0x1E338"
+0x44D22,cam_edge_latch,"cam-sensor edge latch -> measured cam angle (nwist)"
+0x88540,lambda_adaptation_lra,"long-term lambda adaptation (LRA): cascaded PT1 -> persistent trim word_30A18A (fueling.md 7)"
+0x884E8,lra_boot_restore,"LRA power-on restore of persisted lambda trim"
+0x8DE10,evap_purge_ctrl,"EVAP canister-purge (TEV) controller: duty byte_30A0C2 + fuel-portion FSRFKAS (fueling.md 8)"
+0x7040C,cranking_inj_qty,"cranking injection quantity: start map 0x21282 keyed rpm x load (fueling.md 10)"
+0x7157A,afterstart_enrich,"after-start enrichment decay vs timer word_302D70 -> word_302812 (fueling.md 10)"
+0xD22B6,start_state_machine,"start/after-start state machine: word_FD7A.14/.15 + after-start timer word_302D70"
+0x875D4,rk_producer,"relative fuel mass rk: folds start/after-start enrich -> word_302968"
+0x717F0,start_inj_assembly,"start/warm injection-factor assembly -> word_30281A"
+0x7D58E,idle_air_governor_llr,"idle-speed governor (LLR, air/torque-reserve); arms word_FD46.9 (idle-governor.md)"
+0x7E36C,idle_reserve_shape,"idle reserve shaping vs rpm -> word_305182 (idle-governor.md)"
+0x52D16,catheat_coordinator,"catalyst-heating / warm-up coordinator (FWM/KAT) -> mode byte_30133D (warmup-idle-thermal.md 1)"
+0x64C80,thermal_estimator,"multi-channel estimator: 6 PT1 over rpm x load maps; thermal role inferred (warmup-idle-thermal.md 2)"
+0x53DEC,idle_spark_reserve,"idle/startup spark reserve + knock-window -> byte_301360 (warmup-idle-thermal.md 3)"
+0x945C2,egt_sensor_model,"exhaust-gas-temp sensor model + diag (EXA* cals) -> byte_304974 (warmup-idle-thermal.md 4)"
+0x93F2C,egt_sensor_model_ch2,"EGT sensor model, 2nd channel"
+0x8C636,egt_overtemp_consumer,"EGT over-temp: byte_304974 vs EFFMFA2 -> overheat flag byte_3007DD"
+0x50000,vmax_speed_limiter,"vehicle-speed limiter (VMAX): PI torque governor -> word_304F3C (limiters.md)"
+0x0A5EE,vmax_table_lookup,"VMAX gear-dependent speed-limit table reader (0x1BECC)"
+0xA5A9E,diag_o2_sensor_monitor,"DIAGNOSTIC: O2/lambda-sensor OBD monitor (INHASE02/04/05); no control"
+0x724E2,diag_brake_booster,"DIAGNOSTIC: brake-booster (BKV) vacuum diag -> byte_304753 fault"
+0x72C02,diag_brake_booster_front,"DIAGNOSTIC: brake-booster diag front-end / state machine"
+0x39FCA,diag_knock_circuit,"DIAGNOSTIC: knock-control-circuit diag (CDKK*) -> word_FD06/FD08"
+0x39F24,diag_knock_circuit_init,"DIAGNOSTIC: knock-control diag init/reset"
+0x9A034,diag_rationality_monitor,"DIAGNOSTIC: sensor/model rationality monitor -> FD34/FD36 DTC"
+0xA0000,diag_misfire_monitor,"DIAGNOSTIC: running-roughness / misfire detection (Laufunruhe) -> FDAE/FDB0/FDB2"
