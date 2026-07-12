@@ -295,6 +295,44 @@ RAM (load/torque structure, RAM segment base 0x300000):
 
 ---
 
+## 5b. Torque reserve (MDRES-type) — `sub_5369C` = `torque_reserve_request`
+
+`sub_5369C` (0x5369C–0x53C48, one `sub_B81C` scheduler slot) builds the **requested torque
+reserve** — the extra "torque headroom" the idle governor / catalyst-heating strategy realizes by
+retarding ignition. Its calibration set is the dictionary's reserve family: **MRESLL** `0x18637`
+(idle reserve), **MRESKH** `0x1EFCC` (cat-heat reserve cap, %), **DNLLRESW** `0x1EFC2` (idle rpm-delta
+enable window, 1/min), **TVRESLL** `0x1EFD0` (activation timer, s), **CWLLDE** `0x1854C` (codeword),
+**LIVFZDE** `0x18632` (vehicle-speed enable, km/h, vs `vfzg_class` `byte_3015D8`), plus the
+**KFMRESKH-adjacent 2-D byte-map bank** `0x18551/69/81/99/B1/C9/E1` (via `sub_4210C`, axes
+`word_30197E`/`word_301990`) and 1-D tables `0x18608`/`0x1861D`/`0x185FE`. **[C]** (all cal
+addresses dict-exact except the map-bank identities, which are **[I]** from the KFMRESKH
+neighbourhood)
+
+```
+0x536EA  cmp     r4, word_1EFC2      ; rpm-delta word_3024F8 vs DNLLRESW -> near-idle flag
+0x53710  mov     r4, word_1EFD0      ; TVRESLL -> countdown word_3024DE (idle-reserve arming)
+0x53758  movbz   r4, byte_18637      ; MRESLL
+0x5375C  shl     r4, #6              ;   <<6
+0x5375E  mov     word_3024D0, r4     ;   -> idle reserve component (ramp-down byte_1854D)
+0x53826  movbz   r12, byte_1EFC4     ; temp-gradient 2-D lookup (tables 0x1EFC5/0x1EFC8)
+0x53832  calls   4, sub_42442        ;   -> gradient reserve candidate
+0x539BC  calls   4, sub_4210C        ; state-selected KFMRES-bank map (0x18581/…)
+0x53A96  mov     word_3024CE, [r0]   ; reserve base sum (clamped 0x400, <<6)
+0x53AD8  cmp     r4, word_1EFCC      ; cap at MRESKH when word_FD46.9 (cat-heat active)
+0x53C38  mov     word_3024D6, r8     ; FINAL requested reserve (min vs map 0x185FE)
+```
+
+Components `word_3024D0` (idle), `word_3024CE` (map-bank base), `word_3024DC` (table `0x18608`,
+gated `word_FD7A.14`), `word_3024D4` (`byte_18638`, gated `byte_30127C.7`) each carry their own
+ramp-down step (`byte_1854D/4E/4F`, `byte_18550`) and hold counter (`byte_1863A/3B`) — reserves decay
+smoothly instead of stepping off. The sum is floored/ceilinged by state bytes (`byte_30136A`,
+`byte_30157D`, `byte_301369`), floored at `word_1EFCE` under `byte_301276.3`, and min-clamped by the
+rpm-keyed table `0x185FE(word_3019F0)` into **`word_3024D6` = `mres_request`**. Confidence: mechanism
+and cal bindings **[C]**; the MDRES module identity and the exact consumer of `word_3024D6` (no direct
+reader in the dump — likely read via another page mapping) are **[I]/open**.
+
+---
+
 ## 6. Confirmed vs inferred — summary
 
 **Confirmed from listing:**
@@ -320,3 +358,55 @@ drlsol_w/rlmax_w, all present in `1xEbvsde.a2l`):**
   processed-pedal + rpm) and the RAM cell holding requested torque `mibas_w`.
 - Trace `word_31E484` (rlsol) forward into `sub_DBB04`'s setpoint input to close
   the loop end-to-end in the listing (currently inferred via shared `word_F410`).
+
+---
+
+## 7. Anti-jerk / dashpot damper — `sub_967FE` = `driveline_antijerk_damper`
+
+**Range:** `0x967FE-0x96F16` (1816 B). Not on the direct scheduler-call list (`callers=0` in the
+dump; reached indirectly). Callee: `sub_430DA` (saturating filter step, called twice).
+
+**Calibration** (26 refs, two bands, both already dictionary-anchored): `CWARMD 0x13E8B`
+(codeword), `VLTEDK 0x13E8C`, clutch delays `TVKUPAR 0x13EA5` / `TVKUPHS 0x13EA6` /
+`TVKUPRS 0x13EAC`, `TZSPINI 0x13EB2`, dashpot bytes `DSTGRAD 0x13EA0` / `DSTOFFS 0x13EA2` /
+`KLTDS 0x13EA4` (inline labels), and threshold words `0x1659E-0x165A8` below `KFRARHG 0x165AC`
+plus the per-gear table `DNFILO 0x165DE` (+ `NDFILOG 0x165E0`, fallback word `0x165EA`).
+
+**Evidence excerpt** (verified in `data/disasm/all_functions.txt.gz`):
+
+```
+0x96802  mov     r12, word_302546        ; speed signal A /2
+0x96808  mov     r13, word_30243C        ; speed signal B /2
+0x9680E  sub     r13, r12                ; saturated diff
+0x96820  mov     word_302AF4, r13        ; delta-n out
+0x96824  movb    rl1, byte_F40E          ; rpm class
+0x96828  cmpb    rl1, #64h                ; low-rpm gate
+...
+0x96B1A  mov     r8, word_3008B0         ; |oscillation|
+0x96B1E  cmp     r8, word_165A8  ; CAL->0x165a8
+0x96B2C  movbz   r8, byte_3014DD         ; gear index
+0x96B30  cmpd1   r8, #7                  ; clamp 1..7
+0x96B3A  mov     r9, [r8+#65DEh]         ; DNFILO[gear]  CAL 0x165DE+2n
+0x96B46  mov     r9, word_165E0  ; CAL->0x165e0
+0x96B4A  cmp     r9, word_302AFA         ; vs filtered delta
+0x96B56  bset    word_FD54.0             ; damper inactive
+0x96B5A  movb    rl1, DSTOFFS  ; CAL->0x13ea2
+0x96B5E  movb    byte_301651, rl1        ; dashpot counter seed
+0x96B62  movb    rl2, byte_13EB2 ; CAL->0x13eb2 (TZSPINI)
+0x96B6A  mov     word_302AFC, ZEROS      ; clear filter history
+```
+
+**Description.** Computes the driveline speed-oscillation signal: half-difference of two speed
+words (`word_30243C` − `word_302546`) → `word_302AF4`/`word_302AF2` **[C]**, low-pass filters it
+with a `T4`-derived dt through `sub_430DA` (state `word_3008A6/A8`) **[C]**, and keeps a 3-deep
+sample history (`word_300882/84/86/88`) from which the oscillation magnitude `word_3008B0` is
+derived **[C]**. Activation is gated by codeword `CWARMD`, status bits (`FD66.4`, `FD54.2`,
+`FD26.15`, `FD3C.0`), a per-gear delta-n threshold from `DNFILO[gear byte_3014DD]` **[C]**, and
+magnitude vs `word_165A8`. When inactive it sets `FD54.0/.1`, reseeds the dashpot ramp counter
+`byte_301651` from `DSTOFFS` and `byte_300880` from `TZSPINI`, and zeroes the filter bank
+(`0x96B6A-0x96B9A`) **[C]**. Consistent with the ME7 Antiruckel (ARMD) + dashpot load-change
+damping stage feeding a torque correction **[I]**.
+
+**Open:** exact consumer of `word_302AFA`/`FD54.0` downstream (torque intervention sum) not yet
+traced; `DSTOFFS` inline label vs dictionary `TMLAST` at `0x13EA2` is a def-source conflict —
+flagged, not resolved.

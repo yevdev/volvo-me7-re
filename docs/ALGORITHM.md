@@ -25,10 +25,12 @@ The control path end to end, with the doc + entry function for each subsystem. A
 **Diagnostics** (monitors, not control) — §7: O2, brake-booster, knock-circuit, rationality, misfire.
 
 **Coverage.** The engine-control surface above is mapped end to end; **no control subsystem is known to be
-missing**. Beyond it, five OBD diagnostic monitors are identified (§7). A handful of high-cal-touch functions
-remain unidentified (`sub_9A52`, `sub_E018C`, `sub_922B8`, `sub_C7EEA`, `sub_6C6DA`, `sub_9D894`) — their
-callee signatures and the run of five-straight-diagnostics above point to the diagnostic/monitoring tail, not
-control. The remainder is CAN/KWP2000 comms and leaf/library routines. This is the control algorithm + the
+missing**. Beyond it, the OBD diagnostic monitors and their configuration layer are identified (§7). A
+handful of former high-cal-touch unknowns are now identified as the **diagnostic/monitoring tail**, not
+control (`sub_E018C` = status/ID-frame init, `sub_922B8` = EGT status monitor, `sub_6C6DA` = O2/lambda
+status packer, `sub_9D894` = EVAP-purge monitor, `sub_AAC4E` = CDDST OBD monitor — all §7). (`sub_9A52` = diagnosis-codeword expansion and `sub_BEEDC` =
+monitor enable table, §7; `sub_C7EEA` = throttle-servo stop-learn adaptation,
+[etc-throttle.md](etc-throttle.md); `sub_5637C` = CAN RX signal unpack, §7.) The remainder is CAN/KWP2000 comms and leaf/library routines. This is the control algorithm + the
 tooling to extend it, **not** a complete annotated image (see [methodology.md](methodology.md) → Coverage).
 
 ---
@@ -168,6 +170,75 @@ surface in §§0–6 is now mapped.)
   `sub_9F32E` etc.): a 168-entry per-segment accumulator → min/max **spread** vs limit `0x13ED2`, bucketed
   into an rpm×load cell grid with per-cell learned banks, matured and published to the `word_FDAE/FDB0/FDB2`
   fault bits. Verified diagnostic: **0 control integrators, 0 actuator writes, 291 status-bit ops**. **[C]**
+- **Diagnosis-enable codeword expansion** — `sub_9A52` (`diag_codeword_expand_init`, init-time, sole caller
+  `sub_A082`): reads ~40 one-byte cal codewords from the `0x18000–0x1802D` band (dictionary-named `KAMFZ`,
+  `CDAGR`, `CDDST`, `CDEFST`, `CDKVS`, `CDHSV`, `CDLSH`, `CDLSV`, `CDMD`, `CDLDP`, `CDLLR`, `CDSWE`,
+  `CDTEFST`, `CWNWS`, `EPRSLNR`, `CDKAT`, `CWSLS`, `SWTTNR`, `CWUVLOG`, `CWDSLSY`, `CDHSH`, `CDSLS`,
+  `CDLASH`, + unnamed `0x18016–0x1802D`, `0x12600/03/05`) and expands each bit into the RAM enable flags
+  `word_3018D6/D8`, `byte_301220–22` and the bit-addressable `word_FD00/FD02` (e.g. `0x09A56 movb rl1,KAMFZ`;
+  `0x09E58 bmov word_FD00.1, r1.0`). Pure vehicle-configuration: which OBD monitors run is decided here. **[C]**
+- **Per-monitor enable table** — `sub_BEEDC` (`diag_monitor_enable_table_init`): converts those codeword
+  flags into 0/1 enable words at `word_30BE38+8k` (adaptation page 0xC2, one 8-byte record per monitor,
+  `0xBEEEA/0xBEF42 mov word_30BE38/word_30BE80,…`), walking the per-monitor cal tables `0x1B8E3`
+  (1 B/monitor) and `0x1B8F1` (3 B/monitor). **[C]**
+- **ETC-cluster input monitor bank** — `sub_C5F2C` (`diag_input_monitor_bank`, 1st `sub_B81C` slot) +
+  status reporter `sub_C6410`: ~14 debounced monitors over CAN-mirror signals (`byte_301437/43`,
+  `word_30256C.12`) and ADC byte `byte_3014D2` (min/max/stuck/baseline-deviation vs cals `0x14576–0x1458C`,
+  `0x16EAC–B0`). Its mask flags `word_FD64.11/.12` **gate the misfire and knock-circuit monitors**;
+  `word_FD66.2/.5` are read by idle governor / torque coordinator. Verified: no actuator writes. **[C]**
+  → [etc-throttle.md §6](etc-throttle.md).
+- **Reference/follower deviation supervision** — `sub_C9F44` (`diag_setpoint_follow_monitor`): windows the
+  fault-gated reference `word_3029C6` (`sub_8A834`) against its slew-limited follower `word_302CF8`
+  (`sub_CA5C6`) and a raw ADC cross-check `word_30196E`, debounced via the `0x16F52–0x16F66` cal band, →
+  status bytes `byte_300C06/13/14` + condition bits `loc_FD70.13–.15`/`loc_FD72.0–.1`. Supervised quantity
+  identity **[I]**. → [etc-throttle.md §6](etc-throttle.md).
+- **OBD parameter seed / readiness edges** — `sub_A7D34` (`diag_obd_param_seed_init`): copies the scalar cal
+  band `0x2418E–0x241B4` into RAM mirrors `word_305386–word_3053B2`, builds monitor bitmasks from cal
+  bit-indexes (`byte_1A18C/8F/91`), and edge-detects NV status `word_30A252 & word_241A6` (readiness flags
+  `byte_300A04–0B`). The whole `0x24162–0x241DA` orphan cluster is **scalars, not a map** (plain `mov`/`cmp`
+  readers `sub_A3A18`/`sub_A4904`/`sub_A7D34`). **[C]**
+- **CAN RX signal unpack** (comms, not a monitor) — `sub_5637C` (`can_rx_signal_unpack`, via `sub_57FBE`):
+  polls (flag-pointer, mask) pairs held in **calibration** `0x11A32–0x11AE8` (incl. dictionary cells
+  `ZKLLRD`/`MDST` at `0x11A86/88`), extracts signals through descriptor readers `sub_E3A86`/`sub_E3ACE`
+  (word signals carry a −0x200 offset, torque-interface style: `0x5640E sub r4,#200h`) into RAM mirrors
+  `byte_301427–48`/`word_302580–25AA`, acknowledges by clearing the flag byte (`0x5642C movb [r12],rl2`),
+  and calls two **cal-held far code pointers** (`0x11B42/44`, `0x11B92/94`) through the push-rets
+  trampoline `sub_8E52`. First confirmed member of the "remainder is comms" tail. **[C]**
+- **EGT / exhaust status monitor** — `sub_922B8` (`diag_egt_status_monitor`): debounced status bank
+  (13× `sub_32E88`, packs via `sub_B31AC`) over the `EXA*`/`EFF*` exhaust-diag cal band `0x19F10–0x19F37`
+  (`EXAAAA`,`EXAFRAO`,`EFFZET8`,`EFFZZZ`; `EXA*` shared with `egt_sensor_model`) → status bytes
+  `byte_30084C…7C` + flag bank `byte_301624/625`. Verified: **no port/actuator write**. Exhaust/EGT
+  identity **[I]**. **[C]**
+- **O2 / lambda-sensor status packer** — `sub_6C6DA` (`diag_o2_sensor_status_pack`): gated by codeword
+  `byte_301220.1` (`CDSLS`); 34× debounce `sub_32E88` + 12× CAN-pack `sub_B31AC` of status words
+  `word_303B64/70/74`; reads threshold band `0x210CA–0x21104` (`MSDRKAT`/`MSDRKAT2`) + `NDLDRAPU`
+  (`0x18A78`); adjacent dict `FLAMPFT`/`FLAMPMR`/Nernst-cell-temp cals corroborate the lambda/exhaust
+  role. No actuator write. Identity **[I]**. **[C]**
+- **EVAP purge-system monitor** — `sub_9D894` (`diag_evap_purge_monitor`): gated by `word_3018D6.1` +
+  `word_FD02.9`; reads the purge quantity `word_3052A8` (from `evap_purge_ctrl` `0x8DE10`), `divlu`-normalizes
+  it and PT1-filters (`sub_43904`) into page-C2 EVAP RAM (`byte_30A0E2`,`word_30A20A`); cal `EXBLASH2`
+  (`0x1A06F`), `byte_1A06D/6E`; status flag banks `byte_30169C–3016A8`. No actuator write. EVAP-system
+  identity **[I]**. **[C]**
+- **CDDST OBD monitor** — `sub_AAC4E` (`diag_obd_monitor_cddst`): gated by `word_3018D8.2` (`CDDST`);
+  edge-tracks `byte_303331/332`, debounces (`sub_32EF0/FC4/F5C`) + one PT1, packs status via `sub_B31AC`.
+  Its threshold band `0x23FC8–0x24016` is **scalars, not a map** (`mov`/`cmp` on `word_23FD4–23FE8` + byte
+  config `byte_1A1A2–8` near `INHASE06`) → `cfg_obd_diag_thresholds`. Exact monitor identity **[I]**. **[C]**
+- **Diagnostic status/ID-frame init** — `sub_E018C` (`diag_status_frame_init`): builds the status/ID frame
+  RAM block `word_300404–word_3004D8` from 27 config-word+mask pairs `0x2C52A–0x2C580` (`val AND mask`,
+  merged with `~mask & literal`) plus ASCII/literal seeds; the block is later serialized into CAN mirror
+  `byte_305780–79D` by the `0xE1xxx` packer (`sub_E134E`). Sole caller `sub_642C2` (when
+  `word_300404 != 0x3FD0`). Config/identity frame, not control. Frame identity **[I]**. **[C]**
+- **Component-protection (BTS) thresholds** — the `0x23440–0x234AC` orphan cluster is **scalars, not a map**:
+  `fuel_component_protect` (`sub_86318`) reads it purely via `mov`/`cmp` — over-temp threshold+hysteresis
+  pairs (`word_2349C/A0`, `2349E/A2`, `234A4/A8`, `234A6/AA`) with dict `DTBTS 0x234AE`/`KFDLBTS 0x234D2`
+  adjacent → `cfg_bts_thresholds`. **[C]**
+- **CAN RX per-message handler bank** (comms) — `sub_56E00` (`can_rx_msg_handler_bank`, called from
+  `can_rx_signal_unpack` at 0x56982): jump-table dispatch on a message index (`0x56E04 cmpb rl1,#62h`,
+  table at `0xC1E2`, `0x56E16 jmpi`); each case polls its cal-held (flag-pointer, mask) pair in
+  `0x11A50–0x11B0C`, extracts fields via `sub_E3A86`/`sub_E3ACE`/`sub_E3B34`/`sub_E40DE` into the same
+  `byte_3014xx`/`word_3025xx` mirrors, clears the flag, and maintains a message-timeout counter
+  `byte_30143D` vs cal `byte_13803` (codeword `byte_137FF`; handshake bits via pointers
+  `word_11B0C`/`word_11B5C`). Second confirmed comms-tail member. **[C]**
 
 ## Cross-checks against canonical ME7
 

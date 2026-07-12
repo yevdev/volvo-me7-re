@@ -40,6 +40,7 @@ out. The aim is to document what the *factory* ECU does, so it's a clean base fo
 - [`docs/limiters.md`](docs/limiters.md) — rev limiter (NMAX) + ≈250 km/h vehicle-speed limiter (VMAX)
 - [`docs/load-rl.md`](docs/load-rl.md) — MAF/HFM → relative-load `rl` (speed-density model, `KRKTE`)
 - [`docs/charge.md`](docs/charge.md) — manifold-pressure → charge model (`sub_AD3D0`; not EGR)
+- [`docs/etc-throttle.md`](docs/etc-throttle.md) — throttle-servo position loop + stop-learn adaptation (`sub_C677A`/`sub_C7EEA`)
 - [`docs/idle-governor.md`](docs/idle-governor.md) — air-side idle governor (LLR, torque-reserve)
 - [`docs/cam-timing.md`](docs/cam-timing.md) — VVT / cam-phase controller (dual intake+exhaust, NWS)
 - [`docs/ram-names.md`](docs/ram-names.md) — RAM/CAL cell → engineering name (cross-checked against the sibling 50GSHJ A2L/XDF)

@@ -68,6 +68,35 @@ cell (GSHJ `0xF478`); our docs did not pin its address in this bin. This does no
 boost/torque *structure* (the math is unchanged) — only the variable label. **[NAME-XDF +
 CONFIRMED code role]**
 
+## ⚠️ Correction: `loc_F45E` is THROTTLE POSITION, not `ml_hfm` (air mass)
+
+The earlier `loc_F45E = ml_hfm` binding ([`load-rl.md §2`](load-rl.md), `loadkit/ram_names.csv`)
+is **overturned**; [`etc-throttle.md`](etc-throttle.md)'s servo reading was right. Resolved by
+tracing `sub_76A68` and the writers/readers of the linearization cells:
+
+- **The real HFM air-mass signal is `loc_F384`** (`ml_hfm`, working copy `loc_F386`):
+  `sub_3FF30` latches the HFM ADC (`loc_F2DE`), `sub_7633C` linearizes it through the
+  **128-point MAF curve at `0x160E8`** (dictionary: "MAF table"; `0x76354 mov r15,[r14+#60E8h]`)
+  and accumulates, `sub_7628C` averages (`0x762C6 divl r14 · 0x762D2 mov loc_F384, r12`) and
+  applies **KFKHFM** (`word_3028A8`, from `sub_7638E`) → `loc_F380`/`word_F388`/`word_3028AA`
+  (floor **MLMIN** `0x160E6`). **[C]**
+- **`loc_F45E` is produced only by `sub_C96FC`** as `(word_301952 − word_302CB4) × word_302CA2`,
+  where the offset `word_302CB4` is written **only** by the throttle stop-learn adaptation
+  (`sub_C7EEA`, `0xC88DE`) and the gain `word_302CA2` by its seed/recompute/failure-default
+  functions (`sub_C75C2`/`sub_C899E`/`sub_C891C`). Learned mechanical end-stops ⇒ a motorized
+  actuator, not a MAF. The servo `sub_C677A` closes a PD loop on it (`0xC6784 sub r10, loc_F45E`). **[C]**
+- **In the HFM diagnosis itself `loc_F45E` is a map *axis*, not the measured quantity:**
+  `sub_76A68` feeds it (via `word_3028AC`, `0x76A7E/0x76A82`) into **KFMLDMX** `0x16208` —
+  whose `0x161EE` axis the GPHJ dictionary labels **"Throttle#"** — together with rpm-class
+  `byte_F40E`, to compute the max-plausible air mass (clamped by `MLDHFMKO 0x16298`); the cell
+  actually compared against `MLDHFMKU 0x2188A` and the window is **`loc_F384`**
+  (`0x76AD4 mov r13, loc_F384 · 0x76ADC cmp r13, word_2188A`). Same pattern in `sub_76462`
+  (KFMLDMN lower bound `word_305136`) and `sub_D337C` (two page-9 surfaces keyed
+  nmot × `loc_F45E` → `word_30564C`). **[C]**
+
+Net: **`loc_F45E` = linearized throttle-position feedback** (`throttle_pos_fb`; ME7
+`wdkba`-family **[I]** for the token only), and `ml_hfm` moves to **`loc_F384`**. **[C]**
+
 ---
 
 ## 1. Torque / load structure (torque.md)
@@ -237,10 +266,12 @@ as engineering labels in the docs:
 - `word_3029A4` = **lamfa_w** (driver lambda); `word_30297C` = **commanded fuel multiplier**
 - `word_3029A0:A2` = **fr_w** lambda fuel-trim integrator state
 
-**Two corrections to the existing docs:**
+**Three corrections to the existing docs:**
 1. `word_F410` = **nmot_w (engine speed)**, not `rl`. The actual `rl_w` is a separate cell
    (GSHJ `0xF478`), un-pinned in this bin. Structure unchanged; only the label is wrong.
 2. `0x19B5A` = **DTXKS3** (knock), not the KFLBTS z-table.
+3. `loc_F45E` = **throttle-position feedback**, not `ml_hfm`; the HFM air-mass signal is
+   **`loc_F384`** (MAF curve `0x160E8` → average → ×KFKHFM). See the correction block above.
 
 **Lowest confidence (name = role-inferred only, no external corroboration):** the LDR
 intermediate cells `word_302E3C/3E/34`, the 2nd-integrator path (`word_2BF2E/30`,

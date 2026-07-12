@@ -72,6 +72,44 @@ load request** `rlsol`. **[C]**
 there is no hard cut to defeat. *(US `…DECOS` bins set these to 0xFFFF ≈ off, which is why reading a US bin
 shows "disabled"; this baseline is EU.)* Mechanism **[C]**; values **[C]** from the EU baseline.
 
+## 3. Cruise-control speed governor — `sub_CA5C6` (`cruise_speed_governor`)
+
+Not a limiter, but it lives on the same vehicle-speed/torque-governor mechanics as VMAX (§2), so it
+is documented here. `sub_CA5C6` (0xCA5C6–0xCB3C4, `sub_B81C` chain) is a **state-machined
+vehicle-speed governor**: a 7-state jump-table machine and a stored set-speed that tracks/ramps and
+a PI stage that emits a torque request. Mechanism **[C]**; the cruise/FGR identity is **[I]** —
+strong structurally (set/hold/resume/accel/decel semantics), but no dictionary token names it and
+the switch bits are only traced to the debounce block (`0x3B4A2 bmov word_FD0A.7, word_FD08.14`).
+
+```
+0xCA73A  cmpb    rl6, #6             ; state byte_300C1E in 0..6
+0xCA748  mov     r8, [r8]            ; jump table at 0xD33E
+0xCA74A  jmpi    cc_UC, [r8]         ;   -> per-state handler
+0xCA6D0  sub     r8, word_3029C6     ; set-speed − vehicle speed (vfzg)
+0xCA6DC  cmp     r8, word_26B50      ;   tracking band (above)…
+0xCA6F2  cmp     r8, word_26B24      ;   …and below -> in-band flag word_FD76.7
+0xCAD10  add     r8, word_26B4E      ; ramp set-speed UP at cal rate
+0xCAD54  sub     r8, word_26B4E      ;   or DOWN (accel/decel/resume states)
+0xCAD74  mov     word_302CF8, r8     ; word_302CF8 = slew-limited set speed
+0xCAFEE  calls   4, sub_41A68        ; gain/limit map 0x26BE0 keyed set-speed
+0xCB0A8  calls   4, sub_430DA        ; integrator (state word_300C3E:40)
+0xCB35C  mov     word_302CE4, r8     ; OUTPUT torque request (0 below word_26B7A)
+```
+
+Structure: set-speed `word_302CF8` follows actual speed `word_3029C6` (`vfzg`) or a held target at
+±`word_26B4E` per cycle, clamped to `[word_300C3A, word_300C38]`; a speed-correction term
+`word_302CD6` comes from word maps `0x26A7A`/`0x26B02` (keyed vfzg) or fixed/RAM overrides selected
+by deviation bands `word_26B54/56/58`; the PI stage (gain map `0x26BE0` keyed set-speed, ramp helper
+`sub_42486` with `word_26BAE` + tables `0x26BB0/0x26BC0`, integrator `sub_430DA`, 2-D map via
+`sub_43430`) produces `word_302CE4`, scaled by `byte_304D4A` and zeroed below the authority
+threshold `word_26B7A`; `sub_CB61C`-region code consumes it (0xCB648). The whole scalar band
+`0x26B24–0x26B7C` is this governor's calibration set (see `loadkit/map_names.csv`
+`cfg_26B24_cruise_gov_scalars`). **This also resolves the open point in
+[etc-throttle.md §6](etc-throttle.md)**: the reference/follower pair supervised by
+`diag_setpoint_follow_monitor` (`word_3029C6` vs `word_302CF8`, same slew cal `word_26B4E`) is
+vehicle speed vs the cruise set-speed — a set-speed-runaway plausibility monitor. **[C mechanics /
+I identity]**
+
 ## Open / uncertain
 - Scheduling roots: `sub_4F97A`/`sub_50000` show `callers=0` (computed dispatch from the torque
   coordinator, as with the LDR roots) — the dispatch site isn't pinned; the data flow doesn't depend on it.

@@ -30,13 +30,15 @@ engine-data cells **`loc_F47A`** and **`loc_F478`** (= ME7 `rl_w` / `rl`, 0xF4xx
 
 | Stage | Function(s) | Address range | Produces |
 |---|---|---|---|
-| Air signal (HFM/MAF voltage → air mass) | `sub_3FF58` (ADC latch) → `sub_C96FC` (linearize) | 0x3FF58; 0xC96FC–0xC9838 | `loc_F45E` (air-mass signal) **[C]** |
+| Air signal (HFM voltage → air mass) | `sub_3FF30` (ADC latch) → `sub_7633C` (MAF-curve linearize + accumulate) → `sub_7628C` (average, ×KFKHFM) | 0x3FF30; 0x7633C–0x7638E; 0x7628C–0x7633C | **`loc_F384`** (`ml_hfm`), corrected `loc_F380`/`word_F388`/`word_3028AA` **[C]** — *corrected: was wrongly `loc_F45E`, see §2* |
+| Throttle position (servo pot → angle) | `sub_3FF58` (ADC latch) → `sub_C96FC` (linearize vs learned stops) | 0x3FF58; 0xC96FC–0xC9838 | `loc_F45E` (throttle position, **not** air mass) **[C]** |
 | Engine speed `nmot` | `sub_98C42` | 0x98C42–0x98C74 | `word_F410` = `nmot` **[C]** |
 | **KFURL load model + corrections** | **`sub_D2C9A`** | **0xD2C9A–0xD31CA** | blended load + correction terms **[C]** |
 | Load assembly + offsets | `sub_D31CA`, `sub_D327E` | 0xD31CA–0xD3220; 0xD327E–0xD337C | `word_302D94/98`, `word_302DA8` **[C]** |
 | **`rl` output** | **`sub_D34DC`** | **0xD34DC–0xD35AE** | **`loc_F47A`, `loc_F478` (`rl`), `byte_F473`** **[C]** |
 | Default/limp `rl` | `sub_D35AE` | 0xD35AE–0xD35D4 | forces `rl = 0x10AB` **[C]** |
-| HFM-vs-model plausibility | `sub_D337C`, `sub_76A68` | 0xD337C; 0x76A68 | fault bits + HFM correction `word_30564C` **[C]** |
+| HFM plausibility (fault bits) | `sub_76A68` (+ `sub_76462` lower bound) | 0x76A68; 0x76462 | fault bits `word_FD3C.3–.7` **[C]** |
+| Throttle-surface load correction | `sub_D337C` | 0xD337C | `word_30564C` (blend of two page-9 surfaces keyed nmot × `loc_F45E`) → load assembly `sub_D327E` **[C]** |
 
 **Consumers of `loc_F47A` / `byte_F473` (= `rl`) — confirms it is *the* load variable [C]:**
 `sub_4F4BC` (KFMIOP torque model, 0x4F4CA), `sub_64C80` (thermal model, 0x64CC4),
@@ -54,7 +56,7 @@ then LDR boost, then fuel — i.e. the **air → load → boost → fuel** order
 in the dispatch list. From `sub_B81C` (0x0B8AC–0x0B918):
 
 ```
-0x0B8AC  calls 0Ch, sub_C5F2C      ; air-mass / pressure preprocessing (page 0xC)…
+0x0B8AC  calls 0Ch, sub_C5F2C      ; ETC-cluster monitor bank (diag, page 0xC — see etc-throttle.md §6)…
 0x0B8B4  calls 0Ch, sub_C9F44
 0x0B8C8  calls 0Ch, sub_C7EEA
 0x0B8CC  calls 0Ch, sub_C6FA4
@@ -73,43 +75,86 @@ members of the cluster are reached from parallel scheduler roots (`sub_B6E6`, `s
 
 ---
 
-## 2. The air signal: HFM/MAF voltage → air mass  **[C]**
+## 2. The air signal: HFM voltage → air mass  **[C]**
 
-The raw air signal is a hardware A/D channel, latched and then **linearized in arithmetic, not
-through a characteristic map**. `sub_3FF58` masks the 10-bit ADC results
-(`loc_F2DA/F2D6/F2D8`, which have no code writers → PEC/DMA-filled hardware registers) and
-shifts them into working cells:
+> **⚠️ Correction (round 2).** An earlier revision of this section bound **`loc_F45E`** as the
+> linearized air-mass signal and claimed the HFM had *no* characteristic curve. Both claims are
+> **wrong**. `loc_F45E` is the **linearized throttle-position feedback** (its producer
+> `sub_C96FC` subtracts the *stop-learn* offset `word_302CB4` written only by
+> `etc_stop_learn_adapt`, and the servo loop `sub_C677A` closes a PD position loop on it —
+> see [etc-throttle.md](etc-throttle.md)). The real HFM chain, with a genuine characteristic
+> curve, is `loc_F2DE → sub_7633C → sub_7628C → loc_F384`, below. The GPHJ dictionary
+> corroborates both identities: `0x160E8` = **MAF table** (on the `loc_F384` path), and the
+> `0x161EE` axis that `loc_F45E` feeds in the HFM plausibility is labeled **KFMLDMX
+> "Throttle#"**. **[C]**
+
+The raw HFM signal is a 10-bit A/D channel latched by `sub_3FF30`
+(`loc_F2DE = loc_F2DC & 0x3FF`), then **linearized through a 128-point characteristic curve**
+— the classic MLHFM-style transfer function, at cal `0x160E8` (dictionary: **MAF table**) —
+and accumulated, per sample, by `sub_7633C`:
 
 ```
-0x3FF58  mov   r4, loc_F2DA      ; raw A/D channel
-0x3FF5C  and   r4, #3FFh         ; 10-bit ADC mask
-0x3FF60  shl   r4, #2
-0x3FF62  mov   word_301952, r4
+0x7633C  mov   r13, loc_F2DE      ; raw HFM ADC value
+0x76342  shr   r12, #3            ; curve index = raw >> 3  (≤0x7F, else word_161E8)
+0x76354  mov   r15, [r14+#60E8h]  ; curve entry   (phys 0x160E8, page 5 = MAF table)
+0x7635C  mov   r15, [r14+#60EAh]  ; next entry
+0x76362  mul   r15, r13           ; × (raw & 7)   → /8 linear interpolation
+0x76378  mov   loc_F382, r12      ; instantaneous air mass
+0x76380  add   loc_F37A, r12      ; 32-bit accumulate (hi loc_F37C)
+0x76388  sub   loc_F37E, ONES     ; sample count += 1
 ```
 
-`sub_C96FC` (0xC96FC–0xC9838) then converts to the air-mass signal **`loc_F45E`** with an
-offset + linear-gain (one branch adds a `divlu` normalization), the gain being a reciprocal of
-a calibration word:
+`sub_7628C` then drains the accumulator atomically each task period and produces the working
+air-mass signal **`loc_F384`** (= `ml_hfm`; copy `loc_F386`), applying the **KFKHFM**
+correction and the **MLMIN** floor:
 
 ```
-0xC9704  mov   r15, word_301952  ; raw ADC value
-0xC9708  sub   r15, word_302CB4  ; − offset (cal)
-0xC971C  mov   r4,  word_302CA2  ; × gain  (word_302CA2 = 0x08000000 / cal word_16F1C)
-0xC9732  mulu  r10, r4
-0xC9744  mov   loc_F45E, r5      ; → air-mass signal
+0x76296  mov   r14, loc_F37E      ; count            (accumulator + count are
+0x7629A  mov   r12, loc_F37C      ; sum hi            zeroed right after latch)
+0x7629E  mov   r13, loc_F37A      ; sum lo
+0x762C6  divl  r14                ; mean = sum / count
+0x762D2  mov   loc_F384, r12      ; *** ml_hfm (averaged air mass) ***
+0x762D6  mov   r13, word_3028A8   ; × KFKHFM correction factor
+0x762E4  mulu  r15, r13
+0x76314  mov   loc_F380, r12      ; corrected air mass (signed, saturated)
+0x76322  mov   word_F388, r12     ; ≥0 clamp
+0x76326  cmp   r12, word_160E6    ; MLMIN floor (kg/h) → word_3028AA
 ```
 
-So **`loc_F45E = (ADC − offset) × gain`** [C]. There is **no HFM characteristic *curve*** in
-this path — the hot-film transfer function is folded into the linear gain/offset cals
-(`word_302CA2`, `word_302CB4/BA`, `word_302CC0`), which are seeded from page-5/6 calibration in
-`sub_C75C2`. **[C]**
+So **`ml_hfm` = mean(MAF-curve(`loc_F2DE`))**, KFKHFM-corrected into
+`loc_F380`/`word_F388`/`word_3028AA`. **[C]**
 
-> **KFKHFM (`0x138A5`, page 4, axes Upm × %) is applied separately as a multiplicative
-> correction, not as the primary linearizer.** It is read at `0x7638E` indexed by `byte_F40E`
-> (an rpm-class index, = `nmot/0xA0`, see §3) and `byte_F473` (the load byte), producing a
-> correction in `word_3028A8`; and at `0x8A7C4` it multiplies an air-mass value into
-> `word_30526C`. **[C]** (Note: the `KRKTE` symbol IDA shows at `0x196FE` is a *different*,
-> def-file-mislabeled byte cell — the real injection constant KRKTE is `0x237F2`, §6.)
+> **KFKHFM (`0x138A5`, page 4, axes Upm × %) is the multiplicative correction, not the
+> primary linearizer.** It is read by `sub_7638E` indexed by `byte_F40E` (an rpm-class index,
+> = `nmot/0xA0`, see §3) and `byte_F473` (the load byte), producing the factor `word_3028A8`
+> that `sub_7628C` multiplies onto `ml_hfm` at `0x762D6–0x762E4` (above). (The `0x8A7C4` site
+> previously cited here reads a *different*, page-8 map at `0x2389A` — unrelated.) **[C]**
+> (Note: the `KRKTE` symbol IDA shows at `0x196FE` is a *different*, def-file-mislabeled byte
+> cell — the real injection constant KRKTE is `0x237F2`, §6.)
+
+**Where the throttle signal fits in.** `sub_3FF58` latches the *throttle-pot* ADC channels
+(`0x3FF62 mov word_301952, r4`, tracks ×4), and `sub_C96FC` linearizes track 1 against the
+**learned throttle stops** (`0xC9708 sub r15, word_302CB4` — offset written only by the
+stop-learn adaptation at `0xC88DE`; gain `word_302CA2` = `0x08000000/word_16F1C`, failure
+default `word_16EFA`) into **`loc_F45E` = throttle position**, the servo feedback of
+[etc-throttle.md](etc-throttle.md). In the HFM diagnosis (`sub_76A68`), `loc_F45E` is the
+**throttle-angle map axis**, not the measured quantity:
+
+```
+0x76A7E  mov   r12, loc_F45E      ; throttle position …
+0x76A82  mov   word_3028AC, r12   ;   (0xFFF substitute if signal faulted)
+0x76A86  movbz r12, byte_F40E     ; rpm-class → KFMLDMX "RPM" axis
+0x76A9C  mov   r13, #61EEh        ; KFMLDMX axes 0x161EE ("Throttle#") / 0x161FE ("RPM")
+0x76AA8  calls 4, sub_414F8       ; z=0x16208 → word_305138 = max plausible air mass
+0x76AC4  cmp   r12, word_16298    ; ×FMLDMXKO 0x161EA, clamp at MLDHFMKO
+0x76AD4  mov   r13, loc_F384      ; measured ml_hfm …
+0x76ADC  cmp   r13, word_2188A    ;   vs MLDHFMKU → fault word_FD3C.7
+```
+
+`sub_76A68` windows `ml_hfm` (and its ZMLRO-filtered value) between `word_305136`
+(**KFMLDMN**, computed in `sub_76462` at `0x76706`, same rpm × throttle axes) and
+`word_305138` (**KFMLDMX**), setting fault bits `word_FD3C.3–.7` — the canonical ME7
+"max/min plausible air mass from throttle angle and rpm" HFM diagnosis. **[C]**
 
 ---
 
@@ -240,8 +285,10 @@ turns relative charge into injector time, `ti = (rk × commanded-λ-multiplier) 
 So the full chain, end to end:
 
 ```
-A/D (loc_F2DA…)─sub_3FF58─►ADC words─sub_C96FC─► loc_F45E (air-mass signal)
-                                                      │  (HFM plausibility: sub_D337C/sub_76A68 → fault bits)
+A/D loc_F2DE ─sub_3FF30/7633C─► MAF curve 0x160E8 ─sub_7628C─► loc_F384 = ml_hfm (×KFKHFM → F380/F388/3028AA)
+A/D loc_F2DA ─sub_3FF58──►word_301952─sub_C96FC─► loc_F45E (THROTTLE position, servo feedback)
+                                                      │  (HFM plausibility sub_76A68: ml_hfm vs
+                                                      │   KFMLDMX/KFMLDMN(rpm × loc_F45E) → FD3C.3–.7)
 period ─sub_98C42─► word_F410 = nmot ─/0xA0─► byte_F40E (rpm index)
                                                       │
                   X-index word_304E8E (=word_304E96<<2, a charge/cam index, §7)
@@ -287,11 +334,12 @@ period ─sub_98C42─► word_F410 = nmot ─/0xA0─► byte_F40E (rpm index)
 
 ## 8. Tuner-relevant takeaways (code-confirmed)
 
-- **`rl` is built from KFURL (load %/hPa), not from a MAF transfer curve.** This is a
-  speed-density-dominant load path; the HFM/MAF channel (`loc_F45E`) feeds **corrections
-  (KFKHFM) and plausibility** (`sub_D337C`/`sub_76A68` set fault bits `word_FD3C.x`/`word_FD7A.x`
-  when HFM and the model disagree against `MLDHFMKO 0x16298` / `MLDHFMKU 0x2188A`). Editing the
-  MAF scaling alone moves corrections/diagnostics, **not** the base load. **[C]**
+- **`rl` is built from KFURL (load %/hPa), not from the MAF transfer curve.** This is a
+  speed-density-dominant load path; the HFM channel (`loc_F384` via the **MAF curve `0x160E8`**)
+  feeds **corrections (KFKHFM) and plausibility** (`sub_76A68` sets fault bits `word_FD3C.3–.7`
+  when `ml_hfm` leaves the KFMLDMX/KFMLDMN window, clamped by `MLDHFMKO 0x16298` /
+  `MLDHFMKU 0x2188A`). Editing the MAF curve alone moves corrections/diagnostics, **not** the
+  base load. **[C]**
 - **The load surface is cam-phase-dependent.** KFURL and KFURLSU are crossfaded by valve-timing
   position (`FWNWVSAP`/`DNWVSMN`), so VVT calibration and the load reading are coupled — a
   consideration when changing cam timing or the load model. **[C]**

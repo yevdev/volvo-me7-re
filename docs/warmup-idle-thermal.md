@@ -152,7 +152,7 @@ the role column is **[I]** (a starting guess from cal names + call shape), not a
 | `sub_AD3D0` | 10 | 73 | ✅ **done** — manifold-pressure→charge model (estimator); see [charge.md](charge.md) |
 | `sub_69F5E` | 13 | 48 | Air/load min-max envelope tracker + PT1 (KFMIRL-adjacent gain) |
 | `sub_5369C` | 21 | 43 | Warm-up ignition coordinator (`sub_B81C` callee; reads `byte_30133D`) — §1/§3 sibling |
-| `sub_C7EEA` | 35 | 68 | Operating-mode / monitoring state machine (heavy `word_FD6A/6C` flag logic) |
+| `sub_C7EEA` | 35 | 68 | ✅ **done** — throttle-servo stop-learn adaptation (`etc_stop_learn_adapt`); see [etc-throttle.md](etc-throttle.md) |
 | `sub_8DE10` | 20 | 111 | ✅ **done** — EVAP canister-purge (TEV) controller, **not** dwell; see [fueling.md §8](fueling.md) |
 | `sub_88540` | 16 | 44 | ✅ **done** — long-term lambda adaptation (LRA); see [fueling.md §7](fueling.md) |
 | `sub_7CE76` | 9 | 42 | Knock-window / spark sub-state (`sub_B81C` callee; knock flags `word_FD46`) |

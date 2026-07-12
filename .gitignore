@@ -1,4 +1,6 @@
 .idea/
+# Claude Code local skills / config (kept locally, not part of the shared repo)
+.claude/
 # IDA working files (never commit the ROM-bearing database)
 *.i64
 *.idb
